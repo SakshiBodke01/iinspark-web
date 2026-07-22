@@ -1,0 +1,979 @@
+[
+  {
+    "id": 1,
+    "title": "SparkLab",
+    "description": "Hands-on Science & Curiosity Labs",
+    "longDescription": "Interactive science experiments and STEM learning kits designed to spark curiosity and develop scientific thinking in young minds.",
+    "features": [
+      "Interactive Experiments",
+      "STEM Learning",
+      "Age-appropriate Kits",
+      "Safety Certified"
+    ],
+    "image": "/images/SparkLab.png",
+    "category": "kits",
+    "ageGroup": "6-12",
+    "price": "₹2,999",
+    "rating": 4.8,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "courses"
+  },
+  {
+    "id": 2,
+    "title": "TechTrek",
+    "description": "Robotics & AI Bootcamps",
+    "longDescription": "Comprehensive robotics and AI learning programs that introduce children to the future of technology through hands-on building and coding.",
+    "features": [
+      "Coding Basics",
+      "Robot Building",
+      "AI Fundamentals",
+      "Project-based Learning"
+    ],
+    "image": "/images/TechTrek.png",
+    "category": "others",
+    "ageGroup": "8-16",
+    "price": "₹4,999",
+    "rating": 4.9,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "courses"
+  },
+  {
+    "id": 3,
+    "title": "ArtSpire",
+    "description": "Art, Craft, Music & Dance Kits",
+    "longDescription": "Creative expression programs that nurture artistic talents through various mediums including visual arts, music, and performing arts.",
+    "features": [
+      "Creative Expression",
+      "Multi-disciplinary",
+      "Skill Development",
+      "Portfolio Building"
+    ],
+    "image": "/images/ArtSpire.png",
+    "category": "others",
+    "ageGroup": "4-14",
+    "price": "₹1,999",
+    "rating": 4.7,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "courses"
+  },
+  {
+    "id": 4,
+    "title": "GreenCraft",
+    "description": "Horticulture & Nature Learning",
+    "longDescription": "Environmental education programs that connect children with nature through gardening, sustainability projects, and ecological awareness.",
+    "features": [
+      "Environmental Awareness",
+      "Gardening Skills",
+      "Nature Connection",
+      "Sustainability Focus"
+    ],
+    "image": "/images/GreenCraft.png",
+    "category": "others",
+    "ageGroup": "5-12",
+    "price": "₹1,499",
+    "rating": 4.6,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "courses"
+  },
+  {
+    "id": 5,
+    "title": "SmartSheets",
+    "description": "Grade-wise Interactive Worksheets",
+    "longDescription": "Curriculum-aligned worksheets and learning materials that support academic excellence through structured, progressive learning paths.",
+    "features": [
+      "Curriculum Aligned",
+      "Progressive Learning",
+      "Skill Assessment",
+      "Instant Feedback"
+    ],
+    "image": "/images/SmartSheets.png",
+    "category": "others",
+    "ageGroup": "6-16",
+    "price": "₹999",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 6,
+    "title": "FlashyCards",
+    "description": "Visual Flashcards for Concept Learning",
+    "longDescription": "Visual learning tools that enhance memory retention and concept understanding through scientifically designed flashcard systems.",
+    "features": [
+      "Visual Learning",
+      "Memory Enhancement",
+      "Quick Revision",
+      "Portable Design"
+    ],
+    "image": "/images/FlashyCards.png",
+    "category": "others",
+    "ageGroup": "4-12",
+    "price": "₹799",
+    "rating": 4.4,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 7,
+    "title": "DramaNest",
+    "description": "Theatrical & Storytelling Adventures",
+    "longDescription": "Drama and storytelling programs that build confidence, communication skills, and creative expression through theatrical activities.",
+    "features": [
+      "Confidence Building",
+      "Communication Skills",
+      "Creative Expression",
+      "Performance Opportunities"
+    ],
+    "image": "/images/DramaNest.png",
+    "category": "others",
+    "ageGroup": "6-14",
+    "price": "₹2,499",
+    "rating": 4.8,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "courses"
+  },
+  {
+    "id": 8,
+    "title": "TuitionPlus",
+    "description": "Academic Support Sessions",
+    "longDescription": "Personalized academic support and tutoring services that provide expert guidance for academic excellence and exam preparation.",
+    "features": [
+      "Personalized Learning",
+      "Expert Guidance",
+      "Academic Excellence",
+      "Exam Preparation"
+    ],
+    "image": "/images/TuitionPlus.png",
+    "category": "others",
+    "ageGroup": "8-16",
+    "price": "₹3,999",
+    "rating": 4.9,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "courses"
+  },
+  {
+    "id": 9,
+    "title": "Human Eye",
+    "description": "Anatomical Model",
+    "longDescription": "Human Eye used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹304",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 10,
+    "title": "Human Ear",
+    "description": "Anatomical Model",
+    "longDescription": "Human Ear used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹475",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 11,
+    "title": "Human Brain",
+    "description": "Anatomical Model",
+    "longDescription": "Human Brain used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹356.25",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 12,
+    "title": "Kidney Model",
+    "description": "Anatomical Model",
+    "longDescription": "Kidney Model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹399",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 13,
+    "title": "Digestive Model",
+    "description": "Anatomical Model",
+    "longDescription": "Digestive Model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹494",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 14,
+    "title": "Respiratory model",
+    "description": "Anatomical Model",
+    "longDescription": "Respiratory model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹494",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 15,
+    "title": "Human Heart Model",
+    "description": "Anatomical Model",
+    "longDescription": "Human Heart Model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹370.5",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 16,
+    "title": "Atomic Brain Model",
+    "description": "Anatomical Model",
+    "longDescription": "Atomic Brain Model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹408.5",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 17,
+    "title": "Teeth Model",
+    "description": "Dental Model",
+    "longDescription": "Teeth Model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹408.5",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 18,
+    "title": "Human detention (lower Jaw)",
+    "description": "Dental Model",
+    "longDescription": "Human detention (lower Jaw) used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹380",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 19,
+    "title": "Human detention (Life Size)",
+    "description": "Dental Model",
+    "longDescription": "Human detention (Life Size) used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹3090",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 20,
+    "title": "Human Joints Set of Six",
+    "description": "Anatomical Set",
+    "longDescription": "Human Joints Set of Six used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "models",
+    "ageGroup": "10+",
+    "price": "₹3562",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 21,
+    "title": "Hydro electricity energy chart",
+    "description": "Educational Chart",
+    "longDescription": "Hydro electricity energy chart used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "charts",
+    "ageGroup": "10+",
+    "price": "₹210.5",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 22,
+    "title": "Human Skeleton Chart",
+    "description": "Educational Chart",
+    "longDescription": "Human Skeleton Chart used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "charts",
+    "ageGroup": "10+",
+    "price": "₹210.5",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 23,
+    "title": "Human Nervous System Chart",
+    "description": "Educational Chart",
+    "longDescription": "Human Nervous System Chart used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "charts",
+    "ageGroup": "10+",
+    "price": "₹210.5",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 24,
+    "title": "Atomic Energy Chart",
+    "description": "Educational Chart",
+    "longDescription": "Atomic Energy Chart used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "charts",
+    "ageGroup": "10+",
+    "price": "₹231",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 25,
+    "title": "Honey Bee Life Cycle",
+    "description": "Educational Chart",
+    "longDescription": "Honey Bee Life Cycle used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "charts",
+    "ageGroup": "10+",
+    "price": "₹273",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 26,
+    "title": "Electromagnet Kit",
+    "description": "Science Experiment Kit",
+    "longDescription": "Electromagnet Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 27,
+    "title": "Drip Irrigation Kit",
+    "description": "Agriculture Learning Kit",
+    "longDescription": "Drip Irrigation Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 28,
+    "title": "Vacuum Cleaner Kit",
+    "description": "Mechanics & Engineering Kit",
+    "longDescription": "Vacuum Cleaner Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 29,
+    "title": "Stethoscope Kit",
+    "description": "Medical Equipment Demo",
+    "longDescription": "Stethoscope Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 30,
+    "title": "Lung Model Kit",
+    "description": "Human Anatomy Kit",
+    "longDescription": "Lung Model Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 31,
+    "title": "Conductor Kit",
+    "description": "Electricity Demonstration Kit",
+    "longDescription": "Conductor Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 32,
+    "title": "The Invisible Force",
+    "description": "Physics Concept Kit",
+    "longDescription": "The Invisible Force used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 33,
+    "title": "Hand Pump Model",
+    "description": "Hydraulics Demo Kit",
+    "longDescription": "Hand Pump Model used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 34,
+    "title": "Wind Mill Kit",
+    "description": "Renewable Energy Kit",
+    "longDescription": "Wind Mill Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 35,
+    "title": "Springing Magnet Kit",
+    "description": "Magnetism Kit",
+    "longDescription": "Springing Magnet Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 36,
+    "title": "Speed and Direction Kit",
+    "description": "Motion Study Kit",
+    "longDescription": "Speed and Direction Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 37,
+    "title": "Ohm’s Law Kit",
+    "description": "Electricity Concept Kit",
+    "longDescription": "Ohm’s Law Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 38,
+    "title": "Magnetic Levitation",
+    "description": "Advanced Physics Kit",
+    "longDescription": "Magnetic Levitation used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 39,
+    "title": "Sun Dial",
+    "description": "Timekeeping Demo",
+    "longDescription": "Sun Dial used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 40,
+    "title": "Newton's Color Disc",
+    "description": "Light & Optics Kit",
+    "longDescription": "Newton's Color Disc used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 41,
+    "title": "Crank Generator",
+    "description": "Energy Generation Kit",
+    "longDescription": "Crank Generator used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 42,
+    "title": "Acid and Base Kit",
+    "description": "Chemistry Demo Kit",
+    "longDescription": "Acid and Base Kit used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "kits",
+    "ageGroup": "10+",
+    "price": "₹270",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 43,
+    "title": "Rheostat 8\" with High Resistance",
+    "description": "Lab Component",
+    "longDescription": "Rheostat 8\" with High Resistance used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹914.375",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 44,
+    "title": "Digital Multimeter",
+    "description": "Lab Component",
+    "longDescription": "Digital Multimeter used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹1068.75",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 45,
+    "title": "Transistor Spare (NPN & PNP)",
+    "description": "Lab Spare Part",
+    "longDescription": "Transistor Spare (NPN & PNP) used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹11.875",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 46,
+    "title": "Diode Spare",
+    "description": "Lab Spare Part",
+    "longDescription": "Diode Spare used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹6",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 47,
+    "title": "LED Spare",
+    "description": "Lab Spare Part",
+    "longDescription": "LED Spare used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹4.75",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 48,
+    "title": "Spirit Lamp Glass 120ml (Box of 12)",
+    "description": "Lab Glassware",
+    "longDescription": "Spirit Lamp Glass 120ml (Box of 12) used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹1368",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  },
+  {
+    "id": 49,
+    "title": "Ganong Respirometer Borosilicate Glass",
+    "description": "Botany Instrument",
+    "longDescription": "Ganong Respirometer Borosilicate Glass used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹617",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#002776] to-[#4169e1]",
+    "type": "products"
+  },
+  {
+    "id": 50,
+    "title": "Lactometer",
+    "description": "Density Measuring Tool",
+    "longDescription": "Lactometer used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹57",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#4169e1] to-[#5a7ce0]",
+    "type": "products"
+  },
+  {
+    "id": 51,
+    "title": "Measuring Cylinder 500ml Borosilicate",
+    "description": "Lab Glassware",
+    "longDescription": "Measuring Cylinder 500ml Borosilicate used for hands-on learning in science education.",
+    "features": [
+      "Durable",
+      "Classroom-friendly",
+      "Easy to Use"
+    ],
+    "image": "/images/default_product.png",
+    "category": "others",
+    "ageGroup": "10+",
+    "price": "₹665",
+    "rating": 4.5,
+    "reviews": 0,
+    "color": "from-[#5a7ce0] to-[#002776]",
+    "type": "products"
+  }
+]
