@@ -13,7 +13,7 @@ function AnimatedCounter({ target, suffix = "+" }: { target: number; suffix?: st
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
   const motionVal = useMotionValue(0);
-  const spring = useSpring(motionVal, { stiffness: 60, damping: 20, mass: 0.8 });
+  const spring = useSpring(motionVal, { stiffness: 50, damping: 18, mass: 0.8 });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
@@ -167,12 +167,12 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, [isHoveringTestimonials, testimonials.length]);
 
-  // Hero Staggered Animation Variants
+  // Hero Staggered Page-Load Entrance Only (headline -> subtext -> CTA, 100ms stagger)
   const heroContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: 0.05 },
+      transition: { staggerChildren: 0.1, delayChildren: 0.05 },
     },
   };
 
@@ -181,15 +181,15 @@ export default function HomePage() {
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+      transition: { duration: 0.5, ease: "easeOut" as const },
     },
   };
 
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 overflow-hidden text-slate-900">
       
-      {/* 1. HERO SECTION */}
-      <section className="relative w-full pt-12 pb-20 md:pt-20 md:pb-28 bg-white border-b border-slate-200/80">
+      {/* 1. HERO SECTION (LOAD-ONCE ENTRANCE) */}
+      <section className="relative w-full pt-12 pb-20 md:pt-20 md:pb-28 bg-white border-b border-slate-200">
         <div className="container px-6 md:px-8 mx-auto max-w-7xl">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             
@@ -204,7 +204,7 @@ export default function HomePage() {
               <motion.div variants={heroItemVariants}>
                 <Link
                   href="/summer-camp"
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold hover:border-[#061224]/30 transition-colors"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold hover:border-[#061224]/30 transition-colors duration-150"
                 >
                   <span className="w-2 h-2 rounded-full bg-[#F2A900]" />
                   <span>Summer Camp 2026 &middot; Enrolling Now</span>
@@ -233,7 +233,7 @@ export default function HomePage() {
               <motion.div variants={heroItemVariants} className="pt-2">
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#061224] hover:bg-slate-900 text-white rounded-full font-semibold text-sm transition-all shadow-sm"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#061224] hover:bg-slate-900 text-white rounded-full font-semibold text-sm transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm"
                 >
                   <span>Explore Programs</span>
                   <ArrowRight className="w-4 h-4 text-[#F2A900]" />
@@ -242,13 +242,8 @@ export default function HomePage() {
             </motion.div>
 
             {/* Right Video Player */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] as const }}
-              className="lg:col-span-5 relative w-full max-w-lg lg:max-w-none mx-auto"
-            >
-              <div className="rounded-3xl p-2 bg-slate-100 border border-slate-200/80 shadow-md">
+            <div className="lg:col-span-5 relative w-full max-w-lg lg:max-w-none mx-auto">
+              <div className="rounded-3xl p-2 bg-slate-100 border border-slate-200 shadow-sm">
                 <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950">
                   <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                     <source src="/hello.mp4" type="video/mp4" />
@@ -258,14 +253,14 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
           </div>
         </div>
       </section>
 
-      {/* 2. PROGRAMS SECTION */}
-      <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200/80">
+      {/* 2. PROGRAMS SECTION (STATIC RENDERING) */}
+      <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 md:px-8 max-w-7xl">
           
           <div className="mb-14 max-w-2xl">
@@ -284,12 +279,12 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
             {/* Featured Program Card */}
-            <div className="md:col-span-2 lg:col-span-2 group rounded-2xl bg-white border border-slate-200 overflow-hidden flex flex-col md:flex-row hover:-translate-y-1 transition-transform duration-200">
+            <div className="md:col-span-2 lg:col-span-2 group rounded-2xl bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md transition-colors duration-200 overflow-hidden flex flex-col md:flex-row">
               <div className="relative h-64 md:h-auto md:w-1/2 overflow-hidden shrink-0">
                 <img
                   src={offerings[0].image}
                   alt={offerings[0].title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-full object-cover"
                   onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                 />
                 <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#061224] text-white text-[11px] font-bold uppercase tracking-wider">
@@ -328,10 +323,10 @@ export default function HomePage() {
                     href={offerings[0].pdf}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors group/link"
+                    className="inline-flex items-center text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
                   >
                     <span>Download Syllabus PDF</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-[#F2A900] transition-transform group-hover/link:translate-x-1" />
+                    <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-[#F2A900]" />
                   </a>
                 </div>
               </div>
@@ -343,16 +338,16 @@ export default function HomePage() {
               return (
                 <div
                   key={offering.title}
-                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200 overflow-hidden hover:-translate-y-1 transition-transform duration-200"
+                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md transition-colors duration-200 overflow-hidden"
                 >
                   <div className="relative h-44 w-full overflow-hidden shrink-0">
                     <img
                       src={offering.image}
                       alt={offering.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover"
                       onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                     />
-                    <div className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white/90 backdrop-blur-sm border border-slate-200 flex items-center justify-center text-slate-800 shadow-xs">
+                    <div className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white/90 border border-slate-200 flex items-center justify-center text-slate-800 shadow-xs">
                       <CategoryIcon className="w-4 h-4" />
                     </div>
                   </div>
@@ -381,10 +376,10 @@ export default function HomePage() {
                         href={offering.pdf}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors group/link"
+                        className="inline-flex items-center text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
                       >
                         <span>Download Syllabus PDF</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#F2A900] transition-transform group-hover/link:translate-x-1" />
+                        <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#F2A900]" />
                       </a>
                     </div>
                   </div>
@@ -396,7 +391,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. TESTIMONIALS SECTION (DARK NAVY #061224) */}
+      {/* 3. TESTIMONIALS SECTION (SCROLL REVEAL #1 - 300ms) */}
       <section className="w-full py-20 md:py-28 bg-[#061224] text-white relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">
           
@@ -412,8 +407,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Testimonial Cards */}
-          <div
+          {/* Testimonial Cards (Single viewport trigger, 300ms) */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
             className="max-w-5xl mx-auto"
             onMouseEnter={() => setIsHoveringTestimonials(true)}
             onMouseLeave={() => setIsHoveringTestimonials(false)}
@@ -421,13 +420,7 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               
               {/* Card 1 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-                className="flex flex-col justify-between rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8"
-              >
+              <div className="flex flex-col justify-between rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8">
                 <div>
                   <Quote className="w-8 h-8 text-[#F2A900]/40 mb-4" />
                   <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
@@ -449,16 +442,10 @@ export default function HomePage() {
                     <p className="text-xs text-slate-400">{testimonials[activeTestimonial].role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Card 2 */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.15, duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
-                className="flex flex-col justify-between rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8"
-              >
+              <div className="flex flex-col justify-between rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8">
                 <div>
                   <Quote className="w-8 h-8 text-[#F2A900]/40 mb-4" />
                   <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
@@ -480,7 +467,7 @@ export default function HomePage() {
                     <p className="text-xs text-slate-400">{testimonials[(activeTestimonial + 1) % testimonials.length].role}</p>
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
             </div>
 
@@ -488,7 +475,7 @@ export default function HomePage() {
             <div className="flex justify-center items-center mt-8 gap-4">
               <button
                 onClick={() => setActiveTestimonial((prev) => (prev - 2 + testimonials.length) % testimonials.length)}
-                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors duration-150 cursor-pointer"
                 aria-label="Previous testimonials"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -500,7 +487,7 @@ export default function HomePage() {
                     key={index}
                     onClick={() => setActiveTestimonial(index * 2)}
                     className={clsx(
-                      "h-1.5 rounded-full transition-all cursor-pointer",
+                      "h-1.5 rounded-full transition-all duration-200 cursor-pointer",
                       Math.floor(activeTestimonial / 2) === index ? "w-6 bg-[#F2A900]" : "w-1.5 bg-white/30"
                     )}
                     aria-label={`Go to slide ${index + 1}`}
@@ -510,18 +497,18 @@ export default function HomePage() {
 
               <button
                 onClick={() => setActiveTestimonial((prev) => (prev + 2) % testimonials.length)}
-                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors duration-150 cursor-pointer"
                 aria-label="Next testimonials"
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
 
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* 4. OUR IMPACT STATS */}
+      {/* 4. OUR IMPACT STATS (COUNTER ANIMATION - ONCE ONLY) */}
       <section className="py-20 bg-white border-b border-slate-200">
         <div className="container mx-auto px-6 md:px-8 max-w-6xl">
           
@@ -568,7 +555,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. VIDEO SECTION */}
+      {/* 5. VIDEO SECTION (SCROLL REVEAL #2 - FADE + SLIGHT SCALE-IN FROM 0.98 TO 1.0) */}
       <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 md:px-8 max-w-5xl text-center">
           
@@ -585,10 +572,10 @@ export default function HomePage() {
           </div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1.0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
             className="rounded-2xl border border-slate-300 overflow-hidden bg-slate-950 shadow-sm"
           >
             <div className="relative aspect-video w-full">
@@ -606,7 +593,7 @@ export default function HomePage() {
           <div className="mt-8">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
             >
               <span>Explore All Programs</span>
               <ArrowRight className="w-3.5 h-3.5 text-[#F2A900]" />
@@ -616,7 +603,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. IMAGE CAROUSEL CTA SECTION */}
+      {/* 6. IMAGE CAROUSEL CTA SECTION (FUNCTIONAL CROSSFADE TRANSITION 300-400ms) */}
       <section className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6 md:px-8 max-w-5xl">
           
@@ -641,7 +628,7 @@ export default function HomePage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
                 className="absolute inset-0 w-full h-full object-cover"
                 alt={carouselImages[activeSlide].title}
                 onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
@@ -663,14 +650,14 @@ export default function HomePage() {
               <div className="flex items-center gap-2 bg-slate-950/60 backdrop-blur-sm border border-white/20 rounded-full p-1.5">
                 <button
                   onClick={() => setActiveSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
-                  className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
                   aria-label="Previous slide"
                 >
                   <ChevronLeft className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => setActiveSlide((prev) => (prev + 1) % carouselImages.length)}
-                  className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors cursor-pointer"
+                  className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
                   aria-label="Next slide"
                 >
                   <ChevronRight className="w-4 h-4" />

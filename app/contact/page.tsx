@@ -212,7 +212,7 @@ export default function ContactPage() {
                     type="text" 
                     placeholder="John" 
                     className={clsx(
-                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors focus:outline-none",
+                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none",
                       errors.firstName
                         ? "border-rose-400 focus:border-rose-500"
                         : isSubmitted && !errors.firstName && getValues("firstName")
@@ -238,7 +238,7 @@ export default function ContactPage() {
                     type="text" 
                     placeholder="Doe" 
                     className={clsx(
-                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors focus:outline-none",
+                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none",
                       errors.lastName
                         ? "border-rose-400 focus:border-rose-500"
                         : isSubmitted && !errors.lastName && getValues("lastName")
@@ -264,7 +264,7 @@ export default function ContactPage() {
                     type="email" 
                     placeholder="john@example.com" 
                     className={clsx(
-                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors focus:outline-none",
+                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none",
                       errors.email
                         ? "border-rose-400 focus:border-rose-500"
                         : isSubmitted && !errors.email && getValues("email")
@@ -289,7 +289,7 @@ export default function ContactPage() {
                     {...register("phone")}
                     type="tel" 
                     placeholder="+91 98765 43210" 
-                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors focus:outline-none focus:border-[#061224]"
+                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none focus:border-[#061224]"
                   />
                 </div>
               </div>
@@ -304,7 +304,7 @@ export default function ContactPage() {
                   <select 
                     {...register("userType")}
                     className={clsx(
-                      "w-full bg-white border rounded-lg pl-4 pr-10 py-2.5 text-slate-900 text-sm transition-colors focus:outline-none appearance-none cursor-pointer",
+                      "w-full bg-white border rounded-lg pl-4 pr-10 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none appearance-none cursor-pointer",
                       errors.userType
                         ? "border-rose-400 focus:border-rose-500"
                         : isSubmitted && !errors.userType && getValues("userType")
@@ -340,7 +340,7 @@ export default function ContactPage() {
                     rows={4} 
                     maxLength={500}
                     placeholder="Tell us how we can help you..." 
-                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors focus:outline-none focus:border-[#061224] resize-none"
+                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none focus:border-[#061224] resize-none"
                   />
                   <div className="flex justify-between items-center mt-1 text-[11px] text-slate-400 px-1">
                     <span>Max 500 characters</span>
@@ -361,11 +361,11 @@ export default function ContactPage() {
                 </span>
               </label>
 
-              {/* Submit Button */}
+              {/* Submit Button (1.02x scale on hover) */}
               <button 
                 type="submit" 
                 disabled={isSubmitting} 
-                className="w-full px-7 py-3.5 bg-[#061224] hover:bg-slate-900 text-white rounded-full font-semibold text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
+                className="w-full px-7 py-3.5 bg-[#061224] hover:bg-slate-900 text-white rounded-full font-semibold text-sm transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
@@ -390,7 +390,7 @@ export default function ContactPage() {
                   href={card.href} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="block bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-400 transition-colors"
+                  className="block bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-400 transition-colors duration-200"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] shrink-0">
@@ -403,7 +403,7 @@ export default function ContactPage() {
                       <p className="text-xs text-slate-500 mb-1">{card.subtitle}</p>
                       <p className="text-slate-800 font-semibold text-sm mb-2">{card.content}</p>
                       
-                      <span className="inline-flex items-center gap-1 text-[#061224] text-xs font-bold hover:text-[#F2A900] transition-colors">
+                      <span className="inline-flex items-center gap-1 text-[#061224] text-xs font-bold hover:text-[#F2A900] transition-colors duration-150">
                         <span>{card.action}</span>
                         <ArrowRight className="w-3.5 h-3.5 text-[#F2A900]" />
                       </span>
@@ -413,7 +413,7 @@ export default function ContactPage() {
               ))}
             </div>
 
-            {/* Connect Card (Dark Navy #061224) */}
+            {/* Connect Card */}
             <div className="bg-[#061224] rounded-2xl p-6 text-white">
               <div className="flex items-center gap-2.5 mb-3">
                 <Heart className="w-5 h-5 text-[#F2A900]" />
@@ -429,7 +429,7 @@ export default function ContactPage() {
                   href="https://www.instagram.com/iin_spark" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-200 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
+                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
                   aria-label="Instagram"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -440,7 +440,7 @@ export default function ContactPage() {
                   href="https://www.facebook.com/share/18YLRmC2Gp/" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-200 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
+                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
                   aria-label="Facebook"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -451,7 +451,7 @@ export default function ContactPage() {
                   href="https://in.linkedin.com/company/teamiinspark" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-200 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
+                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -498,7 +498,7 @@ export default function ContactPage() {
                     href="https://www.google.com/maps?q=Vishrantwadi,+Pune,+Maharashtra,+India"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
                   >
                     <ExternalLink className="w-3 h-3 text-[#F2A900]" /> Get Directions
                   </a>
@@ -507,7 +507,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* FAQs Accordion */}
+          {/* FAQs Accordion (Smooth 250ms height + opacity, rotating chevron 180°) */}
           <div className="lg:col-span-6 space-y-4">
             <h2 className="text-2xl font-bold font-heading text-[#061224] flex items-center gap-2">
               <MessageSquare className="w-5 h-5 text-slate-700" /> Frequently Asked Questions
@@ -524,7 +524,7 @@ export default function ContactPage() {
                     <button 
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : idx)} 
-                      className="w-full px-5 py-4 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer hover:bg-slate-50 transition-colors"
+                      className="w-full px-5 py-4 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer hover:bg-slate-50 transition-colors duration-150"
                     >
                       <span className="font-bold text-[#061224] text-sm sm:text-base">
                         {faq.q}
@@ -538,7 +538,7 @@ export default function ContactPage() {
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25, ease: "easeOut" }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
                           <div className="px-5 pb-4 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-100">

@@ -56,7 +56,7 @@ export default function ProductsPage() {
               placeholder="Search programs, kits, models..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#061224] transition-colors"
+              className="w-full pl-10 pr-4 py-2.5 bg-white border border-slate-200 rounded-xl text-xs sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-[#061224] transition-colors duration-150 ease-out"
             />
           </div>
           
@@ -67,7 +67,7 @@ export default function ProductsPage() {
                 key={cat.id}
                 onClick={() => setActiveCategory(cat.id)}
                 className={clsx(
-                  "whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold transition-colors border cursor-pointer focus:outline-none",
+                  "whitespace-nowrap px-3.5 py-2 rounded-full text-xs font-semibold transition-colors duration-150 border cursor-pointer focus:outline-none",
                   activeCategory === cat.id 
                     ? "bg-[#061224] border-[#061224] text-white" 
                     : "bg-white border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900"
@@ -79,25 +79,25 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* 3. Products Grid */}
+        {/* 3. Products Grid (Static & Fast Scanning) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          <AnimatePresence>
-            {filteredProducts.map((product, index) => (
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((product) => (
               <motion.div
                 key={product.id}
                 layout
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.25, delay: Math.min(index * 0.03, 0.3) }}
-                className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-slate-400 hover:-translate-y-0.5 transition-all duration-200 group flex flex-col h-full p-2.5"
+                transition={{ duration: 0.2 }}
+                className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:border-slate-400 transition-colors duration-200 group flex flex-col h-full p-2.5"
               >
                 {/* Product Image */}
                 <div className="relative h-48 bg-slate-100 overflow-hidden rounded-xl shrink-0">
                   <img 
                     src={product.image} 
                     alt={product.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    className="w-full h-full object-cover" 
                     onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                   />
                   {/* Standardized Age Group Badge */}
@@ -128,7 +128,7 @@ export default function ProductsPage() {
                   {/* Card Footer Row: Price + Brochure Link */}
                   <div className="pt-3.5 border-t border-slate-100 flex items-center justify-between mt-auto">
                     <span className="text-base font-bold text-slate-900">{product.price}</span>
-                    <button className="flex items-center gap-1.5 text-xs font-semibold text-[#061224] hover:text-[#F2A900] transition-colors cursor-pointer">
+                    <button className="flex items-center gap-1.5 text-xs font-semibold text-[#061224] hover:text-[#F2A900] transition-colors duration-150 cursor-pointer">
                       <Download className="w-3.5 h-3.5" />
                       <span>Brochure</span>
                     </button>
