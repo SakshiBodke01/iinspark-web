@@ -2,8 +2,10 @@
 
 @theme {
   --color-brand-navy: #061224;
+  --color-brand-gold: #F2A900;
   --color-brand-blue: #F2A900;
   --color-brand-light: #D99700;
+  --color-brand-success: #10B981;
   
   /* Neutral colors for premium feel */
   --color-background: #ffffff;
@@ -11,6 +13,7 @@
   
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-heading: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), Georgia, Cambria, "Times New Roman", Times, serif;
   
   /* Animations */
   --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;

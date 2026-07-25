@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Users, Globe, BookOpen, School, ArrowRight, Rocket, Brain, Sparkles, Target, Heart, Compass, CheckCircle } from "lucide-react";
+import { Users, Globe, BookOpen, School, ArrowRight, Rocket, Brain, Sparkles, Target, Heart, Compass, CheckCircle, Quote, GraduationCap, Building2, Eye } from "lucide-react";
 import clsx from "clsx";
 
 export default function AboutPage() {
@@ -11,62 +11,57 @@ export default function AboutPage() {
 
   const coreValues = [
     {
-      icon: Brain,
-      title: "Purposeful Learning",
-      description: "Education that ignites curiosity and critical thinking, moving beyond rote memorization to real-world application.",
+      number: "01",
+      title: "Hands-on First",
+      description: "We believe children learn best by touching, building, and experimenting rather than passive memorization.",
     },
     {
-      icon: Rocket,
-      title: "Future-Ready Skills",
-      description: "Preparing creators and innovators through Robotics, AI, Languages, and Financial Literacy programs.",
+      number: "02",
+      title: "Indian Knowledge Systems",
+      description: "Rooted in India's rich heritage of scientific, mathematical, and philosophical inquiry integrated into modern STEM.",
     },
     {
-      icon: Heart,
-      title: "Empathy & Inclusion",
-      description: "Nurturing kind hearts and sharp minds, with opportunities for all children regardless of background.",
+      number: "03",
+      title: "Holistic Development",
+      description: "Balancing intellectual curiosity, emotional intelligence, artistic expression, and ethical character.",
     },
     {
-      icon: Sparkles,
-      title: "Joyful Discovery",
-      description: "Making learning an adventure through gamification, storytelling, and hands-on innovation.",
+      number: "04",
+      title: "Inclusivity & Access",
+      description: "Ensuring high-quality experiential learning tools reach children across urban centers and rural schools alike.",
     },
     {
-      icon: Globe,
-      title: "Global Vision",
-      description: "Embracing global practices while staying rooted in ethics and traditions.",
+      number: "05",
+      title: "Creative Expression",
+      description: "Blending art, drama, storytelling, and design thinking into scientific and technological explorations.",
     },
     {
-      icon: Target,
-      title: "Personal Growth Focus",
-      description: "Taking every learner's journey personally, nurturing and celebrating progress at every step.",
+      number: "06",
+      title: "Nation Building",
+      description: "Empowering the next generation of problem solvers, innovators, and leaders to shape India's future.",
     },
   ];
 
   const stakeholders = [
     {
       icon: Users,
-      title: "Parents",
-      description: "We support parents with concept clarity, career discovery tools, and holistic development programs that make learning engaging and future-focused.",
+      title: "For Children",
+      desc: "Interactive, joyful learning experiences that ignite lifelong curiosity and problem-solving skills.",
     },
     {
-      icon: BookOpen,
-      title: "Teachers & Educators",
-      description: "We partner with educators through curriculum-aligned resources, science kits, worksheets, and innovative teaching tools that make complex topics interactive.",
+      icon: GraduationCap,
+      title: "For Educators",
+      desc: "Structured kits, training, and curriculum-aligned tools to transform classroom engagement.",
     },
     {
-      icon: School,
-      title: "Schools & Preschools",
-      description: "We help institutions elevate their learning environment with STEM labs, language modules, and art-integrated activities.",
-    },
-    {
-      icon: Compass,
-      title: "Community Clubs",
-      description: "We transform community spaces into learning zones with after-school programs, weekend workshops, and summer camps.",
+      icon: Building2,
+      title: "For Schools",
+      desc: "End-to-end STEM, robotics, and curiosity lab installations that elevate academic prestige.",
     },
     {
       icon: Heart,
-      title: "NGOs & Foundations",
-      description: "We support organizations working with underserved children by providing affordable, scalable, and impactful educational tools.",
+      title: "For Parents",
+      desc: "Meaningful learning materials that support holistic cognitive and creative growth at home.",
     },
   ];
 
@@ -100,264 +95,280 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-white overflow-hidden">
+    <div className="min-h-screen bg-slate-50 text-slate-900 pb-24">
       
       {/* 1. Hero Section */}
-      <section className="relative pt-12 pb-8 md:pt-16 md:pb-12 bg-gradient-to-b from-slate-50 to-white flex flex-col items-center justify-center text-center px-4 overflow-hidden border-none">
-        <div className="absolute inset-0 z-0 dot-grid opacity-50" />
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-brand-navy/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative z-10 max-w-4xl mx-auto"
-        >
-          <span className="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-4 block">About Us</span>
-          <h1 className="text-5xl md:text-6xl font-bold font-heading text-slate-900 mb-6 leading-[1.05]">
-            About <span className="text-gradient-brand">IINSPARK</span>
+      <section className="pt-16 pb-16 md:pt-20 md:pb-20 bg-slate-50 border-b border-slate-200 text-center px-6">
+        <div className="max-w-4xl mx-auto">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-3">
+            Our Mission &amp; Identity
+          </span>
+
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#061224] mb-6 tracking-tight">
+            About IINSPARK
           </h1>
-          <p className="text-xl text-slate-600 font-light max-w-3xl mx-auto leading-relaxed">
-            Making education meaningful, practical, and accessible for all children through hands-on learning experiences that spark joy and curiosity.
+
+          <p className="text-base sm:text-lg text-slate-600 font-normal max-w-3xl mx-auto leading-relaxed">
+            Making education meaningful, practical, and accessible for all children through hands-on learning experiences that spark joy, curiosity, and career readiness.
           </p>
-        </motion.div>
+        </div>
       </section>
 
-      {/* 2. Our Story */}
-      <section className="pt-12 pb-20 md:pt-16 md:pb-28 relative">
-        <div className="container mx-auto px-4 md:px-6 max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+      {/* 2. Our Story Section */}
+      <section className="py-16 md:py-20 bg-white border-b border-slate-200">
+        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
+          <div className="grid md:grid-cols-12 gap-10 items-center">
             
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-6 leading-tight">
-                A Vision for <br />
-                <span className="text-brand-blue italic font-light">Transformative Education</span>
+            <div className="md:col-span-7 space-y-4 text-slate-600 text-sm sm:text-base leading-relaxed">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
+                Our Origin
+              </span>
+              <h2 className="text-3xl font-bold font-heading text-[#061224] tracking-tight mb-4">
+                A Vision for Transformative Education
               </h2>
               
-              <div className="space-y-4 text-lg text-slate-600 font-light">
-                <p>
-                  IINSPARK was founded with a singular mission — to redefine education by empowering young minds with clarity, confidence, and career-readiness.
-                </p>
-                <p>
-                  In a world where traditional learning often fails to connect knowledge with purpose, we envisioned a system that bridges this critical gap. IINSPARK is not just about academic support — it's about creating a better path.
-                </p>
+              <p>
+                IINSPARK was founded with a singular mission — to redefine education by empowering young minds with clarity, confidence, and career-readiness.
+              </p>
+              <p>
+                In a world where traditional learning often fails to connect knowledge with purpose, we envisioned a system that bridges this critical gap. IINSPARK is not just about academic support — it's about creating a better path.
+              </p>
 
-                <AnimatePresence>
-                  {expandedStory && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      className="space-y-4 pt-2"
-                    >
-                      <p>
-                        One where students deeply understand what they learn, explore real-world applications, and discover who they are and what they can become.
-                      </p>
-                      <p>
-                        Born from the collective expertise of educators, innovators, and visionaries, IINSPARK equips children with practical skills, future-ready exposure, and a sense of direction. Our programs integrate curriculum mastery with life skills, technology, languages, creative expression, and cognitive development — all designed to help learners thrive in every domain of life.
-                      </p>
-                      <p>
-                        At IINSPARK, we believe education must go beyond textbooks and marks. It must lead to purpose, passion, and potential. Through curiosity-driven labs, gamified learning, and hands-on experiences, we prepare children not just to perform — but to excel, adapt, and lead in an ever-evolving world.
-                      </p>
-                      <p className="font-medium text-brand-navy border-l-4 border-brand-blue pl-4 py-1">
-                        IINSPARK is not a classroom. It is a launchpad — for brighter minds, bolder choices, and boundless futures.
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              <AnimatePresence>
+                {expandedStory && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4 pt-2 overflow-hidden"
+                  >
+                    <p>
+                      One where students deeply understand what they learn, explore real-world applications, and discover who they are and what they can become.
+                    </p>
+                    <p>
+                      Born from the collective expertise of educators, innovators, and visionaries, IINSPARK equips children with practical skills, future-ready exposure, and a sense of direction. Our programs integrate curriculum mastery with life skills, technology, languages, creative expression, and cognitive development.
+                    </p>
+                    <p>
+                      At IINSPARK, we believe education must go beyond textbooks and marks. It must lead to purpose, passion, and potential. Through curiosity-driven labs, gamified learning, and hands-on experiences, we prepare children to adapt and lead in an ever-evolving world.
+                    </p>
+                    <p className="font-semibold text-[#061224] border-l-4 border-l-[#F2A900] pl-4 py-2 bg-slate-50 rounded-r-xl">
+                      IINSPARK is not a classroom. It is a launchpad — for brighter minds, bolder choices, and boundless futures.
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
+              <div className="pt-3">
                 <button
                   onClick={() => setExpandedStory(!expandedStory)}
-                  className="group inline-flex items-center text-brand-blue font-semibold hover:text-brand-navy transition-colors mt-2"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#061224] text-white hover:bg-slate-900 font-semibold text-xs transition-colors cursor-pointer"
                 >
-                  {expandedStory ? "Read Less" : "Read More"}
-                  <ArrowRight className={clsx("ml-2 w-4 h-4 transition-transform", expandedStory && "-rotate-90")} />
+                  <span>{expandedStory ? "Read Less" : "Read More About Our Story"}</span>
+                  <ArrowRight className={clsx("w-3.5 h-3.5 text-[#F2A900] transition-transform duration-200", expandedStory && "-rotate-90")} />
                 </button>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="relative rounded-2xl overflow-hidden glass-panel p-2 shadow-2xl"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-navy/20" />
-              <img
-                src="/images/team.jpeg"
-                alt="IINSPARK founder with students"
-                className="relative z-10 w-full aspect-[4/3] object-cover rounded-[1.5rem]"
-                onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
-              />
-            </motion.div>
-            
+            <div className="md:col-span-5">
+              <div className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-100 p-2">
+                <img
+                  src="/images/team.jpeg"
+                  alt="IINSPARK team with students"
+                  className="w-full aspect-[4/3] object-cover rounded-xl"
+                  onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
+                />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* 3. Mission & Vision */}
-      <section className="py-20 md:py-28 bg-brand-navy relative overflow-hidden text-white">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-brand-blue/20 to-transparent" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold font-heading mb-6">Mission & Vision</h2>
-            <p className="text-lg text-brand-light font-light">The guiding principles that drive everything we do at IINSPARK.</p>
-          </div>
+      <section className="container mx-auto px-6 md:px-8 mt-14">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          {/* Mission */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 flex flex-col justify-between">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-6">
+                <Target className="w-6 h-6" />
+              </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {/* Mission */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="glass-panel-dark p-8 md:p-10 rounded-2xl"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-brand-blue flex items-center justify-center mb-6 shadow-lg">
-                <Target className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-3xl font-bold font-heading mb-4 text-white">Our Mission</h3>
-              <div className="space-y-4 text-slate-300 font-light text-lg">
-                <p className="text-white font-medium">To ignite the spark within every learner — through experiential, value-based, and future-ready education.</p>
-                <p>Our mission is to create a transformative learning environment that blends academic excellence with creativity, innovation, and life skills.</p>
-                <p>At IINSPARK, we don't just prepare children for school — we prepare them for life. Because when learning is real, relevant, and inspiring, every child becomes unstoppable.</p>
-              </div>
-            </motion.div>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#F2A900] block mb-2">
+                Our Purpose
+              </span>
 
-            {/* Vision */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="glass-panel-dark p-8 md:p-10 rounded-2xl"
-            >
-              <div className="w-16 h-16 rounded-2xl bg-white text-brand-navy flex items-center justify-center mb-6 shadow-lg">
-                <Compass className="w-8 h-8" />
-              </div>
-              <h3 className="text-3xl font-bold font-heading mb-4 text-white">Our Vision</h3>
-              <div className="space-y-4 text-slate-300 font-light text-lg mb-6">
-                <p className="text-white font-medium">To nurture a generation that learns with purpose, leads with confidence, and lives with curiosity.</p>
-                <p>We envision an education system where learning is joyful, meaningful, and deeply connected to life.</p>
-              </div>
-              <ul className="space-y-3">
-                {["Curiosity-driven learning", "Holistic development", "Future-ready skills", "Inclusive education"].map((point, idx) => (
-                  <li key={idx} className="flex items-center text-slate-300">
-                     <CheckCircle className="w-5 h-5 text-brand-light mr-3 shrink-0" />
-                    {point}
+              <h2 className="text-2xl font-bold font-heading text-[#061224] mb-4">
+                Our Mission
+              </h2>
+
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                To ignite curiosity and foster holistic development in every child by providing experiential learning tools, STEM labs, and creative platforms that blend ancient Indian knowledge with 21st-century skills.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-slate-100">
+              <ul className="space-y-2">
+                {["Experiential Learning", "STEM & Robotics Integration", "Holistic Skill Building"].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#061224]" />
+                    {item}
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           </div>
+
+          {/* Vision */}
+          <div className="bg-white rounded-2xl p-8 border border-slate-200 flex flex-col justify-between">
+            <div>
+              <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-6">
+                <Eye className="w-6 h-6" />
+              </div>
+
+              <span className="text-xs font-bold uppercase tracking-wider text-[#F2A900] block mb-2">
+                Our Ambition
+              </span>
+
+              <h2 className="text-2xl font-bold font-heading text-[#061224] mb-4">
+                Our Vision
+              </h2>
+
+              <p className="text-slate-600 text-sm leading-relaxed mb-6">
+                To be India's leading educational ecosystem, empowering millions of children to become self-reliant innovators, critical thinkers, and compassionate leaders shaping the future of nation building.
+              </p>
+            </div>
+
+            <div className="pt-4 border-t border-slate-100">
+              <ul className="space-y-2">
+                {["Nation Building Focus", "21st Century Skills", "Accessible Innovation"].map((item, idx) => (
+                  <li key={idx} className="flex items-center gap-2 text-xs font-semibold text-slate-700">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#061224]" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      {/* 4. Core Values */}
-      <section className="py-20 md:py-28 bg-white relative overflow-hidden border-none">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-brand-blue/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-brand-navy/5 rounded-full blur-3xl pointer-events-none" />
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <span className="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-4 block">Core Values</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-6">What We Believe In</h2>
-            <p className="text-lg text-slate-600 font-light">The pillars that define who we are, what we believe in, and how we transform futures.</p>
+      {/* 4. Core Values (Editorial Numbered List 01-06) */}
+      <section className="container mx-auto px-6 md:px-8 mt-20">
+        <div className="max-w-5xl mx-auto bg-white rounded-2xl border border-slate-200 p-8 sm:p-12">
+          
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+              Guiding Principles
+            </span>
+            <h2 className="text-3xl font-bold font-heading text-[#061224]">
+              Our Core Values
+            </h2>
+            <p className="text-slate-600 text-sm mt-2">
+              The fundamental principles that guide our approach to education, curriculum design, and institutional partnerships.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {coreValues.map((value, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="bg-slate-50 rounded-2xl p-8 border border-slate-100 hover:border-brand-blue/30 hover:shadow-xl transition-all duration-500 group"
-              >
-                <div className="relative w-16 h-16 rounded-[1.25rem] bg-gradient-to-br from-brand-navy to-slate-900 shadow-xl flex items-center justify-center text-brand-light mb-6 border border-white/10 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-brand-blue/20 transition-all duration-500">
-                  <div className="absolute inset-0 bg-brand-blue/20 rounded-[1.25rem] blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                  <value.icon className="w-8 h-8 relative z-10 drop-shadow-sm" strokeWidth={1.5} />
+          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+            {coreValues.map((value) => (
+              <div key={value.number} className="flex items-start gap-4 pb-6 border-b border-slate-100">
+                <span className="text-2xl font-bold font-heading text-slate-400 shrink-0">
+                  {value.number}
+                </span>
+                <div>
+                  <h3 className="text-lg font-bold font-heading text-[#061224] mb-1">
+                    {value.title}
+                  </h3>
+                  <p className="text-slate-600 text-xs leading-relaxed">
+                    {value.description}
+                  </p>
                 </div>
-                <h3 className="text-xl font-bold font-heading text-slate-900 mb-3">{value.title}</h3>
-                <p className="text-slate-600 font-light leading-relaxed">{value.description}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* 5. Stakeholders */}
-      <section className="py-20 md:py-28 bg-slate-50 relative overflow-hidden border-none">
-        <div className="absolute inset-0 z-0 dot-grid opacity-50 pointer-events-none" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-6">Empowering Every Stakeholder</h2>
-            <p className="text-lg text-slate-600 font-light">At IINSPARK, we don't just educate—we co-create a powerful learning ecosystem that supports every stakeholder involved in shaping a child's future.</p>
+      {/* 5. Stakeholders Impact (Flat Layout Grid) */}
+      <section className="container mx-auto px-6 md:px-8 mt-20">
+        <div className="max-w-5xl mx-auto">
+          
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+              Ecosystem Impact
+            </span>
+            <h2 className="text-3xl font-bold font-heading text-[#061224]">
+              Empowering Every Stakeholder
+            </h2>
+            <p className="text-slate-600 text-sm mt-2">
+              Our comprehensive programs create meaningful value across the entire learning ecosystem.
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto justify-center">
-            {stakeholders.map((stakeholder, idx) => (
-              <motion.div
-                key={idx}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className={clsx("bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 group", idx === 4 && "lg:col-start-2 lg:col-span-1")}
-              >
-                <div className="relative w-16 h-16 rounded-[1.25rem] bg-gradient-to-br from-brand-blue to-amber-500 shadow-xl flex items-center justify-center text-white mb-6 border border-white/20 group-hover:scale-110 group-hover:shadow-2xl group-hover:shadow-brand-blue/30 transition-all duration-500">
-                  <div className="absolute inset-0 bg-brand-blue rounded-[1.25rem] blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-500 pointer-events-none" />
-                  <stakeholder.icon className="w-8 h-8 relative z-10 drop-shadow-sm" strokeWidth={1.5} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {stakeholders.map((item) => (
+              <div key={item.title} className="space-y-3">
+                <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224]">
+                  <item.icon className="w-5 h-5" />
                 </div>
-                <h3 className="text-xl font-bold font-heading text-slate-900 mb-3">{stakeholder.title}</h3>
-                <p className="text-slate-600 font-light leading-relaxed">{stakeholder.description}</p>
-              </motion.div>
+                <h3 className="text-base font-bold font-heading text-[#061224]">
+                  {item.title}
+                </h3>
+                <p className="text-slate-600 text-xs leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* 6. Meet Our Founders */}
-      <section className="py-20 md:py-28 bg-white relative">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16 max-w-3xl mx-auto">
-            <span className="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-4 block">Leadership</span>
-            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-6">Meet Our Founders</h2>
-            <p className="text-lg text-slate-600 font-light">The visionaries behind IINSPARK who are transforming education through innovation and passion.</p>
+      {/* 6. Founders & Leadership (Full Unchanged Copy & Read More Links) */}
+      <section className="container mx-auto px-6 md:px-8 mt-20">
+        <div className="max-w-5xl mx-auto">
+          
+          <div className="text-center max-w-xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+              Leadership
+            </span>
+            <h2 className="text-3xl font-bold font-heading text-[#061224]">
+              Meet Our Founders
+            </h2>
+            <p className="text-slate-600 text-sm mt-2">
+              The visionaries behind IINSPARK who are transforming education through innovation, academic excellence, and passion.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
             {founders.map((founder, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.2 }}
-                className="bg-slate-50 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden border-none flex flex-col"
+              <div 
+                key={founder.name}
+                className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 flex flex-col justify-between"
               >
-                <div className="bg-brand-navy p-8 relative flex-shrink-0">
-                  <div className="absolute inset-0 bg-brand-blue/20" />
-                  <div className="relative z-10 flex flex-col items-center text-center">
-                    <div className="w-28 h-28 mb-4 rounded-full overflow-hidden border-4 border-white/20 shadow-xl bg-slate-200">
-                      <img src={founder.image} alt={founder.name} className="w-full h-full object-cover" onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }} />
+                <div>
+                  <div className="flex items-center gap-4 mb-6">
+                    <img
+                      src={founder.image}
+                      alt={founder.name}
+                      className="w-16 h-16 rounded-full object-cover border border-slate-200 shrink-0"
+                      onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
+                    />
+                    <div>
+                      <h3 className="text-xl font-bold font-heading text-[#061224]">
+                        {founder.name}
+                      </h3>
+                      <p className="text-xs font-semibold text-[#F2A900]">
+                        {founder.role} &middot; <span className="uppercase text-[10px] text-slate-500 font-bold tracking-wider">{founder.subtitle}</span>
+                      </p>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-1">{founder.name}</h3>
-                    <p className="text-brand-light font-medium mb-1">{founder.role}</p>
-                    <p className="text-slate-300 text-xs uppercase tracking-wider">{founder.subtitle}</p>
                   </div>
-                </div>
 
-                <div className="p-8 flex flex-col flex-1">
-                  <div className="space-y-4 mb-6 text-slate-600 font-light text-sm md:text-base flex-1">
+                  <div className="space-y-3 text-slate-600 text-xs leading-relaxed mb-4">
                     <p>{founder.shortDescription}</p>
 
                     <AnimatePresence>
@@ -366,35 +377,41 @@ export default function AboutPage() {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          className="space-y-4 pt-2"
+                          transition={{ duration: 0.3 }}
+                          className="space-y-3 pt-1 overflow-hidden"
                         >
-                          {founder.fullDescription.slice(1).map((para, i) => (
+                          {founder.fullDescription.map((para, i) => (
                             <p key={i}>{para}</p>
                           ))}
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
 
-                  <button
-                    onClick={() => setExpandedFounder(expandedFounder === index ? null : index)}
-                    className="inline-flex items-center text-brand-blue font-semibold hover:text-brand-navy transition-colors mb-6"
-                  >
-                    {expandedFounder === index ? "Read Less" : "Read More"}
-                    <ArrowRight className={clsx("ml-2 w-4 h-4 transition-transform", expandedFounder === index && "-rotate-90")} />
-                  </button>
-
-                  <div className="pt-6 border-t border-slate-200 mt-auto">
-                    <blockquote className="text-brand-navy font-medium text-sm italic text-center">
-                      "{founder.quote}"
-                    </blockquote>
+                    {/* Read More / Read Less Pill Button */}
+                    <div className="pt-2">
+                      <button
+                        onClick={() => setExpandedFounder(expandedFounder === index ? null : index)}
+                        className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-slate-100 text-[#061224] hover:bg-[#061224] hover:text-white font-semibold text-xs transition-colors cursor-pointer"
+                      >
+                        <span>{expandedFounder === index ? "Read Less" : "Read More"}</span>
+                        <ArrowRight className={clsx("w-3.5 h-3.5 text-[#F2A900] transition-transform duration-200", expandedFounder === index && "-rotate-90")} />
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
+
+                <div className="pt-4 border-t border-slate-100 mt-4">
+                  <p className="text-xs italic text-slate-600 font-serif">
+                    "{founder.quote}"
+                  </p>
+                </div>
+              </div>
             ))}
           </div>
+
         </div>
       </section>
+
     </div>
   );
 }

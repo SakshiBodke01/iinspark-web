@@ -6,18 +6,8 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import {
     Briefcase,
     MapPin,
-    Clock,
-    DollarSign,
     IndianRupee,
     Code,
     CheckCircle,
@@ -28,17 +18,14 @@ import {
     Users,
     Lightbulb,
     Heart,
-    Sparkles,
     GraduationCap,
     Rocket
 } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { submitCareerForm } from "@/app/actions/career-form"
 import { useActionState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
 
 // Job Data
 const jobs = [
@@ -109,14 +96,13 @@ export default function CareerPageClient() {
     const [showSuccess, setShowSuccess] = useState(false)
     const [selectedJob, setSelectedJob] = useState<string>("")
     const [isDialogOpen, setIsDialogOpen] = useState(false)
+    const [jobFilter, setJobFilter] = useState<string>("All")
     const formRef = useRef<HTMLFormElement>(null)
 
-    // Force scroll to top on page load
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
-    // Handle success state
     useEffect(() => {
         if (state?.success) {
             setShowSuccess(true)
@@ -125,316 +111,264 @@ export default function CareerPageClient() {
             }
             const timer = setTimeout(() => {
                 setShowSuccess(false)
-                setIsDialogOpen(false) // Close dialog on success
+                setIsDialogOpen(false)
             }, 3000)
             return () => clearTimeout(timer)
         }
     }, [state?.success])
-
-    // Animation on scroll functionality
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("animate-in")
-                    }
-                })
-            },
-            { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-        )
-
-        const hiddenElements = document.querySelectorAll(".animate-hidden")
-        hiddenElements.forEach((el) => observer.observe(el))
-
-        // Animate on load elements
-        const animateElements = document.querySelectorAll(".animate-on-load")
-        animateElements.forEach((el, index) => {
-            setTimeout(
-                () => {
-                    el.classList.add("animate-in")
-                },
-                100 + index * 100,
-            )
-        })
-
-        return () => {
-            hiddenElements.forEach((el) => observer.unobserve(el))
-        }
-    }, [])
 
     const openApplicationForm = (jobTitle: string) => {
         setSelectedJob(jobTitle)
         setIsDialogOpen(true)
     }
 
+    const filteredJobs = jobFilter === "All"
+        ? jobs
+        : jobs.filter(j => j.type.toLowerCase().includes(jobFilter.toLowerCase()))
+
     return (
-        <>
-            <div className="overflow-x-hidden w-full bg-slate-50 dot-grid">
-                {/* Professional Hero Section */}
-                <div className="relative min-h-[60vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-50 via-[#ffffff] to-orange-50">
-                    {/* Subtle Background Pattern */}
-                    <div className="absolute inset-0 opacity-[0.03]">
-                        <div
-                            className="absolute inset-0"
-                            style={{
-                                backgroundImage: `radial-gradient(circle at 40px 40px, #061224 1px, transparent 0)`,
-                                backgroundSize: "80px 80px",
+        <div className="overflow-x-hidden w-full bg-white text-slate-900">
+            
+            {/* 1. Hero Section */}
+            <section className="py-16 md:py-20 bg-slate-50 border-b border-slate-200 text-center px-6">
+                <div className="max-w-4xl mx-auto">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-3">
+                        We Are Hiring
+                    </span>
+
+                    <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-[#061224] mb-6 tracking-tight">
+                        Join Our Mission
+                    </h1>
+
+                    <p className="text-base sm:text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed font-normal mb-8">
+                        Be part of a pioneering education transformation movement redefining how children learn, create, and innovate across India.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <button
+                            onClick={() => {
+                                document.getElementById('openings')?.scrollIntoView({ behavior: 'smooth' });
                             }}
-                        ></div>
-                    </div>
-
-                    {/* Decorative Elements */}
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#061224]/5 rounded-full blur-3xl animate-pulse-slow"></div>
-                    <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#F2A900]/5 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
-
-                    <div className="container relative px-4 md:px-6 z-20 py-12 sm:py-16">
-                        <div className="max-w-4xl mx-auto text-center">
-                            <span className="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-4 block animate-on-load opacity-0 translate-y-8">
-                                We are hiring!
-                            </span>
-
-                            <h1
-                                className="text-5xl md:text-6xl lg:text-7xl font-black font-heading tracking-tight text-[#061224] leading-[1.05] animate-on-load opacity-0 translate-y-8 mb-8"
-                                style={{ animationDelay: "0.2s" }}
-                            >
-                                Join Our{" "}
-                                <span className="bg-gradient-to-r from-[#061224] via-[#F2A900] to-[#061224] bg-clip-text text-transparent bg-300% animate-gradient">
-                                    Mission
-                                </span>
-                            </h1>
-
-                            <p
-                                className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light animate-on-load opacity-0 translate-y-8 mb-10"
-                                style={{ animationDelay: "0.4s" }}
-                            >
-                                Be part of a pioneering education transformation movement redefining how children learn in India.
-                            </p>
-
-                            <div
-                                className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-on-load opacity-0 translate-y-8"
-                                style={{ animationDelay: "0.6s" }}
-                            >
-                                <Button
-                                    size="lg"
-                                    className="rounded-full px-8 h-12 text-lg bg-[#061224] hover:bg-[#030811] shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
-                                    onClick={() => {
-                                        document.getElementById('openings')?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                >
-                                    <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-                                    <span className="relative z-10">View Openings</span>
-                                </Button>
-                                <Button
-                                    variant="outline"
-                                    size="lg"
-                                    className="rounded-full px-8 h-12 text-lg border-[#061224] text-[#061224] hover:bg-amber-50"
-                                    onClick={() => {
-                                        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
-                                    }}
-                                >
-                                    Learn More
-                                </Button>
-                            </div>
-                        </div>
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold text-white bg-[#061224] hover:bg-slate-900 rounded-full transition-colors cursor-pointer"
+                        >
+                            <span>View Openings</span>
+                            <ArrowRight className="w-4 h-4 text-[#F2A900]" />
+                        </button>
+                        <button
+                            onClick={() => {
+                                document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                            }}
+                            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 text-sm font-semibold text-slate-900 bg-white hover:bg-slate-100 border border-slate-200 rounded-full transition-colors cursor-pointer"
+                        >
+                            <span>Learn More</span>
+                        </button>
                     </div>
                 </div>
+            </section>
 
-                {/* About / Mission Section */}
-                <section id="about" className="py-24 relative overflow-hidden bg-white">
-                    <div className="container px-4 md:px-6 relative z-10">
-                        <div className="grid lg:grid-cols-2 gap-16 items-center">
-                            <div className="animate-hidden space-y-8">
-                                <div>
-                                    <div className="inline-flex items-center gap-2 rounded-full bg-[#061224]/10 px-4 py-1.5 text-sm font-medium text-[#061224] mb-4">
-                                        <Lightbulb className="h-4 w-4" />
-                                        Who We Are
-                                    </div>
-                                    <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#061224] leading-tight">
-                                        Redefining Education with <span className="text-[#F2A900]">IINSPARK</span>
-                                    </h2>
+            {/* 2. Redefining Education Split Section */}
+            <section id="about" className="py-20 md:py-24 border-b border-slate-200">
+                <div className="container mx-auto px-6 md:px-8 max-w-6xl">
+                    <div className="grid lg:grid-cols-2 gap-12 items-center">
+                        
+                        {/* Left Column */}
+                        <div className="space-y-6">
+                            <div>
+                                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                                    Who We Are
+                                </span>
+                                <h2 className="text-3xl sm:text-4xl font-bold font-heading text-[#061224] tracking-tight">
+                                    Redefining Education with IINSPARK
+                                </h2>
+                            </div>
+
+                            <p className="text-base text-slate-600 font-normal leading-relaxed">
+                                IINSPARK is a pioneering education transformation movement. We design and deliver hands-on learning kits, flashcards, educational games, science & robotics labs, and innovative app-based learning programs.
+                            </p>
+
+                            <div className="flex gap-4 items-start p-5 bg-slate-50 rounded-xl border border-slate-200">
+                                <div className="p-2.5 bg-white border border-slate-200 text-[#061224] rounded-lg shrink-0">
+                                    <GraduationCap className="h-5 w-5" />
                                 </div>
-
-                                <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
-                                    <p>
-                                        IINSPARK is a pioneering education transformation movement. We design and deliver hands-on learning kits, flashcards, educational games, science & robotics labs, and innovative app-based learning programs.
-                                    </p>
-
-                                    <div className="flex gap-4 items-start p-4 bg-amber-50/50 rounded-xl border border-amber-100">
-                                        <div className="p-2 bg-white rounded-lg shadow-sm text-[#061224]">
-                                            <GraduationCap className="h-6 w-6" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold font-heading text-[#061224] mb-1">Our Philosophy</h4>
-                                            <p className="text-sm">We blend Indian Knowledge Systems (IKS) with 21st-century skills to ensure holistic development in every child.</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex gap-4 items-start p-4 bg-amber-50/50 rounded-xl border border-amber-100">
-                                        <div className="p-2 bg-white rounded-lg shadow-sm text-[#061224]">
-                                            <Rocket className="h-6 w-6" />
-                                        </div>
-                                        <div>
-                                            <h4 className="font-bold font-heading text-[#061224] mb-1">Our Impact</h4>
-                                            <p className="text-sm">Our flagship initiative, "Lab of Curiosity", is creating meaningful change in schools, pre-schools, and learning spaces.</p>
-                                        </div>
-                                    </div>
+                                <div>
+                                    <h3 className="font-bold text-[#061224] mb-1 text-sm">Our Philosophy</h3>
+                                    <p className="text-xs text-slate-600 leading-relaxed font-normal">We blend Indian Knowledge Systems (IKS) with 21st-century skills to ensure holistic development in every child.</p>
                                 </div>
                             </div>
 
-                            <div className="animate-hidden animation-delay-200 lg:pl-10">
-                                <div className="relative">
-                                    <div className="absolute -inset-4 bg-gradient-to-r from-[#061224] to-[#F2A900] rounded-2xl opacity-20 blur-xl"></div>
-                                    <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-white border border-gray-100 aspect-[4/3] group">
-                                        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 to-orange-50 flex items-center justify-center group-hover:scale-105 transition-transform duration-700">
-                                            <img
-                                                src="/images/nation-building-v2.png"
-                                                alt="Nation Building Through Education"
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                    </div>
-
-                                    {/* Floating Stats Card */}
-                                    <div className="absolute -bottom-8 -left-8 bg-white p-6 rounded-xl shadow-xl border border-gray-100 animate-float" style={{ animationDelay: "1s" }}>
-                                        <div className="flex items-center gap-4">
-                                            <div className="bg-green-100 p-3 rounded-full text-green-600">
-                                                <CheckCircle className="h-6 w-6" />
-                                            </div>
-                                            <div>
-                                                <p className="text-sm text-gray-500 font-medium">Impact Created</p>
-                                                <p className="text-xl font-bold font-heading text-[#061224]">1000+ Students</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div className="flex gap-4 items-start p-5 bg-slate-50 rounded-xl border border-slate-200">
+                                <div className="p-2.5 bg-white border border-slate-200 text-[#061224] rounded-lg shrink-0">
+                                    <Rocket className="h-5 w-5" />
+                                </div>
+                                <div>
+                                    <h3 className="font-bold text-[#061224] mb-1 text-sm">Our Impact</h3>
+                                    <p className="text-xs text-slate-600 leading-relaxed font-normal">Our flagship initiative, "Lab of Curiosity", is creating meaningful change in schools, pre-schools, and learning spaces.</p>
                                 </div>
                             </div>
                         </div>
+
+                        {/* Right Image */}
+                        <div>
+                            <div className="rounded-2xl border border-slate-200 overflow-hidden bg-slate-100">
+                                <img
+                                    src="/images/nation-building-v2.png"
+                                    alt="Nation Building Through Education"
+                                    className="w-full aspect-[4/3] object-cover"
+                                    onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
+                                />
+                            </div>
+                        </div>
+
                     </div>
-                </section>
+                </div>
+            </section>
 
-                {/* Why Join Us Section */}
-                <section className="py-24 bg-slate-50 dot-grid relative overflow-hidden">
-                    {/* Decorative Background Elements */}
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#061224]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#F2A900]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2"></div>
+            {/* 3. Why Join IINSPARK? Section */}
+            <section className="py-20 md:py-24 bg-slate-50 border-b border-slate-200">
+                <div className="container mx-auto px-6 md:px-8 max-w-6xl">
+                    
+                    <div className="text-center max-w-xl mx-auto mb-12">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                            Life at IINSPARK
+                        </span>
+                        <h2 className="text-3xl font-bold font-heading text-[#061224]">
+                            Why Join IINSPARK?
+                        </h2>
+                        <p className="text-slate-600 text-sm mt-2">
+                            We offer more than just a job; we offer a supportive culture, professional growth, and a meaningful purpose.
+                        </p>
+                    </div>
 
-                    <div className="container px-4 md:px-6 relative z-10">
-                        <motion.div
-                            initial={{ opacity: 0, y: 24 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.6 }}
-                            className="text-center max-w-3xl mx-auto mb-20"
-                        >
-                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#061224] mb-6">Why Join IINSPARK?</h2>
-                            <p className="text-xl text-gray-600">We offer more than just a job; we offer a purpose.</p>
-                        </motion.div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                        {[
+                            {
+                                icon: Heart,
+                                title: "Culture",
+                                desc: "We offer a warm, supportive work culture with flexible options that respect your personal journey.",
+                            },
+                            {
+                                icon: Users,
+                                title: "Support",
+                                desc: "We provide mentorship, continuous training, and resources to ease your transition and accelerate your career.",
+                            },
+                            {
+                                icon: Lightbulb,
+                                title: "Purpose",
+                                desc: "This is a unique opportunity to contribute directly to nation-building through practical, high-impact education.",
+                            }
+                        ].map((item) => (
+                            <div
+                                key={item.title}
+                                className="rounded-xl bg-white border border-slate-200 p-6 text-center"
+                            >
+                                <div className="w-12 h-12 rounded-xl bg-slate-100 border border-slate-200 text-[#061224] flex items-center justify-center mx-auto mb-4">
+                                    <item.icon className="w-6 h-6" />
+                                </div>
+                                <h3 className="text-lg font-bold font-heading text-[#061224] mb-2">
+                                    {item.title}
+                                </h3>
+                                <p className="text-slate-600 text-xs leading-relaxed">
+                                    {item.desc}
+                                </p>
+                            </div>
+                        ))}
+                    </div>
 
-                        <div className="grid md:grid-cols-3 gap-8">
-                            {[
-                                {
-                                    icon: Heart,
-                                    title: "Culture",
-                                    desc: "We offer a warm, supportive work culture with flexible work options.",
-                                    color: "text-pink-600",
-                                    bg: "bg-pink-50"
-                                },
-                                {
-                                    icon: Users,
-                                    title: "Support",
-                                    desc: "We provide training and mentoring to ease your transition back into the workforce.",
-                                    color: "text-amber-600",
-                                    bg: "bg-amber-50"
-                                },
-                                {
-                                    icon: Lightbulb,
-                                    title: "Purpose",
-                                    desc: "This is an opportunity to contribute to nation-building through education.",
-                                    color: "text-amber-600",
-                                    bg: "bg-amber-50"
-                                }
-                            ].map((item, idx) => (
-                                <motion.div
-                                    key={idx}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: idx * 0.15, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                                    whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                                    className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl border border-slate-100 transition-shadow duration-500 cursor-default"
+                </div>
+            </section>
+
+            {/* 4. Current Openings Job Listings */}
+            <section id="openings" className="py-20 md:py-24">
+                <div className="container mx-auto px-6 md:px-8 max-w-5xl">
+                    
+                    <div className="text-center max-w-xl mx-auto mb-10">
+                        <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+                            Career Opportunities
+                        </span>
+                        <h2 className="text-3xl font-bold font-heading text-[#061224]">
+                            Current Openings
+                        </h2>
+                        
+                        {/* Filter Pills */}
+                        <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
+                            {["All", "Full-Time", "Part-Time", "Internship"].map((filterName) => (
+                                <button
+                                    key={filterName}
+                                    onClick={() => setJobFilter(filterName)}
+                                    className={cn(
+                                        "px-3.5 py-1.5 rounded-full text-xs font-semibold transition-colors border cursor-pointer",
+                                        jobFilter === filterName
+                                            ? "bg-[#061224] text-white border-[#061224]"
+                                            : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"
+                                    )}
                                 >
-                                    <div className="p-10 text-center">
-                                        <div className={`w-20 h-20 ${item.bg} rounded-2xl flex items-center justify-center mx-auto mb-8 ${item.color} group-hover:scale-110 transition-transform duration-500 shadow-inner`}>
-                                            <item.icon className="w-10 h-10" />
-                                        </div>
-                                        <h3 className="text-2xl font-bold font-heading text-[#061224] mb-4 group-hover:text-[#F2A900] transition-colors">{item.title}</h3>
-                                        <p className="text-gray-600 leading-relaxed">{item.desc}</p>
-                                    </div>
-                                </motion.div>
+                                    {filterName === "All" ? "All Openings" : filterName}
+                                </button>
                             ))}
                         </div>
                     </div>
-                </section>
 
-                {/* Current Openings Section */}
-                <section id="openings" className="py-24 relative overflow-hidden bg-white">
-                    <div className="container px-4 md:px-6 relative z-10">
-                        <div className="text-center max-w-3xl mx-auto mb-20 animate-hidden">
-                            <span className="text-brand-blue font-semibold tracking-wider uppercase text-sm mb-4 block">
-                                We're Hiring
-                            </span>
-                            <h2 className="text-4xl md:text-5xl font-bold font-heading text-[#061224] mb-6">Current Openings</h2>
-                            <p className="text-xl text-gray-600">Explore opportunities to grow with us.</p>
-                        </div>
-
-                        <div className="grid gap-8 max-w-5xl mx-auto">
-                            {jobs.map((job, idx) => (
-                                <Card
+                    {/* Job Cards */}
+                    <div className="space-y-6">
+                        {filteredJobs.map((job) => {
+                            const JobIcon = job.icon || Briefcase;
+                            return (
+                                <div
                                     key={job.id}
-                                    className="border border-gray-100 shadow-md hover:shadow-[0_8px_40px_rgba(242,169,0,0.18)] hover:border-brand-blue/30 hover:-translate-y-1 rounded-2xl transition-all duration-300 animate-hidden group overflow-hidden"
-                                    style={{ transitionDelay: `${idx * 100}ms` }}
+                                    className="rounded-xl bg-white border border-slate-200 border-l-4 border-l-[#061224] p-6"
                                 >
-                                    <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#061224] to-[#F2A900] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                    <CardHeader className="pb-4">
-                                        <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-                                            <div className="flex gap-4">
-                                                <div className="hidden sm:flex h-14 w-14 rounded-xl bg-amber-50 items-center justify-center text-[#061224] group-hover:scale-110 transition-transform duration-300">
-                                                    {job.icon ? <job.icon className="h-7 w-7" /> : <Briefcase className="h-7 w-7" />}
-                                                </div>
-                                                <div>
-                                                    <CardTitle className="text-2xl font-bold font-heading text-[#061224] mb-3 group-hover:text-[#F2A900] transition-colors">{job.title}</CardTitle>
-                                                    <div className="flex flex-wrap gap-3 text-sm text-gray-600">
-                                                        <Badge variant="secondary" className="bg-amber-50 text-amber-700 hover:bg-amber-100 px-3 py-1">{job.type}</Badge>
-                                                        {job.location && (
-                                                            <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-full"><MapPin className="w-3.5 h-3.5" /> {job.location.split('-')[0]}</span>
-                                                        )}
-                                                        {job.salary && (
-                                                            <span className="flex items-center gap-1.5 bg-gray-50 px-3 py-1 rounded-full"><IndianRupee className="w-3.5 h-3.5" /> {job.salary}</span>
-                                                        )}
-                                                    </div>
+                                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 text-[#061224] flex items-center justify-center shrink-0">
+                                                <JobIcon className="w-5 h-5" />
+                                            </div>
+                                            <div>
+                                                <h3 className="text-xl font-bold font-heading text-[#061224] mb-1">
+                                                    {job.title}
+                                                </h3>
+                                                <div className="flex flex-wrap gap-2 text-xs font-medium">
+                                                    <span className="px-2.5 py-0.5 rounded bg-slate-100 text-slate-700">
+                                                        {job.type}
+                                                    </span>
+                                                    {job.location && (
+                                                        <span className="px-2.5 py-0.5 rounded bg-slate-100 text-slate-600 flex items-center gap-1">
+                                                            <MapPin className="w-3 h-3" /> {job.location.split('-')[0]}
+                                                        </span>
+                                                    )}
+                                                    {job.salary && (
+                                                        <span className="px-2.5 py-0.5 rounded bg-slate-100 text-slate-600 flex items-center gap-1">
+                                                            <IndianRupee className="w-3 h-3" /> {job.salary}
+                                                        </span>
+                                                    )}
                                                 </div>
                                             </div>
-                                            <Button onClick={() => openApplicationForm(job.title)} className="bg-[#061224] hover:bg-[#030811] shrink-0 shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-6 relative overflow-hidden group">
-                                                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
-                                                <span className="relative z-10 flex items-center">Apply Now <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" /></span>
-                                            </Button>
                                         </div>
-                                    </CardHeader>
-                                    <CardContent className="space-y-6 pt-2 pl-4 sm:pl-[5.5rem]">
-                                        {job.headline && <p className="font-semibold text-[#F2A900] text-lg">{job.headline}</p>}
-                                        <p className="text-gray-600 text-lg leading-relaxed">{job.description}</p>
 
-                                        <div className="grid md:grid-cols-2 gap-6">
+                                        <button
+                                            onClick={() => openApplicationForm(job.title)}
+                                            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold text-white bg-[#061224] hover:bg-slate-900 rounded-full transition-colors shrink-0 cursor-pointer"
+                                        >
+                                            <span>Apply Now</span>
+                                            <ArrowRight className="w-3.5 h-3.5 text-[#F2A900]" />
+                                        </button>
+                                    </div>
+
+                                    <div className="space-y-4 pt-4 text-sm text-slate-600">
+                                        {job.headline && (
+                                            <p className="font-bold text-[#061224]">
+                                                {job.headline}
+                                            </p>
+                                        )}
+                                        <p>{job.description}</p>
+
+                                        <div className="grid md:grid-cols-2 gap-4 pt-2">
                                             {job.responsibilities && (
-                                                <div className="bg-gray-50 p-5 rounded-xl">
-                                                    <h4 className="font-bold font-heading text-[#061224] mb-3 flex items-center gap-2">
-                                                        <CheckCircle className="w-4 h-4" /> Key Responsibilities
-                                                    </h4>
-                                                    <ul className="space-y-2">
+                                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                                    <h4 className="font-bold text-[#061224] mb-2 text-xs uppercase tracking-wider">Key Responsibilities</h4>
+                                                    <ul className="space-y-1.5 text-xs text-slate-600">
                                                         {job.responsibilities.map((res, i) => (
-                                                            <li key={i} className="text-gray-600 text-sm flex items-start gap-2">
-                                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#F2A900] shrink-0"></span>
+                                                            <li key={i} className="flex items-start gap-2">
+                                                                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-[#061224] shrink-0" />
                                                                 {res}
                                                             </li>
                                                         ))}
@@ -443,14 +377,12 @@ export default function CareerPageClient() {
                                             )}
 
                                             {job.requirements && (
-                                                <div className="bg-gray-50 p-5 rounded-xl">
-                                                    <h4 className="font-bold font-heading text-[#061224] mb-3 flex items-center gap-2">
-                                                        <CheckCircle className="w-4 h-4" /> Requirements
-                                                    </h4>
-                                                    <ul className="space-y-2">
+                                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                                    <h4 className="font-bold text-[#061224] mb-2 text-xs uppercase tracking-wider">Requirements</h4>
+                                                    <ul className="space-y-1.5 text-xs text-slate-600">
                                                         {job.requirements.map((req, i) => (
-                                                            <li key={i} className="text-gray-600 text-sm flex items-start gap-2">
-                                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#F2A900] shrink-0"></span>
+                                                            <li key={i} className="flex items-start gap-2">
+                                                                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-[#061224] shrink-0" />
                                                                 {req}
                                                             </li>
                                                         ))}
@@ -459,14 +391,12 @@ export default function CareerPageClient() {
                                             )}
 
                                             {job.whoCanApply && (
-                                                <div className="bg-gray-50 p-5 rounded-xl">
-                                                    <h4 className="font-bold font-heading text-[#061224] mb-3 flex items-center gap-2">
-                                                        <CheckCircle className="w-4 h-4" /> Who Can Apply
-                                                    </h4>
-                                                    <ul className="space-y-2">
+                                                <div className="bg-slate-50 p-4 rounded-lg border border-slate-100">
+                                                    <h4 className="font-bold text-[#061224] mb-2 text-xs uppercase tracking-wider">Who Can Apply</h4>
+                                                    <ul className="space-y-1.5 text-xs text-slate-600">
                                                         {job.whoCanApply.map((who, i) => (
-                                                            <li key={i} className="text-gray-600 text-sm flex items-start gap-2">
-                                                                <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#F2A900] shrink-0"></span>
+                                                            <li key={i} className="flex items-start gap-2">
+                                                                <span className="mt-1 w-1.5 h-1.5 rounded-full bg-[#061224] shrink-0" />
                                                                 {who}
                                                             </li>
                                                         ))}
@@ -474,177 +404,95 @@ export default function CareerPageClient() {
                                                 </div>
                                             )}
                                         </div>
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
-                </section>
 
-                {/* Application Modal */}
-                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                    <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto border-none shadow-2xl">
-                        <DialogHeader className="pb-4 border-b">
-                            <DialogTitle className="text-2xl font-bold font-heading text-[#061224]">Apply for {selectedJob}</DialogTitle>
-                            <DialogDescription className="text-base">
-                                Fill out the form below to apply. We'll get back to you shortly.
-                            </DialogDescription>
-                        </DialogHeader>
+                </div>
+            </section>
 
-                        {/* Success Alert */}
-                        {showSuccess && (
-                            <Alert className="mb-4 border-green-200 bg-green-50 animate-in fade-in zoom-in duration-300">
-                                <CheckCircle className="h-4 w-4 text-green-600" />
-                                <AlertDescription className="text-green-800 font-medium">
-                                    {state?.message || "Application submitted successfully!"}
-                                </AlertDescription>
-                            </Alert>
-                        )}
+            {/* Application Modal */}
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto border border-slate-200">
+                    <DialogHeader className="pb-4 border-b border-slate-100">
+                        <DialogTitle className="text-xl font-bold font-heading text-[#061224]">Apply for {selectedJob}</DialogTitle>
+                        <DialogDescription className="text-xs text-slate-500">
+                            Fill out the form below to apply. We'll get back to you shortly.
+                        </DialogDescription>
+                    </DialogHeader>
 
-                        {/* Error Alert */}
-                        {state && !state.success && (
-                            <Alert className="mb-4 border-red-200 bg-red-50 animate-in fade-in zoom-in duration-300">
-                                <AlertCircle className="h-4 w-4 text-red-600" />
-                                <AlertDescription className="text-red-800">
-                                    {state.message}
-                                    {state.error && (
-                                        <span className="block mt-2 text-xs whitespace-pre-wrap">
-                                            {state.error}
-                                        </span>
-                                    )}
-                                    {state.errors && (
-                                        <ul className="mt-2 list-disc list-inside space-y-1">
-                                            {Object.entries(state.errors).map(([field, errors]) =>
-                                                errors.map((err, idx) => (
-                                                    <li key={field + idx}>{field}: {err}</li>
-                                                ))
-                                            )}
-                                        </ul>
-                                    )}
-                                </AlertDescription>
-                            </Alert>
-                        )}
+                    {showSuccess && (
+                        <Alert className="mb-4 border-emerald-200 bg-emerald-50">
+                            <CheckCircle className="h-4 w-4 text-[#10B981]" />
+                            <AlertDescription className="text-emerald-800 text-xs font-medium">
+                                {state?.message || "Application submitted successfully!"}
+                            </AlertDescription>
+                        </Alert>
+                    )}
 
-                        <form ref={formRef} action={formAction} className="space-y-5 py-4">
-                            <input type="hidden" name="position" value={selectedJob} />
+                    {state && !state.success && (
+                        <Alert className="mb-4 border-rose-200 bg-rose-50">
+                            <AlertCircle className="h-4 w-4 text-rose-600" />
+                            <AlertDescription className="text-rose-800 text-xs font-medium">
+                                {state.message}
+                            </AlertDescription>
+                        </Alert>
+                    )}
 
-                            <div className="grid grid-cols-2 gap-5">
-                                <div className="space-y-2">
-                                    <Label htmlFor="firstName" className="font-semibold text-gray-700">First Name <span className="text-red-500">*</span></Label>
-                                    <Input id="firstName" name="firstName" required placeholder="Jane" className="h-11 focus-visible:ring-[#061224]" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="lastName" className="font-semibold text-gray-700">Last Name <span className="text-red-500">*</span></Label>
-                                    <Input id="lastName" name="lastName" required placeholder="Doe" className="h-11 focus-visible:ring-[#061224]" />
-                                </div>
+                    <form ref={formRef} action={formAction} className="space-y-4 py-3 text-sm">
+                        <input type="hidden" name="position" value={selectedJob} />
+
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-1.5">
+                                <Label htmlFor="firstName" className="font-semibold text-xs text-slate-700">First Name *</Label>
+                                <Input id="firstName" name="firstName" required placeholder="Jane" className="h-10 border-slate-200 focus:border-[#061224]" />
                             </div>
-
-                            <div className="grid grid-cols-2 gap-5">
-                                <div className="space-y-2">
-                                    <Label htmlFor="email" className="font-semibold text-gray-700">Email <span className="text-red-500">*</span></Label>
-                                    <Input id="email" name="email" type="email" required placeholder="jane@example.com" className="h-11 focus-visible:ring-[#061224]" />
-                                </div>
-                                <div className="space-y-2">
-                                    <Label htmlFor="phone" className="font-semibold text-gray-700">Phone <span className="text-red-500">*</span></Label>
-                                    <Input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210" className="h-11 focus-visible:ring-[#061224]" />
-                                </div>
+                            <div className="space-y-1.5">
+                                <Label htmlFor="lastName" className="font-semibold text-xs text-slate-700">Last Name *</Label>
+                                <Input id="lastName" name="lastName" required placeholder="Doe" className="h-10 border-slate-200 focus:border-[#061224]" />
                             </div>
+                        </div>
 
-                            <div className="space-y-2">
-                                <Label htmlFor="resumeLink" className="font-semibold text-gray-700">Resume / Portfolio Link <span className="text-gray-400 font-normal">(Optional)</span></Label>
-                                <Input id="resumeLink" name="resumeLink" type="url" placeholder="https://linkedin.com/in/jane-doe or Google Drive Link" className="h-11 focus-visible:ring-[#061224]" />
-                                <p className="text-xs text-gray-500 flex items-center gap-1"><AlertCircle className="w-3 h-3" /> Please provide a link to your LinkedIn profile or a hosted resume.</p>
+                        <div className="grid grid-cols-2 gap-4">
+                            <div className="space-y-1.5">
+                                <Label htmlFor="email" className="font-semibold text-xs text-slate-700">Email *</Label>
+                                <Input id="email" name="email" type="email" required placeholder="jane@example.com" className="h-10 border-slate-200 focus:border-[#061224]" />
                             </div>
-
-                            <div className="space-y-2">
-                                <Label htmlFor="message" className="font-semibold text-gray-700">Cover Letter / Message</Label>
-                                <Textarea id="message" name="message" placeholder="Tell us why you're a good fit..." rows={4} className="resize-none focus-visible:ring-[#061224]" />
+                            <div className="space-y-1.5">
+                                <Label htmlFor="phone" className="font-semibold text-xs text-slate-700">Phone *</Label>
+                                <Input id="phone" name="phone" type="tel" required placeholder="+91 98765 43210" className="h-10 border-slate-200 focus:border-[#061224]" />
                             </div>
+                        </div>
 
-                            <Button type="submit" disabled={isPending} className="w-full h-12 text-base bg-[#061224] hover:bg-[#030811] shadow-lg transition-all duration-300">
-                                {isPending ? (
-                                    <>
-                                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                                        Submitting Application...
-                                    </>
-                                ) : (
-                                    <>
-                                        <Send className="mr-2 h-5 w-5" />
-                                        Submit Application
-                                    </>
-                                )}
-                            </Button>
-                        </form>
-                    </DialogContent>
-                </Dialog>
+                        <div className="space-y-1.5">
+                            <Label htmlFor="resumeLink" className="font-semibold text-xs text-slate-700">Resume / Portfolio Link (Optional)</Label>
+                            <Input id="resumeLink" name="resumeLink" type="url" placeholder="https://linkedin.com/in/jane-doe" className="h-10 border-slate-200 focus:border-[#061224]" />
+                        </div>
 
-            </div>
+                        <div className="space-y-1.5">
+                            <Label htmlFor="message" className="font-semibold text-xs text-slate-700">Cover Letter / Message</Label>
+                            <Textarea id="message" name="message" placeholder="Tell us why you're a good fit..." rows={4} className="resize-none border-slate-200 focus:border-[#061224]" />
+                        </div>
 
-            {/* Enhanced Custom Styles */}
-            <style jsx global>{`
-        /* Animation Keyframes */
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
+                        <Button type="submit" disabled={isPending} className="w-full h-11 text-sm bg-[#061224] hover:bg-slate-900 transition-colors">
+                            {isPending ? (
+                                <>
+                                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    Submitting Application...
+                                </>
+                            ) : (
+                                <>
+                                    <Send className="mr-2 h-4 w-4 text-[#F2A900]" />
+                                    Submit Application
+                                </>
+                            )}
+                        </Button>
+                    </form>
+                </DialogContent>
+            </Dialog>
 
-        @keyframes float {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-10px); }
-          100% { transform: translateY(0px); }
-        }
-
-        @keyframes pulse-slow {
-          0%, 100% { opacity: 0.5; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-
-        /* Animation Classes */
-        .animate-on-load,
-        .animate-hidden {
-          opacity: 0;
-          animation: fadeIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-        }
-
-        .animate-in {
-          opacity: 1 !important;
-          transform: translateY(0) !important;
-        }
-
-        .animate-float {
-          animation: float 6s ease-in-out infinite;
-        }
-
-        .animate-pulse-slow {
-          animation: pulse-slow 8s ease-in-out infinite;
-        }
-
-        .animate-gradient {
-          background-size: 300%;
-          animation: gradient 8s ease infinite;
-        }
-
-        .animation-delay-200 {
-          animation-delay: 200ms;
-        }
-        
-        .bg-300% {
-          background-size: 300% auto;
-        }
-      `}</style>
-        </>
+        </div>
     )
 }
-
