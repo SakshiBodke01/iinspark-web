@@ -188,67 +188,72 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 overflow-hidden text-slate-900">
       
-      {/* 1. HERO SECTION (LOAD-ONCE ENTRANCE) */}
-      <section className="relative w-full pt-12 pb-20 md:pt-20 md:pb-28 bg-white border-b border-slate-200">
+      {/* 1. HERO SECTION (LOAD-ONCE ENTRANCE & REBUILT HIERARCHY) */}
+      <section className="relative w-full pt-14 pb-20 md:pt-24 md:pb-28 bg-white border-b border-slate-200">
         <div className="container px-6 md:px-8 mx-auto max-w-7xl">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Content */}
             <motion.div 
               variants={heroContainerVariants}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-7 flex flex-col items-start space-y-6"
+              className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-7"
             >
-              {/* Single Eyebrow Badge */}
+              {/* Single Eyebrow Badge with Pulsing Dot */}
               <motion.div variants={heroItemVariants}>
                 <Link
                   href="/summer-camp"
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold hover:border-[#061224]/30 transition-colors duration-150"
+                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold hover:border-[#061224]/30 hover:bg-slate-100/80 transition-colors duration-150 shadow-xs"
                 >
-                  <span className="w-2 h-2 rounded-full bg-[#F2A900]" />
+                  <span className="relative flex h-2 w-2 shrink-0">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F2A900] opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F2A900]"></span>
+                  </span>
                   <span>Summer Camp 2026 &middot; Enrolling Now</span>
                   <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
                 </Link>
               </motion.div>
 
-              {/* Headline with Serif Font */}
+              {/* Headline with Increased Size, Tighter Line-Height & Gradient Highlight */}
               <motion.h1 
                 variants={heroItemVariants}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.08] text-[#061224]"
+                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.04] text-[#061224]"
               >
                 Igniting Young Minds, <br />
-                <span className="italic font-normal text-slate-700">Inspiring Leaders</span>
+                <span className="italic font-normal bg-gradient-to-r from-[#061224] via-slate-800 to-[#F2A900] bg-clip-text text-transparent">
+                  Inspiring Leaders
+                </span>
               </motion.h1>
 
-              {/* Subtitle */}
+              {/* Subtitle with Constrained Max-Width */}
               <motion.p
                 variants={heroItemVariants}
-                className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-xl leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[620px] leading-relaxed"
               >
                 Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-slate-900">IINSPARK</strong> offers meticulously curated educational experiences designed to nurture confident creators.
               </motion.p>
 
-              {/* CTA Button */}
+              {/* CTA Button - Bold Gradient Button with Hover Scale & Shadow */}
               <motion.div variants={heroItemVariants} className="pt-2">
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-[#061224] hover:bg-slate-900 text-white rounded-full font-semibold text-sm transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white font-semibold text-sm sm:text-base tracking-wide border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
                 >
                   <span>Explore Programs</span>
-                  <ArrowRight className="w-4 h-4 text-[#F2A900]" />
+                  <ArrowRight className="w-4 h-4 text-[#F2A900] group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
               </motion.div>
             </motion.div>
 
-            {/* Right Video Player */}
+            {/* Right Video Media Panel */}
             <div className="lg:col-span-5 relative w-full max-w-lg lg:max-w-none mx-auto">
-              <div className="rounded-3xl p-2 bg-slate-100 border border-slate-200 shadow-sm">
-                <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950">
+              <div className="rounded-3xl p-2.5 bg-slate-100 border border-slate-200/90 shadow-lg shadow-slate-900/5">
+                <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
                   <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                     <source src="/hello.mp4" type="video/mp4" />
                   </video>
-                  <div className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-slate-950/70 text-white text-[11px] font-medium border border-white/10">
+                  <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1 rounded-full bg-slate-950/75 backdrop-blur-md text-white text-[11px] font-semibold border border-white/15 shadow-sm">
                     Interactive Experience
                   </div>
                 </div>
