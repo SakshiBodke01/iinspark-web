@@ -76,6 +76,12 @@ export default function NavBar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close menus when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setProgramsDropdownOpen(false);
+  }, [pathname]);
+
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
@@ -127,14 +133,14 @@ export default function NavBar() {
         transition: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
       }}
       className={clsx(
-        "fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-200 ease-in-out",
+        "fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-200 ease-in-out pointer-events-none",
         scrolled ? "pt-2.5 sm:pt-3" : "pt-4 sm:pt-5"
       )}
     >
       {/* Sticky Glassmorphic Rounded Pill Bar */}
       <div
         className={clsx(
-          "mx-auto max-w-5xl flex items-center justify-between rounded-full border transition-all duration-300 ease-in-out",
+          "mx-auto max-w-5xl flex items-center justify-between rounded-full border transition-all duration-300 ease-in-out pointer-events-auto",
           "px-4 sm:px-6 py-2 sm:py-2.5",
           "bg-white/90 backdrop-blur-xl",
           scrolled
@@ -176,17 +182,16 @@ export default function NavBar() {
                 <div
                   key={link.name}
                   ref={dropdownRef}
-                  className="relative"
+                  className="relative flex items-center"
                   onMouseEnter={() => setProgramsDropdownOpen(true)}
                   onMouseLeave={() => setProgramsDropdownOpen(false)}
                 >
-                  <button
-                    onClick={() => setProgramsDropdownOpen(!programsDropdownOpen)}
-                    aria-expanded={programsDropdownOpen}
-                    aria-haspopup="true"
-                    aria-controls="programs-dropdown"
+                  <Link
+                    href={link.href}
+                    onClick={() => setProgramsDropdownOpen(false)}
+                    aria-current={isActive ? "page" : undefined}
                     className={clsx(
-                      "group relative px-3.5 py-1.5 rounded-full text-xs font-medium tracking-tight transition-colors duration-200 flex items-center gap-1 z-10 cursor-pointer",
+                      "pl-3.5 pr-1 py-1.5 rounded-l-full text-xs font-medium tracking-tight transition-colors duration-200 flex items-center justify-center cursor-pointer",
                       "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy",
                       isActive || programsDropdownOpen
                         ? "text-brand-navy font-bold bg-slate-100/80"
@@ -194,6 +199,23 @@ export default function NavBar() {
                     )}
                   >
                     <span>{link.name}</span>
+                  </Link>
+
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      e.stopPropagation();
+                      setProgramsDropdownOpen(!programsDropdownOpen);
+                    }}
+                    aria-expanded={programsDropdownOpen}
+                    aria-haspopup="true"
+                    aria-label="Toggle Programs Dropdown"
+                    className={clsx(
+                      "pr-3 pl-0.5 py-1.5 rounded-r-full text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center",
+                      isActive || programsDropdownOpen ? "bg-slate-100/80" : ""
+                    )}
+                  >
                     <ChevronDown
                       className={clsx(
                         "w-3.5 h-3.5 transition-transform duration-200 ease-in-out",
@@ -213,7 +235,7 @@ export default function NavBar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 6, scale: 0.98 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2.5 w-80 sm:w-[380px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2.5 w-80 sm:w-[380px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50 pointer-events-auto"
                       >
                         <div className="grid grid-cols-1 gap-1" role="none">
                           {programItems.map((item) => {
@@ -275,7 +297,7 @@ export default function NavBar() {
                 href={link.href}
                 aria-current={isActive ? "page" : undefined}
                 className={clsx(
-                  "relative px-3.5 py-1.5 rounded-full text-xs font-medium tracking-tight transition-colors duration-200 flex items-center justify-center",
+                  "relative px-3.5 py-1.5 rounded-full text-xs font-medium tracking-tight transition-colors duration-200 flex items-center justify-center cursor-pointer",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy",
                   isActive
                     ? "text-brand-navy font-bold bg-slate-100/80"
@@ -292,7 +314,7 @@ export default function NavBar() {
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/contact"
-            className="group relative inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white rounded-full bg-brand-navy hover:bg-slate-900 shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+            className="group relative inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white rounded-full bg-brand-navy hover:bg-slate-900 shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy cursor-pointer"
           >
             <span>Enquire Now</span>
             <ArrowRight className="w-3.5 h-3.5 text-brand-gold" />
@@ -304,7 +326,7 @@ export default function NavBar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation-drawer"
-          className="md:hidden p-2 rounded-full text-brand-navy hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+          className="md:hidden p-2 rounded-full text-brand-navy hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy cursor-pointer"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -342,7 +364,7 @@ export default function NavBar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-slate-950/30 backdrop-blur-xs z-40 md:hidden"
+              className="fixed inset-0 bg-slate-950/30 backdrop-blur-xs z-40 md:hidden pointer-events-auto"
               aria-hidden="true"
             />
 
@@ -354,7 +376,7 @@ export default function NavBar() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute top-full left-4 right-4 mt-2 p-4 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50 md:hidden overflow-hidden"
+              className="absolute top-full left-4 right-4 mt-2 p-4 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50 md:hidden overflow-hidden pointer-events-auto"
             >
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => {
@@ -363,25 +385,35 @@ export default function NavBar() {
                   if (link.hasDropdown) {
                     return (
                       <div key={link.name} className="flex flex-col">
-                        <button
-                          onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
-                          aria-expanded={mobileProgramsOpen}
-                          aria-label="Toggle Programs Submenu"
-                          className={clsx(
-                            "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-colors duration-200",
-                            isActive
-                              ? "bg-slate-100 text-brand-navy font-bold"
-                              : "text-slate-700 hover:bg-slate-50"
-                          )}
-                        >
-                          <span>{link.name}</span>
-                          <ChevronDown
+                        <div className="flex items-center justify-between">
+                          <Link
+                            href={link.href}
+                            onClick={() => setMobileMenuOpen(false)}
+                            aria-current={isActive ? "page" : undefined}
                             className={clsx(
-                              "w-4 h-4 transition-transform duration-200",
-                              mobileProgramsOpen ? "rotate-180 text-brand-gold" : "text-slate-400"
+                              "flex-1 px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-colors duration-200",
+                              isActive
+                                ? "bg-slate-100 text-brand-navy font-bold"
+                                : "text-slate-700 hover:bg-slate-50"
                             )}
-                          />
-                        </button>
+                          >
+                            <span>{link.name}</span>
+                          </Link>
+                          <button
+                            type="button"
+                            onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
+                            aria-expanded={mobileProgramsOpen}
+                            aria-label="Toggle Programs Submenu"
+                            className="p-2.5 rounded-2xl text-slate-500 hover:text-brand-navy cursor-pointer"
+                          >
+                            <ChevronDown
+                              className={clsx(
+                                "w-4 h-4 transition-transform duration-200",
+                                mobileProgramsOpen ? "rotate-180 text-brand-gold" : "text-slate-400"
+                              )}
+                            />
+                          </button>
+                        </div>
 
                         <AnimatePresence>
                           {mobileProgramsOpen && (
