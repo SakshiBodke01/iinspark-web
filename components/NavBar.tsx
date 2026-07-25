@@ -28,13 +28,13 @@ export default function NavBar() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  // Scroll detection: background becomes solid/blurred past 20px
+  // Scroll detection: backdrop blur and border trigger past 20px
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0;
     setScrolled(latest > 20);
 
-    // Auto-hide navbar on scroll down past 200px, reveal on scroll up
-    if (latest > prev && latest > 200 && !mobileMenuOpen && !programsDropdownOpen) {
+    // Auto-hide navbar on scroll down past 220px, reveal on scroll up
+    if (latest > prev && latest > 220 && !mobileMenuOpen && !programsDropdownOpen) {
       setHidden(true);
     } else {
       setHidden(false);
@@ -76,7 +76,7 @@ export default function NavBar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close menus when route changes
+  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setProgramsDropdownOpen(false);
@@ -100,28 +100,28 @@ export default function NavBar() {
       description: "Hands-on robotics kits, sensors & microcontrollers",
       href: "/products",
       icon: Cpu,
-      accentColor: "bg-slate-100 text-brand-navy",
+      accentColor: "bg-slate-100 text-[#061224]",
     },
     {
       title: "AI & Innovation Labs",
       description: "Cutting-edge curriculum in AI, IoT & machine learning",
       href: "/products",
       icon: Sparkles,
-      accentColor: "bg-slate-100 text-brand-navy",
+      accentColor: "bg-slate-100 text-[#061224]",
     },
     {
       title: "Summer Bootcamps",
       description: "Exciting seasonal programs for young innovators",
       href: "/summer-camp",
       icon: Rocket,
-      accentColor: "bg-slate-100 text-brand-navy",
+      accentColor: "bg-slate-100 text-[#061224]",
     },
     {
       title: "School Workshops",
       description: "Tailored STEM integration for academic institutions",
       href: "/about",
       icon: GraduationCap,
-      accentColor: "bg-slate-100 text-brand-navy",
+      accentColor: "bg-slate-100 text-[#061224]",
     },
   ];
 
@@ -133,46 +133,39 @@ export default function NavBar() {
         transition: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
       }}
       className={clsx(
-        "fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-200 ease-in-out pointer-events-none",
-        scrolled ? "pt-2.5 sm:pt-3" : "pt-4 sm:pt-5"
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out pointer-events-auto",
+        scrolled
+          ? "bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-xs shadow-slate-900/5 py-3 sm:py-3.5"
+          : "bg-white/70 backdrop-blur-md border-b border-transparent py-4 sm:py-5"
       )}
     >
-      {/* Sticky Glassmorphic Rounded Pill Bar */}
-      <div
-        className={clsx(
-          "mx-auto max-w-5xl flex items-center justify-between rounded-full border transition-all duration-300 ease-in-out pointer-events-auto",
-          "px-4 sm:px-6 py-2 sm:py-2.5",
-          "bg-white/90 backdrop-blur-xl",
-          scrolled
-            ? "border-slate-200 bg-white/95 shadow-md shadow-slate-900/5"
-            : "border-slate-200/80 shadow-xs"
-        )}
-      >
-        {/* Brand Logo */}
+      <div className="container mx-auto px-6 sm:px-10 lg:px-12 max-w-7xl flex items-center justify-between">
+        
+        {/* Brand Logo + Tagline (Vertically Centered) */}
         <Link
           href="/"
-          className="flex items-center gap-2.5 group rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy transition-all duration-200"
+          className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] rounded-lg transition-transform duration-200 hover:scale-[1.01]"
           aria-label="IINSPARK Homepage"
         >
           <img
             src="/images/iinspark-logo.png"
             alt="IINSPARK Logo"
-            className="h-7 sm:h-8 w-auto object-contain transition-transform duration-200 ease-in-out group-hover:scale-105"
+            className="h-8 sm:h-9 w-auto object-contain shrink-0"
           />
-          <div className="flex flex-col">
-            <span className="font-heading font-extrabold text-base tracking-tight text-brand-navy leading-none">
+          <div className="flex flex-col justify-center">
+            <span className="font-heading font-extrabold text-base sm:text-lg tracking-tight text-[#061224] leading-none">
               IINSPARK
             </span>
-            <span className="text-[9px] font-semibold tracking-widest text-slate-400 uppercase mt-0.5">
-              Innovate & Inspire
+            <span className="text-[9px] sm:text-[10px] font-semibold tracking-widest text-slate-500 uppercase mt-0.5 leading-none">
+              Innovate &amp; Inspire
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation Links with Underline Hover Animation */}
         <nav
           aria-label="Main Navigation"
-          className="hidden md:flex items-center gap-1.5 sm:gap-3 lg:gap-5"
+          className="hidden md:flex items-center gap-6 lg:gap-8"
         >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -182,7 +175,7 @@ export default function NavBar() {
                 <div
                   key={link.name}
                   ref={dropdownRef}
-                  className="relative flex items-center"
+                  className="relative flex items-center group/dropdown"
                   onMouseEnter={() => setProgramsDropdownOpen(true)}
                   onMouseLeave={() => setProgramsDropdownOpen(false)}
                 >
@@ -191,11 +184,10 @@ export default function NavBar() {
                     onClick={() => setProgramsDropdownOpen(false)}
                     aria-current={isActive ? "page" : undefined}
                     className={clsx(
-                      "pl-3.5 pr-1 py-1.5 rounded-l-full text-xs font-medium tracking-tight transition-colors duration-200 flex items-center justify-center cursor-pointer",
-                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy",
+                      "relative py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 flex items-center gap-1 cursor-pointer",
                       isActive || programsDropdownOpen
-                        ? "text-brand-navy font-bold bg-slate-100/80"
-                        : "text-slate-600 hover:text-brand-navy"
+                        ? "text-[#061224] font-bold"
+                        : "text-slate-700 hover:text-[#061224]"
                     )}
                   >
                     <span>{link.name}</span>
@@ -211,18 +203,23 @@ export default function NavBar() {
                     aria-expanded={programsDropdownOpen}
                     aria-haspopup="true"
                     aria-label="Toggle Programs Dropdown"
-                    className={clsx(
-                      "pr-3 pl-0.5 py-1.5 rounded-r-full text-xs font-medium transition-colors duration-200 cursor-pointer flex items-center",
-                      isActive || programsDropdownOpen ? "bg-slate-100/80" : ""
-                    )}
+                    className="p-1 text-slate-500 hover:text-[#061224] transition-colors cursor-pointer"
                   >
                     <ChevronDown
                       className={clsx(
                         "w-3.5 h-3.5 transition-transform duration-200 ease-in-out",
-                        programsDropdownOpen ? "rotate-180 text-brand-gold" : "text-slate-400"
+                        programsDropdownOpen ? "rotate-180 text-[#F2A900]" : "text-slate-400"
                       )}
                     />
                   </button>
+
+                  {/* Smooth Gold Underline Accent */}
+                  <span
+                    className={clsx(
+                      "absolute bottom-0 left-0 right-0 h-[2px] bg-[#F2A900] rounded-full transition-transform duration-200 origin-left pointer-events-none",
+                      isActive ? "scale-x-100" : "scale-x-0 group-hover/dropdown:scale-x-100"
+                    )}
+                  />
 
                   {/* Desktop Mega-Menu Dropdown Panel */}
                   <AnimatePresence>
@@ -235,7 +232,7 @@ export default function NavBar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 6, scale: 0.98 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-2.5 w-80 sm:w-[380px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50 pointer-events-auto"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 sm:w-[380px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50"
                       >
                         <div className="grid grid-cols-1 gap-1" role="none">
                           {programItems.map((item) => {
@@ -246,7 +243,7 @@ export default function NavBar() {
                                 href={item.href}
                                 role="menuitem"
                                 onClick={() => setProgramsDropdownOpen(false)}
-                                className="group flex items-start gap-3.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy"
+                                className="group flex items-start gap-3.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224]"
                               >
                                 <div
                                   className={clsx(
@@ -258,10 +255,10 @@ export default function NavBar() {
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center justify-between">
-                                    <span className="font-semibold text-xs text-slate-900 group-hover:text-brand-navy transition-colors duration-200">
+                                    <span className="font-semibold text-xs text-slate-900 group-hover:text-[#061224] transition-colors duration-200">
                                       {item.title}
                                     </span>
-                                    <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-brand-navy transition-colors duration-200" />
+                                    <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#061224] transition-colors duration-200" />
                                   </div>
                                   <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
                                     {item.description}
@@ -278,10 +275,10 @@ export default function NavBar() {
                             href="/contact"
                             role="menuitem"
                             onClick={() => setProgramsDropdownOpen(false)}
-                            className="text-xs font-semibold text-brand-navy hover:text-brand-gold flex items-center gap-1 transition-colors duration-200"
+                            className="text-xs font-semibold text-[#061224] hover:text-[#F2A900] flex items-center gap-1 transition-colors duration-200"
                           >
                             Get in touch
-                            <ArrowRight className="w-3 h-3 text-brand-gold" />
+                            <ArrowRight className="w-3 h-3 text-[#F2A900]" />
                           </Link>
                         </div>
                       </motion.div>
@@ -292,32 +289,41 @@ export default function NavBar() {
             }
 
             return (
-              <Link
-                key={link.name}
-                href={link.href}
-                aria-current={isActive ? "page" : undefined}
-                className={clsx(
-                  "relative px-3.5 py-1.5 rounded-full text-xs font-medium tracking-tight transition-colors duration-200 flex items-center justify-center cursor-pointer",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy",
-                  isActive
-                    ? "text-brand-navy font-bold bg-slate-100/80"
-                    : "text-slate-600 hover:text-brand-navy"
-                )}
-              >
-                <span>{link.name}</span>
-              </Link>
+              <div key={link.name} className="relative group">
+                <Link
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={clsx(
+                    "relative py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 flex items-center justify-center cursor-pointer",
+                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224]",
+                    isActive
+                      ? "text-[#061224] font-bold"
+                      : "text-slate-700 hover:text-[#061224]"
+                  )}
+                >
+                  <span>{link.name}</span>
+                </Link>
+
+                {/* Underline Indicator */}
+                <span
+                  className={clsx(
+                    "absolute bottom-0 left-0 right-0 h-[2px] bg-[#F2A900] rounded-full transition-transform duration-200 origin-left pointer-events-none",
+                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                  )}
+                />
+              </div>
             );
           })}
         </nav>
 
-        {/* Desktop CTA Action Button */}
+        {/* Desktop 'Enquire Now' Distinct Gradient Pill Button with Hover Lift + Shadow */}
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/contact"
-            className="group relative inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold text-white rounded-full bg-brand-navy hover:bg-slate-900 shadow-sm transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white text-xs font-semibold tracking-wide border border-white/10 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] cursor-pointer"
           >
             <span>Enquire Now</span>
-            <ArrowRight className="w-3.5 h-3.5 text-brand-gold" />
+            <ArrowRight className="w-3.5 h-3.5 text-[#F2A900] group-hover:translate-x-0.5 transition-transform duration-200" />
           </Link>
         </div>
 
@@ -326,7 +332,7 @@ export default function NavBar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation-drawer"
-          className="md:hidden p-2 rounded-full text-brand-navy hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-navy cursor-pointer"
+          className="md:hidden p-2 rounded-full text-[#061224] hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] cursor-pointer"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
           <AnimatePresence mode="wait" initial={false}>
@@ -338,7 +344,7 @@ export default function NavBar() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
               >
-                <X className="w-5 h-5 text-brand-navy" />
+                <X className="w-5 h-5 text-[#061224]" />
               </motion.div>
             ) : (
               <motion.div
@@ -348,11 +354,12 @@ export default function NavBar() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.15 }}
               >
-                <Menu className="w-5 h-5 text-brand-navy" />
+                <Menu className="w-5 h-5 text-[#061224]" />
               </motion.div>
             )}
           </AnimatePresence>
         </button>
+
       </div>
 
       {/* Mobile Navigation Drawer */}
@@ -393,7 +400,7 @@ export default function NavBar() {
                             className={clsx(
                               "flex-1 px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-colors duration-200",
                               isActive
-                                ? "bg-slate-100 text-brand-navy font-bold"
+                                ? "bg-slate-100 text-[#061224] font-bold"
                                 : "text-slate-700 hover:bg-slate-50"
                             )}
                           >
@@ -404,12 +411,12 @@ export default function NavBar() {
                             onClick={() => setMobileProgramsOpen(!mobileProgramsOpen)}
                             aria-expanded={mobileProgramsOpen}
                             aria-label="Toggle Programs Submenu"
-                            className="p-2.5 rounded-2xl text-slate-500 hover:text-brand-navy cursor-pointer"
+                            className="p-2.5 rounded-2xl text-slate-500 hover:text-[#061224] cursor-pointer"
                           >
                             <ChevronDown
                               className={clsx(
                                 "w-4 h-4 transition-transform duration-200",
-                                mobileProgramsOpen ? "rotate-180 text-brand-gold" : "text-slate-400"
+                                mobileProgramsOpen ? "rotate-180 text-[#F2A900]" : "text-slate-400"
                               )}
                             />
                           </button>
@@ -433,7 +440,7 @@ export default function NavBar() {
                                     onClick={() => setMobileMenuOpen(false)}
                                     className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors duration-200"
                                   >
-                                    <div className="p-1.5 rounded-lg shrink-0 bg-slate-100 text-brand-navy">
+                                    <div className="p-1.5 rounded-lg shrink-0 bg-slate-100 text-[#061224]">
                                       <IconComp className="w-4 h-4" />
                                     </div>
                                     <div className="flex flex-col">
@@ -463,7 +470,7 @@ export default function NavBar() {
                       className={clsx(
                         "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-colors duration-200",
                         isActive
-                          ? "bg-slate-100 text-brand-navy font-bold"
+                          ? "bg-slate-100 text-[#061224] font-bold"
                           : "text-slate-700 hover:bg-slate-50"
                       )}
                     >
@@ -476,10 +483,10 @@ export default function NavBar() {
                   <Link
                     href="/contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-2xl bg-brand-navy text-white text-sm font-semibold shadow-xs"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white text-sm font-semibold shadow-sm"
                   >
                     <span>Enquire Now</span>
-                    <ArrowRight className="w-4 h-4 text-brand-gold" />
+                    <ArrowRight className="w-4 h-4 text-[#F2A900]" />
                   </Link>
                 </div>
               </div>
