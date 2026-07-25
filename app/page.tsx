@@ -5,7 +5,8 @@ import Link from "next/link";
 import { motion, AnimatePresence, useMotionValue, useSpring, useInView } from "framer-motion";
 import { 
   ArrowRight, Rocket, BookMarked, CheckCircle, Quote, Star,
-  Bot, Palette, Leaf, Brain, CreditCard, Drama, Microscope, ChevronRight, ChevronLeft
+  Bot, Palette, Leaf, Brain, CreditCard, Drama, Microscope, ChevronRight, ChevronLeft,
+  Download, Award, Users, School, Sparkles as SparklesIcon
 } from "lucide-react";
 import clsx from "clsx";
 
@@ -167,7 +168,7 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, [isHoveringTestimonials, testimonials.length]);
 
-  // Hero Staggered Page-Load Entrance Only (headline -> subtext -> CTA, 100ms stagger)
+  // Hero Staggered Page-Load Entrance Only
   const heroContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -200,7 +201,7 @@ export default function HomePage() {
               animate="visible"
               className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-7"
             >
-              {/* Single Eyebrow Badge with Pulsing Dot */}
+              {/* Eyebrow Badge with Pulsing Dot */}
               <motion.div variants={heroItemVariants}>
                 <Link
                   href="/summer-camp"
@@ -215,7 +216,7 @@ export default function HomePage() {
                 </Link>
               </motion.div>
 
-              {/* Headline with Increased Size, Tighter Line-Height & Gradient Highlight */}
+              {/* Headline */}
               <motion.h1 
                 variants={heroItemVariants}
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.04] text-[#061224]"
@@ -226,7 +227,7 @@ export default function HomePage() {
                 </span>
               </motion.h1>
 
-              {/* Subtitle with Constrained Max-Width */}
+              {/* Subtitle */}
               <motion.p
                 variants={heroItemVariants}
                 className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[620px] leading-relaxed"
@@ -234,7 +235,7 @@ export default function HomePage() {
                 Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-slate-900">IINSPARK</strong> offers meticulously curated educational experiences designed to nurture confident creators.
               </motion.p>
 
-              {/* CTA Button - Bold Gradient Button with Hover Scale & Shadow */}
+              {/* CTA Button */}
               <motion.div variants={heroItemVariants} className="pt-2">
                 <Link
                   href="/products"
@@ -264,7 +265,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. PROGRAMS SECTION (STATIC RENDERING) */}
+      {/* 2. PROGRAMS SECTION (CONSISTENT GRID + EQUAL CARDS + PILL TAGS) */}
       <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-6 md:px-8 max-w-7xl">
           
@@ -280,123 +281,85 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Asymmetric Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Equal Height Clean Grid (3-col desktop / 2-col tablet / 1-col mobile) */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             
-            {/* Featured Program Card */}
-            <div className="md:col-span-2 lg:col-span-2 group rounded-2xl bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md transition-colors duration-200 overflow-hidden flex flex-col md:flex-row">
-              <div className="relative h-64 md:h-auto md:w-1/2 overflow-hidden shrink-0">
-                <img
-                  src={offerings[0].image}
-                  alt={offerings[0].title}
-                  className="w-full h-full object-cover"
-                  onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
-                />
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#061224] text-white text-[11px] font-bold uppercase tracking-wider">
-                  Featured Program
-                </span>
-              </div>
-              
-              <div className="p-6 md:p-8 flex flex-col justify-between flex-1">
-                <div>
-                  <div className="flex items-center gap-3 mb-2">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 text-[#061224] flex items-center justify-center border border-slate-200 shrink-0">
-                      <BookMarked className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold font-heading text-slate-900">
-                        {offerings[0].title}
-                      </h3>
-                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider">
-                        {offerings[0].description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <ul className="space-y-2 mt-5 mb-6">
-                    {offerings[0].features.map((feature, i) => (
-                      <li key={i} className="flex items-center text-sm font-medium text-slate-700">
-                        <CheckCircle className="w-4 h-4 text-[#10B981] mr-2.5 shrink-0" />
-                        <span>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-4 border-t border-slate-100">
-                  <a
-                    href={offerings[0].pdf}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
-                  >
-                    <span>Download Syllabus PDF</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1.5 text-[#F2A900]" />
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            {/* Remaining Standard Cards */}
-            {offerings.slice(1).map((offering) => {
+            {offerings.map((offering) => {
               const CategoryIcon = offering.icon;
               return (
                 <div
                   key={offering.title}
-                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200 hover:border-slate-400 hover:shadow-md transition-colors duration-200 overflow-hidden"
+                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
                 >
-                  <div className="relative h-44 w-full overflow-hidden shrink-0">
+                  {/* Card Header Media */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden shrink-0 bg-slate-100">
                     <img
                       src={offering.image}
                       alt={offering.title}
                       className="w-full h-full object-cover"
                       onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                     />
-                    <div className="absolute top-3 right-3 w-8 h-8 rounded-xl bg-white/90 border border-slate-200 flex items-center justify-center text-slate-800 shadow-xs">
-                      <CategoryIcon className="w-4 h-4" />
-                    </div>
+                    
+                    {/* Featured Badge or Category Icon */}
+                    {offering.featured ? (
+                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[#061224] text-white text-[11px] font-bold uppercase tracking-wider shadow-sm border border-white/10">
+                        Featured Program
+                      </span>
+                    ) : (
+                      <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-xs border border-slate-200 flex items-center justify-center text-[#061224] shadow-xs">
+                        <CategoryIcon className="w-4 h-4" />
+                      </div>
+                    )}
                   </div>
                   
-                  <div className="p-5 flex flex-col justify-between flex-1">
+                  {/* Card Body */}
+                  <div className="p-6 flex flex-col justify-between flex-1">
                     <div>
-                      <h3 className="text-lg font-bold font-heading text-slate-900 mb-1">
+                      <h3 className="text-xl font-bold font-heading text-slate-900 mb-1">
                         {offering.title}
                       </h3>
-                      <p className="text-xs text-slate-500 font-medium mb-4">
+                      <p className="text-xs text-slate-500 font-medium mb-5 line-clamp-2">
                         {offering.description}
                       </p>
 
-                      <ul className="space-y-2 mb-4">
-                        {offering.features.slice(0, 3).map((feature, i) => (
-                          <li key={i} className="flex items-center text-xs text-slate-600">
-                            <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mr-2 shrink-0" />
-                            <span>{feature}</span>
-                          </li>
+                      {/* Feature Pills / Tags */}
+                      <div className="flex flex-wrap gap-1.5 mb-6">
+                        {offering.features.map((feature, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center text-[11px] font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200/80"
+                          >
+                            <CheckCircle className="w-3 h-3 text-[#10B981] mr-1.5 shrink-0" />
+                            {feature}
+                          </span>
                         ))}
-                      </ul>
+                      </div>
                     </div>
 
-                    <div className="pt-3 border-t border-slate-100">
+                    {/* Card Footer (Right-aligned CTA Button) */}
+                    <div className="pt-4 border-t border-slate-100 mt-auto flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Brochure</span>
                       <a
                         href={offering.pdf}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-[#061224] text-[#061224] hover:text-white transition-colors duration-150 shadow-2xs group/btn"
                       >
                         <span>Download Syllabus PDF</span>
-                        <ArrowRight className="w-3.5 h-3.5 ml-1 text-[#F2A900]" />
+                        <Download className="w-3.5 h-3.5 text-[#F2A900] group-hover/btn:scale-110 transition-transform" />
                       </a>
                     </div>
                   </div>
                 </div>
               );
             })}
+
           </div>
 
         </div>
       </section>
 
-      {/* 3. TESTIMONIALS SECTION (SCROLL REVEAL #1 - 300ms) */}
+      {/* 3. TESTIMONIALS SECTION (PREMIUM CARDS + QUOTE ICON + GRADIENT AVATARS) */}
       <section className="w-full py-20 md:py-28 bg-[#061224] text-white relative overflow-hidden">
         <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">
           
@@ -407,12 +370,12 @@ export default function HomePage() {
             <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight">
               Loved by Parents, Trusted by Schools
             </h2>
-            <p className="text-slate-300 text-base mt-2">
+            <p className="text-slate-300 text-base mt-2 leading-relaxed">
               Hear what our community has to say about their transformative learning experiences with IINSPARK.
             </p>
           </div>
 
-          {/* Testimonial Cards (Single viewport trigger, 300ms) */}
+          {/* Testimonial Cards */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -422,12 +385,12 @@ export default function HomePage() {
             onMouseEnter={() => setIsHoveringTestimonials(true)}
             onMouseLeave={() => setIsHoveringTestimonials(false)}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               
               {/* Card 1 */}
-              <div className="flex flex-col justify-between rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8">
+              <div className="flex flex-col justify-between rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-7 sm:p-8 shadow-xl">
                 <div>
-                  <Quote className="w-8 h-8 text-[#F2A900]/40 mb-4" />
+                  <Quote className="w-10 h-10 text-[#F2A900]/30 mb-4" />
                   <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
                     {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-[#F2A900] text-[#F2A900]" />
@@ -438,21 +401,21 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-[#F2A900]/20 text-[#F2A900] font-bold text-sm flex items-center justify-center border border-[#F2A900]/30 shrink-0">
+                <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#F2A900] to-amber-600 text-[#061224] font-extrabold text-sm flex items-center justify-center border-2 border-white/20 shadow-sm shrink-0">
                     {testimonials[activeTestimonial].initials}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">{testimonials[activeTestimonial].name}</h4>
-                    <p className="text-xs text-slate-400">{testimonials[activeTestimonial].role}</p>
+                    <h4 className="text-sm font-bold text-white leading-snug">{testimonials[activeTestimonial].name}</h4>
+                    <p className="text-xs text-slate-400 mt-0.5">{testimonials[activeTestimonial].role} &middot; {testimonials[activeTestimonial].location}</p>
                   </div>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="flex flex-col justify-between rounded-2xl bg-white/5 border border-white/10 p-6 sm:p-8">
+              <div className="flex flex-col justify-between rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-7 sm:p-8 shadow-xl">
                 <div>
-                  <Quote className="w-8 h-8 text-[#F2A900]/40 mb-4" />
+                  <Quote className="w-10 h-10 text-[#F2A900]/30 mb-4" />
                   <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
                     {Array.from({ length: testimonials[(activeTestimonial + 1) % testimonials.length].rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-[#F2A900] text-[#F2A900]" />
@@ -463,13 +426,13 @@ export default function HomePage() {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-3 pt-4 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-[#F2A900]/20 text-[#F2A900] font-bold text-sm flex items-center justify-center border border-[#F2A900]/30 shrink-0">
+                <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
+                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#F2A900] to-amber-600 text-[#061224] font-extrabold text-sm flex items-center justify-center border-2 border-white/20 shadow-sm shrink-0">
                     {testimonials[(activeTestimonial + 1) % testimonials.length].initials}
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">{testimonials[(activeTestimonial + 1) % testimonials.length].name}</h4>
-                    <p className="text-xs text-slate-400">{testimonials[(activeTestimonial + 1) % testimonials.length].role}</p>
+                    <h4 className="text-sm font-bold text-white leading-snug">{testimonials[(activeTestimonial + 1) % testimonials.length].name}</h4>
+                    <p className="text-xs text-slate-400 mt-0.5">{testimonials[(activeTestimonial + 1) % testimonials.length].role} &middot; {testimonials[(activeTestimonial + 1) % testimonials.length].location}</p>
                   </div>
                 </div>
               </div>
@@ -513,44 +476,53 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. OUR IMPACT STATS (COUNTER ANIMATION - ONCE ONLY) */}
-      <section className="py-20 bg-white border-b border-slate-200">
-        <div className="container mx-auto px-6 md:px-8 max-w-6xl">
+      {/* 4. OUR IMPACT STATS (ANIMATED COUNT-UP ON SCROLL) */}
+      <section className="py-20 md:py-24 bg-white border-b border-slate-200 relative dot-grid">
+        <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10">
           
           <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
               By The Numbers
             </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
               Our Impact Across India
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 py-4">
             
-            <div className="py-6 md:py-0 md:px-8 text-center">
-              <span className="text-5xl sm:text-6xl font-bold tracking-tight text-[#061224] block mb-2 tabular-nums">
+            <div className="py-8 md:py-0 md:px-8 text-center flex flex-col items-center">
+              <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-4 shadow-xs">
+                <Users className="w-5 h-5 text-[#F2A900]" />
+              </div>
+              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#061224] block mb-2 tabular-nums">
                 <AnimatedCounter target={5000} suffix="+" />
               </span>
-              <p className="text-sm font-semibold uppercase tracking-wider text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
                 Students Impacted
               </p>
             </div>
 
-            <div className="py-6 md:py-0 md:px-8 text-center">
-              <span className="text-5xl sm:text-6xl font-bold tracking-tight text-[#061224] block mb-2 tabular-nums">
+            <div className="py-8 md:py-0 md:px-8 text-center flex flex-col items-center">
+              <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-4 shadow-xs">
+                <School className="w-5 h-5 text-[#F2A900]" />
+              </div>
+              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#061224] block mb-2 tabular-nums">
                 <AnimatedCounter target={100} suffix="+" />
               </span>
-              <p className="text-sm font-semibold uppercase tracking-wider text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
                 Schools Partnered
               </p>
             </div>
 
-            <div className="py-6 md:py-0 md:px-8 text-center">
-              <span className="text-5xl sm:text-6xl font-bold tracking-tight text-[#061224] block mb-2 tabular-nums">
+            <div className="py-8 md:py-0 md:px-8 text-center flex flex-col items-center">
+              <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-4 shadow-xs">
+                <Award className="w-5 h-5 text-[#F2A900]" />
+              </div>
+              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#061224] block mb-2 tabular-nums">
                 <AnimatedCounter target={20} suffix="+" />
               </span>
-              <p className="text-sm font-semibold uppercase tracking-wider text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
                 Collaborations
               </p>
             </div>
@@ -560,18 +532,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. VIDEO SECTION (SCROLL REVEAL #2 - FADE + SLIGHT SCALE-IN FROM 0.98 TO 1.0) */}
+      {/* 5. VIDEO STORY SECTION (POLISHED FRAME + SCROLL REVEAL) */}
       <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200">
-        <div className="container mx-auto px-6 md:px-8 max-w-5xl text-center">
+        <div className="container mx-auto px-6 md:px-8 max-w-4xl text-center">
           
           <div className="mb-10 max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
               Video Story
             </span>
-            <h2 className="text-3xl font-bold text-slate-900">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
               Watch Us Transform Learning
             </h2>
-            <p className="text-slate-600 text-sm mt-2">
+            <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
               See firsthand how IINSPARK is revolutionizing classrooms and empowering students through experiential education.
             </p>
           </div>
@@ -581,9 +553,9 @@ export default function HomePage() {
             whileInView={{ opacity: 1, scale: 1.0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="rounded-2xl border border-slate-300 overflow-hidden bg-slate-950 shadow-sm"
+            className="rounded-3xl p-3 bg-slate-100 border border-slate-200/90 shadow-xl shadow-slate-900/5 overflow-hidden"
           >
-            <div className="relative aspect-video w-full">
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
               <iframe
                 className="w-full h-full"
                 src="https://www.youtube-nocookie.com/embed/rYv-GtnQ4Do?si=ZJ9VLflTLnT6IxjD"
@@ -608,67 +580,90 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. IMAGE CAROUSEL CTA SECTION (FUNCTIONAL CROSSFADE TRANSITION 300-400ms) */}
+      {/* 6. CTA SECTION ("READY TO TRANSFORM LEARNING?") */}
       <section className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
+        <div className="container mx-auto px-6 md:px-8 max-w-6xl">
           
-          <div className="text-center mb-10 max-w-xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900">
-              Ready to Transform Learning?
-            </h2>
-            <p className="text-slate-600 text-sm mt-2">
-              Discover our world-class educational kits, state-of-the-art innovation labs, and seasonal bootcamps.
-            </p>
-          </div>
-
-          <div
-            className="relative rounded-2xl overflow-hidden border border-slate-200 h-[380px] sm:h-[440px] bg-slate-950"
-            onMouseEnter={() => setIsHoveringCarousel(true)}
-            onMouseLeave={() => setIsHoveringCarousel(false)}
-          >
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={activeSlide}
-                src={carouselImages[activeSlide].src}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="absolute inset-0 w-full h-full object-cover"
-                alt={carouselImages[activeSlide].title}
-                onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
-              />
-            </AnimatePresence>
-
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
-
-            <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between z-10">
-              <div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-[#F2A900] block mb-1">
-                  {carouselImages[activeSlide].description}
+          <div className="bg-gradient-to-br from-[#061224] via-[#0a1b36] to-[#061224] rounded-3xl p-8 sm:p-12 text-white border border-white/10 shadow-2xl relative overflow-hidden">
+            
+            <div className="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+              
+              <div className="lg:col-span-7 space-y-4">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#F2A900] block">
+                  Get Started Today
                 </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-white">
-                  {carouselImages[activeSlide].title}
-                </h3>
+                <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight leading-tight">
+                  Ready to Transform Learning?
+                </h2>
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                  Discover our world-class educational kits, state-of-the-art innovation labs, and seasonal bootcamps.
+                </p>
+                <div className="pt-4">
+                  <Link
+                    href="/products"
+                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#F2A900] hover:bg-amber-400 text-[#061224] font-bold text-sm sm:text-base tracking-wide shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                  >
+                    <span>Explore All Programs</span>
+                    <ArrowRight className="w-4 h-4 text-[#061224]" />
+                  </Link>
+                </div>
               </div>
 
-              <div className="flex items-center gap-2 bg-slate-950/60 backdrop-blur-sm border border-white/20 rounded-full p-1.5">
-                <button
-                  onClick={() => setActiveSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
-                  className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
-                  aria-label="Previous slide"
+              {/* Carousel / Mini Preview Panel */}
+              <div className="lg:col-span-5 relative w-full">
+                <div
+                  className="relative rounded-2xl overflow-hidden border border-white/20 h-64 sm:h-72 bg-slate-950 shadow-lg"
+                  onMouseEnter={() => setIsHoveringCarousel(true)}
+                  onMouseLeave={() => setIsHoveringCarousel(false)}
                 >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => setActiveSlide((prev) => (prev + 1) % carouselImages.length)}
-                  className="p-1.5 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
-                  aria-label="Next slide"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
+                  <AnimatePresence mode="wait">
+                    <motion.img
+                      key={activeSlide}
+                      src={carouselImages[activeSlide].src}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      alt={carouselImages[activeSlide].title}
+                      onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
+                    />
+                  </AnimatePresence>
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent pointer-events-none" />
+
+                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
+                    <div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#F2A900] block mb-0.5">
+                        {carouselImages[activeSlide].description}
+                      </span>
+                      <h3 className="text-base font-bold text-white">
+                        {carouselImages[activeSlide].title}
+                      </h3>
+                    </div>
+
+                    <div className="flex items-center gap-1.5 bg-slate-950/70 backdrop-blur-sm border border-white/20 rounded-full p-1">
+                      <button
+                        onClick={() => setActiveSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
+                        className="p-1 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
+                        aria-label="Previous slide"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => setActiveSlide((prev) => (prev + 1) % carouselImages.length)}
+                        className="p-1 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
+                        aria-label="Next slide"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
+
             </div>
+
           </div>
 
         </div>
