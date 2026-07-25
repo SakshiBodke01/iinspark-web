@@ -255,10 +255,10 @@ export default function HomePage() {
               <div className="rounded-2xl p-2 bg-white border border-[#0a192f]/10 shadow-[0_4px_20px_rgba(10,25,47,0.04)] overflow-hidden relative group">
                 <div className="relative w-full aspect-[4/5] sm:aspect-[4/4] rounded-xl overflow-hidden bg-[#0a192f]">
                   <img
-                    src="/images/nation-building-v2.png"
+                    src="/images/SparkLab.png"
                     alt="Hands-on Experience"
                     className="w-full h-full object-cover"
-                    onError={(e) => { e.currentTarget.src = "/images/SparkLab.png"; }}
+                    onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                   />
                   
                   {/* Floating Badge (Bottom-Left) */}
