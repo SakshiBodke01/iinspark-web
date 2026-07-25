@@ -20,6 +20,7 @@ import clsx from "clsx";
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [programsDropdownOpen, setProgramsDropdownOpen] = useState(false);
   const [mobileProgramsOpen, setMobileProgramsOpen] = useState(false);
@@ -28,12 +29,10 @@ export default function NavBar() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
 
-  // Scroll detection: backdrop blur and border trigger past 20px
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prev = scrollY.getPrevious() ?? 0;
     setScrolled(latest > 20);
 
-    // Auto-hide navbar on scroll down past 220px, reveal on scroll up
     if (latest > prev && latest > 220 && !mobileMenuOpen && !programsDropdownOpen) {
       setHidden(true);
     } else {
@@ -41,7 +40,6 @@ export default function NavBar() {
     }
   });
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -53,7 +51,6 @@ export default function NavBar() {
     };
   }, [mobileMenuOpen]);
 
-  // Handle escape key to close menus
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -65,7 +62,6 @@ export default function NavBar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Handle click outside for dropdown menu
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
@@ -76,7 +72,6 @@ export default function NavBar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Close menus on route change
   useEffect(() => {
     setMobileMenuOpen(false);
     setProgramsDropdownOpen(false);
@@ -132,51 +127,57 @@ export default function NavBar() {
         y: hidden ? -100 : 0,
         transition: { duration: 0.25, ease: [0.25, 0.1, 0.25, 1] },
       }}
-      className={clsx(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out pointer-events-auto",
-        scrolled
-          ? "bg-white/90 backdrop-blur-xl border-b border-slate-200/80 shadow-xs shadow-slate-900/5 py-3 sm:py-3.5"
-          : "bg-white/70 backdrop-blur-md border-b border-transparent py-4 sm:py-5"
-      )}
+      className="fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 pt-3 pointer-events-auto"
     >
-      <div className="container mx-auto px-6 sm:px-10 lg:px-12 max-w-7xl flex items-center justify-between">
-        
-        {/* Brand Logo + Tagline (Vertically Centered) */}
+      {/* Floating Glassmorphic Pill Container */}
+      <div
+        className={clsx(
+          "max-w-6xl mx-auto rounded-full border transition-all duration-300 ease-in-out px-5 sm:px-8 py-2.5 flex items-center justify-between",
+          "bg-white/80 dark:bg-[#061224]/80 backdrop-blur-xl border-white/40 shadow-lg shadow-black/5",
+          scrolled ? "bg-white/95 dark:bg-[#061224]/95 shadow-xl shadow-black/10 border-slate-200/80" : ""
+        )}
+      >
+        {/* Brand Logo */}
         <Link
           href="/"
-          className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] rounded-lg transition-transform duration-200 hover:scale-[1.01]"
+          className="flex items-center gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] rounded-full transition-transform duration-200 hover:scale-[1.02]"
           aria-label="IINSPARK Homepage"
         >
           <img
             src="/images/iinspark-logo.png"
             alt="IINSPARK Logo"
-            className="h-8 sm:h-9 w-auto object-contain shrink-0"
+            className="h-7 sm:h-8 w-auto object-contain shrink-0"
           />
           <div className="flex flex-col justify-center">
-            <span className="font-heading font-extrabold text-base sm:text-lg tracking-tight text-[#061224] leading-none">
+            <span className="font-heading font-extrabold text-sm sm:text-base tracking-tight text-[#061224] dark:text-white leading-none">
               IINSPARK
             </span>
-            <span className="text-[9px] sm:text-[10px] font-semibold tracking-widest text-slate-500 uppercase mt-0.5 leading-none">
+            <span className="text-[9px] font-semibold tracking-widest text-slate-400 dark:text-slate-400 uppercase mt-0.5 leading-none">
               Innovate &amp; Inspire
             </span>
           </div>
         </Link>
 
-        {/* Desktop Navigation Links with Underline Hover Animation */}
+        {/* Desktop Navigation Links with Sliding Pill Highlight */}
         <nav
           aria-label="Main Navigation"
           className="hidden md:flex items-center gap-6 lg:gap-8"
+          onMouseLeave={() => setHoveredLink(null)}
         >
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
+            const isHovered = hoveredLink === link.name;
 
             if (link.hasDropdown) {
               return (
                 <div
                   key={link.name}
                   ref={dropdownRef}
-                  className="relative flex items-center group/dropdown"
-                  onMouseEnter={() => setProgramsDropdownOpen(true)}
+                  className="relative flex items-center"
+                  onMouseEnter={() => {
+                    setHoveredLink(link.name);
+                    setProgramsDropdownOpen(true);
+                  }}
                   onMouseLeave={() => setProgramsDropdownOpen(false)}
                 >
                   <Link
@@ -184,10 +185,10 @@ export default function NavBar() {
                     onClick={() => setProgramsDropdownOpen(false)}
                     aria-current={isActive ? "page" : undefined}
                     className={clsx(
-                      "relative py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 flex items-center gap-1 cursor-pointer",
+                      "relative z-10 px-3 py-1.5 font-semibold text-xs tracking-wider uppercase transition-colors duration-200 flex items-center gap-1 cursor-pointer",
                       isActive || programsDropdownOpen
-                        ? "text-[#061224] font-bold"
-                        : "text-slate-700 hover:text-[#061224]"
+                        ? "text-[#061224] dark:text-white font-bold"
+                        : "text-slate-600 dark:text-slate-300 hover:text-[#061224]"
                     )}
                   >
                     <span>{link.name}</span>
@@ -203,7 +204,7 @@ export default function NavBar() {
                     aria-expanded={programsDropdownOpen}
                     aria-haspopup="true"
                     aria-label="Toggle Programs Dropdown"
-                    className="p-1 text-slate-500 hover:text-[#061224] transition-colors cursor-pointer"
+                    className="relative z-10 p-1 text-slate-400 hover:text-[#061224] transition-colors cursor-pointer"
                   >
                     <ChevronDown
                       className={clsx(
@@ -213,13 +214,14 @@ export default function NavBar() {
                     />
                   </button>
 
-                  {/* Smooth Gold Underline Accent */}
-                  <span
-                    className={clsx(
-                      "absolute bottom-0 left-0 right-0 h-[2px] bg-[#F2A900] rounded-full transition-transform duration-200 origin-left pointer-events-none",
-                      isActive ? "scale-x-100" : "scale-x-0 group-hover/dropdown:scale-x-100"
-                    )}
-                  />
+                  {/* Sliding Pill Indicator */}
+                  {(isHovered || isActive) && (
+                    <motion.div
+                      layoutId="navbar-pill"
+                      className="absolute inset-0 rounded-full bg-slate-100 dark:bg-white/10 z-0"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
 
                   {/* Desktop Mega-Menu Dropdown Panel */}
                   <AnimatePresence>
@@ -232,7 +234,7 @@ export default function NavBar() {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 6, scale: 0.98 }}
                         transition={{ duration: 0.18, ease: "easeOut" }}
-                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 sm:w-[380px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50"
+                        className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-80 sm:w-[380px] p-2.5 rounded-2xl bg-white/95 dark:bg-[#061224]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 shadow-xl z-50"
                       >
                         <div className="grid grid-cols-1 gap-1" role="none">
                           {programItems.map((item) => {
@@ -243,7 +245,7 @@ export default function NavBar() {
                                 href={item.href}
                                 role="menuitem"
                                 onClick={() => setProgramsDropdownOpen(false)}
-                                className="group flex items-start gap-3.5 p-2.5 rounded-xl hover:bg-slate-50 transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224]"
+                                className="group flex items-start gap-3.5 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors duration-200"
                               >
                                 <div
                                   className={clsx(
@@ -251,16 +253,16 @@ export default function NavBar() {
                                     item.accentColor
                                   )}
                                 >
-                                  <IconComponent className="w-4 h-4" />
+                                  <IconComponent className="w-4 h-4 text-[#061224]" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                   <div className="flex items-center justify-between">
-                                    <span className="font-semibold text-xs text-slate-900 group-hover:text-[#061224] transition-colors duration-200">
+                                    <span className="font-semibold text-xs text-slate-900 dark:text-white group-hover:text-[#F2A900] transition-colors duration-200">
                                       {item.title}
                                     </span>
-                                    <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#061224] transition-colors duration-200" />
+                                    <ChevronRight className="w-3.5 h-3.5 text-slate-300 group-hover:text-[#F2A900] transition-colors duration-200" />
                                   </div>
-                                  <p className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                                  <p className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1 mt-0.5">
                                     {item.description}
                                   </p>
                                 </div>
@@ -269,13 +271,13 @@ export default function NavBar() {
                           })}
                         </div>
 
-                        <div className="mt-1.5 pt-2 border-t border-slate-100 flex items-center justify-between px-3 py-1">
-                          <span className="text-[11px] text-slate-500">Custom STEM integration?</span>
+                        <div className="mt-1.5 pt-2 border-t border-slate-100 dark:border-white/10 flex items-center justify-between px-3 py-1">
+                          <span className="text-[11px] text-slate-500 dark:text-slate-400">Custom STEM integration?</span>
                           <Link
                             href="/contact"
                             role="menuitem"
                             onClick={() => setProgramsDropdownOpen(false)}
-                            className="text-xs font-semibold text-[#061224] hover:text-[#F2A900] flex items-center gap-1 transition-colors duration-200"
+                            className="text-xs font-semibold text-[#061224] dark:text-[#F2A900] hover:text-[#F2A900] flex items-center gap-1 transition-colors duration-200"
                           >
                             Get in touch
                             <ArrowRight className="w-3 h-3 text-[#F2A900]" />
@@ -289,41 +291,45 @@ export default function NavBar() {
             }
 
             return (
-              <div key={link.name} className="relative group">
+              <div
+                key={link.name}
+                className="relative flex items-center"
+                onMouseEnter={() => setHoveredLink(link.name)}
+              >
                 <Link
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
                   className={clsx(
-                    "relative py-1.5 text-xs font-semibold tracking-wide transition-colors duration-200 flex items-center justify-center cursor-pointer",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224]",
+                    "relative z-10 px-3 py-1.5 font-semibold text-xs tracking-wider uppercase transition-colors duration-200 flex items-center justify-center cursor-pointer",
                     isActive
-                      ? "text-[#061224] font-bold"
-                      : "text-slate-700 hover:text-[#061224]"
+                      ? "text-[#061224] dark:text-white font-bold"
+                      : "text-slate-600 dark:text-slate-300 hover:text-[#061224]"
                   )}
                 >
                   <span>{link.name}</span>
                 </Link>
 
-                {/* Underline Indicator */}
-                <span
-                  className={clsx(
-                    "absolute bottom-0 left-0 right-0 h-[2px] bg-[#F2A900] rounded-full transition-transform duration-200 origin-left pointer-events-none",
-                    isActive ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                  )}
-                />
+                {/* Sliding Pill Indicator */}
+                {(isHovered || isActive) && (
+                  <motion.div
+                    layoutId="navbar-pill"
+                    className="absolute inset-0 rounded-full bg-slate-100 dark:bg-white/10 z-0"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
               </div>
             );
           })}
         </nav>
 
-        {/* Desktop 'Enquire Now' Distinct Gradient Pill Button with Hover Lift + Shadow */}
+        {/* Desktop Shimmer CTA Button with Glowing Border & Hover Scale */}
         <div className="hidden md:flex items-center gap-3">
           <Link
             href="/contact"
-            className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white text-xs font-semibold tracking-wide border border-white/10 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] cursor-pointer"
+            className="group relative inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white text-xs font-semibold tracking-wide border border-white/20 shadow-md shadow-black/10 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden shimmer-btn"
           >
-            <span>Enquire Now</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#F2A900] group-hover:translate-x-0.5 transition-transform duration-200" />
+            <span className="relative z-10">Enquire Now</span>
+            <ArrowRight className="w-3.5 h-3.5 text-[#F2A900] relative z-10 group-hover:translate-x-1 transition-transform duration-200" />
           </Link>
         </div>
 
@@ -332,29 +338,17 @@ export default function NavBar() {
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-navigation-drawer"
-          className="md:hidden p-2 rounded-full text-[#061224] hover:bg-slate-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#061224] cursor-pointer"
+          className="md:hidden p-2 rounded-full text-[#061224] dark:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors cursor-pointer"
           aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
         >
           <AnimatePresence mode="wait" initial={false}>
             {mobileMenuOpen ? (
-              <motion.div
-                key="close"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.15 }}
-              >
-                <X className="w-5 h-5 text-[#061224]" />
+              <motion.div key="close" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <X className="w-5 h-5" />
               </motion.div>
             ) : (
-              <motion.div
-                key="menu"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.15 }}
-              >
-                <Menu className="w-5 h-5 text-[#061224]" />
+              <motion.div key="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+                <Menu className="w-5 h-5" />
               </motion.div>
             )}
           </AnimatePresence>
@@ -371,8 +365,7 @@ export default function NavBar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-slate-950/30 backdrop-blur-xs z-40 md:hidden pointer-events-auto"
-              aria-hidden="true"
+              className="fixed inset-0 bg-slate-950/40 backdrop-blur-xs z-40 md:hidden pointer-events-auto"
             />
 
             <motion.div
@@ -382,8 +375,8 @@ export default function NavBar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
-              className="absolute top-full left-4 right-4 mt-2 p-4 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-xl z-50 md:hidden overflow-hidden pointer-events-auto"
+              transition={{ duration: 0.2 }}
+              className="absolute top-full left-4 right-4 mt-2 p-4 rounded-3xl bg-white/95 dark:bg-[#061224]/95 backdrop-blur-2xl border border-slate-200 dark:border-white/10 shadow-xl z-50 md:hidden overflow-hidden pointer-events-auto"
             >
               <div className="flex flex-col gap-1">
                 {navLinks.map((link) => {
@@ -400,8 +393,8 @@ export default function NavBar() {
                             className={clsx(
                               "flex-1 px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-colors duration-200",
                               isActive
-                                ? "bg-slate-100 text-[#061224] font-bold"
-                                : "text-slate-700 hover:bg-slate-50"
+                                ? "bg-slate-100 dark:bg-white/10 text-[#061224] dark:text-white font-bold"
+                                : "text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5"
                             )}
                           >
                             <span>{link.name}</span>
@@ -428,7 +421,6 @@ export default function NavBar() {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: "auto" }}
                               exit={{ opacity: 0, height: 0 }}
-                              transition={{ duration: 0.2 }}
                               className="overflow-hidden pl-3 pr-1 py-1 flex flex-col gap-1"
                             >
                               {programItems.map((item) => {
@@ -438,16 +430,16 @@ export default function NavBar() {
                                     key={item.title}
                                     href={item.href}
                                     onClick={() => setMobileMenuOpen(false)}
-                                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 transition-colors duration-200"
+                                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-white/5 transition-colors"
                                   >
-                                    <div className="p-1.5 rounded-lg shrink-0 bg-slate-100 text-[#061224]">
+                                    <div className="p-1.5 rounded-lg shrink-0 bg-slate-100 dark:bg-white/10 text-[#061224] dark:text-white">
                                       <IconComp className="w-4 h-4" />
                                     </div>
                                     <div className="flex flex-col">
-                                      <span className="text-xs font-semibold text-slate-800">
+                                      <span className="text-xs font-semibold text-slate-800 dark:text-slate-200">
                                         {item.title}
                                       </span>
-                                      <span className="text-[11px] text-slate-500 line-clamp-1">
+                                      <span className="text-[11px] text-slate-500 dark:text-slate-400 line-clamp-1">
                                         {item.description}
                                       </span>
                                     </div>
@@ -470,8 +462,8 @@ export default function NavBar() {
                       className={clsx(
                         "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-colors duration-200",
                         isActive
-                          ? "bg-slate-100 text-[#061224] font-bold"
-                          : "text-slate-700 hover:bg-slate-50"
+                          ? "bg-slate-100 dark:bg-white/10 text-[#061224] dark:text-white font-bold"
+                          : "text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-white/5"
                       )}
                     >
                       <span>{link.name}</span>
@@ -479,11 +471,11 @@ export default function NavBar() {
                   );
                 })}
 
-                <div className="pt-3 mt-2 border-t border-slate-100">
+                <div className="pt-3 mt-2 border-t border-slate-100 dark:border-white/10">
                   <Link
                     href="/contact"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white text-sm font-semibold shadow-sm"
+                    className="flex items-center justify-center gap-2 w-full py-3 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white text-sm font-semibold shadow-md"
                   >
                     <span>Enquire Now</span>
                     <ArrowRight className="w-4 h-4 text-[#F2A900]" />

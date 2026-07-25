@@ -48,6 +48,7 @@ export default function HomePage() {
       image: "/images/TuitionPlus.png",
       pdf: "/pdf/LabofCuriosity.pdf",
       featured: true,
+      badgeStyle: "bg-emerald-50 text-emerald-700 border-emerald-200",
     },
     {
       icon: Bot,
@@ -56,6 +57,7 @@ export default function HomePage() {
       features: ["Coding Basics", "Robot Building", "AI Fundamentals"],
       image: "/images/TechTrek.png",
       pdf: "/pdf/FutureTechLab.pdf",
+      badgeStyle: "bg-blue-50 text-blue-700 border-blue-200",
     },
     {
       icon: Palette,
@@ -64,6 +66,7 @@ export default function HomePage() {
       features: ["Creative Expression", "Multi-disciplinary", "Skill Development"],
       image: "/images/ArtSpire.png",
       pdf: "/pdf/CreativeArtsStudio.pdf",
+      badgeStyle: "bg-amber-50 text-amber-700 border-amber-200",
     },
     {
       icon: Leaf,
@@ -72,6 +75,7 @@ export default function HomePage() {
       features: ["Environmental Awareness", "Gardening Skills", "Nature Connection"],
       image: "/images/GreenCraft.png",
       pdf: "/pdf/GardenScienceLab.pdf",
+      badgeStyle: "bg-emerald-50 text-emerald-700 border-emerald-200",
     },
     {
       icon: Brain,
@@ -80,6 +84,7 @@ export default function HomePage() {
       features: ["Curriculum Aligned", "Progressive Learning", "Skill Assessment"],
       image: "/images/SmartSheets.png",
       pdf: "/pdf/FuturisticWorksheets.pdf",
+      badgeStyle: "bg-indigo-50 text-indigo-700 border-indigo-200",
     },
     {
       icon: CreditCard,
@@ -88,6 +93,7 @@ export default function HomePage() {
       features: ["Visual Learning", "Memory Enhancement", "Quick Revision"],
       image: "/images/FlashyCards.png",
       pdf: "/pdf/VisualLearningCards.pdf",
+      badgeStyle: "bg-purple-50 text-purple-700 border-purple-200",
     },
     {
       icon: Drama,
@@ -96,6 +102,7 @@ export default function HomePage() {
       features: ["Confidence Building", "Communication Skills", "Creative Expression"],
       image: "/images/DramaNest.png",
       pdf: "/pdf/Theater&Storytelling.pdf",
+      badgeStyle: "bg-[#F2A900]/10 text-[#061224] border-[#F2A900]/30",
     },
     {
       icon: Microscope,
@@ -104,6 +111,7 @@ export default function HomePage() {
       features: ["Interactive Experiments", "STEM Learning", "Age-appropriate Kits"],
       image: "/images/SparkLab.png",
       pdf: "/pdf/ScienceExplorersLab.pdf",
+      badgeStyle: "bg-sky-50 text-sky-700 border-sky-200",
     },
   ];
 
@@ -150,7 +158,6 @@ export default function HomePage() {
     { src: "/images/SmartSheets.png", title: "Futuristic Worksheets", description: "Progressive skill development" },
   ];
 
-  // Auto-advance hero carousel
   useEffect(() => {
     if (isHoveringCarousel) return;
     const timer = setInterval(() => {
@@ -159,7 +166,6 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, [isHoveringCarousel, carouselImages.length]);
 
-  // Auto-advance testimonials
   useEffect(() => {
     if (isHoveringTestimonials) return;
     const timer = setInterval(() => {
@@ -168,7 +174,6 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, [isHoveringTestimonials, testimonials.length]);
 
-  // Hero Staggered Page-Load Entrance Only
   const heroContainerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -189,9 +194,14 @@ export default function HomePage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50 overflow-hidden text-slate-900">
       
-      {/* 1. HERO SECTION (LOAD-ONCE ENTRANCE & REBUILT HIERARCHY) */}
-      <section className="relative w-full pt-14 pb-20 md:pt-24 md:pb-28 bg-white border-b border-slate-200">
-        <div className="container px-6 md:px-8 mx-auto max-w-7xl">
+      {/* 1. HERO SECTION (AMBIENT GLOWS + FLUID TYPOGRAPHY + 3D GLASS VIDEO FRAME) */}
+      <section className="relative w-full pt-28 pb-20 md:pt-36 md:pb-32 bg-white border-b border-slate-200/80 overflow-hidden dot-grid">
+        
+        {/* Ambient Radial Glowing Blobs */}
+        <div aria-hidden="true" className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#061224]/10 blur-3xl pointer-events-none -z-0" />
+        <div aria-hidden="true" className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#F2A900]/15 blur-3xl pointer-events-none -z-0" />
+
+        <div className="container px-6 md:px-8 mx-auto max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Content */}
@@ -201,11 +211,11 @@ export default function HomePage() {
               animate="visible"
               className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-7"
             >
-              {/* Eyebrow Badge with Pulsing Dot */}
+              {/* Frosted Glassmorphic Badge with Pulsing Dot */}
               <motion.div variants={heroItemVariants}>
                 <Link
                   href="/summer-camp"
-                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-800 text-xs font-semibold hover:border-[#061224]/30 hover:bg-slate-100/80 transition-colors duration-150 shadow-xs"
+                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/5 backdrop-blur-md border border-slate-900/10 text-slate-800 text-xs font-semibold hover:border-[#061224]/30 transition-all duration-200 shadow-xs"
                 >
                   <span className="relative flex h-2 w-2 shrink-0">
                     <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F2A900] opacity-75"></span>
@@ -216,13 +226,13 @@ export default function HomePage() {
                 </Link>
               </motion.div>
 
-              {/* Headline */}
+              {/* Fluid Responsive Headline */}
               <motion.h1 
                 variants={heroItemVariants}
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif tracking-tight leading-[1.04] text-[#061224]"
+                className="font-serif tracking-tight leading-[1.04] text-[#061224] text-[clamp(2.25rem,5vw+1rem,4.5rem)]"
               >
                 Igniting Young Minds, <br />
-                <span className="italic font-normal bg-gradient-to-r from-[#061224] via-slate-800 to-[#F2A900] bg-clip-text text-transparent">
+                <span className="italic font-normal bg-gradient-to-r from-[#061224] via-indigo-950 to-[#F2A900] bg-clip-text text-transparent">
                   Inspiring Leaders
                 </span>
               </motion.h1>
@@ -230,32 +240,34 @@ export default function HomePage() {
               {/* Subtitle */}
               <motion.p
                 variants={heroItemVariants}
-                className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[620px] leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[640px] leading-relaxed"
               >
                 Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-slate-900">IINSPARK</strong> offers meticulously curated educational experiences designed to nurture confident creators.
               </motion.p>
 
-              {/* CTA Button */}
+              {/* CTA Button with Shimmer & Scale Hover */}
               <motion.div variants={heroItemVariants} className="pt-2">
                 <Link
                   href="/products"
-                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white font-semibold text-sm sm:text-base tracking-wide border border-white/10 shadow-md hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white font-semibold text-sm sm:text-base tracking-wide border border-white/20 shadow-xl shadow-slate-900/10 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden shimmer-btn"
                 >
-                  <span>Explore Programs</span>
-                  <ArrowRight className="w-4 h-4 text-[#F2A900] group-hover:translate-x-1 transition-transform duration-200" />
+                  <span className="relative z-10">Explore Programs</span>
+                  <ArrowRight className="w-4 h-4 text-[#F2A900] relative z-10 group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
               </motion.div>
             </motion.div>
 
-            {/* Right Video Media Panel */}
+            {/* Right Video Widget Bezel-Less Glass Panel */}
             <div className="lg:col-span-5 relative w-full max-w-lg lg:max-w-none mx-auto">
-              <div className="rounded-3xl p-2.5 bg-slate-100 border border-slate-200/90 shadow-lg shadow-slate-900/5">
+              <div className="rounded-3xl p-1.5 bg-slate-900/5 backdrop-blur-xl border border-slate-900/10 shadow-2xl shadow-indigo-500/10 overflow-hidden group">
                 <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
                   <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                     <source src="/hello.mp4" type="video/mp4" />
                   </video>
-                  <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1 rounded-full bg-slate-950/75 backdrop-blur-md text-white text-[11px] font-semibold border border-white/15 shadow-sm">
-                    Interactive Experience
+                  {/* Floating Glassmorphic Tag */}
+                  <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1.5 rounded-full bg-slate-950/75 backdrop-blur-md text-white text-[11px] font-semibold border border-white/15 shadow-md flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#F2A900] animate-pulse" />
+                    <span>Interactive Experience</span>
                   </div>
                 </div>
               </div>
@@ -265,8 +277,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. PROGRAMS SECTION (CONSISTENT GRID + EQUAL CARDS + PILL TAGS) */}
-      <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200">
+      {/* 2. CURRICULUM OVERVIEW ("OUR PROGRAMS" SPOTLIGHT BENTO GRID) */}
+      <section className="py-20 md:py-28 bg-slate-50/80 border-b border-slate-200/80">
         <div className="container mx-auto px-6 md:px-8 max-w-7xl">
           
           <div className="mb-14 max-w-2xl">
@@ -281,7 +293,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Equal Height Clean Grid (3-col desktop / 2-col tablet / 1-col mobile) */}
+          {/* Spotlight Card Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             
             {offerings.map((offering) => {
@@ -289,20 +301,20 @@ export default function HomePage() {
               return (
                 <div
                   key={offering.title}
-                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 overflow-hidden"
+                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
                 >
-                  {/* Card Header Media */}
+                  {/* Image Showcase Container */}
                   <div className="relative h-48 sm:h-52 w-full overflow-hidden shrink-0 bg-slate-100">
                     <img
                       src={offering.image}
                       alt={offering.title}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                     
-                    {/* Featured Badge or Category Icon */}
                     {offering.featured ? (
-                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[#061224] text-white text-[11px] font-bold uppercase tracking-wider shadow-sm border border-white/10">
+                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[#061224] text-white text-[11px] font-bold uppercase tracking-wider shadow-md border border-white/10">
                         Featured Program
                       </span>
                     ) : (
@@ -312,7 +324,7 @@ export default function HomePage() {
                     )}
                   </div>
                   
-                  {/* Card Body */}
+                  {/* Card Content Block */}
                   <div className="p-6 flex flex-col justify-between flex-1">
                     <div>
                       <h3 className="text-xl font-bold font-heading text-slate-900 mb-1">
@@ -322,28 +334,31 @@ export default function HomePage() {
                         {offering.description}
                       </p>
 
-                      {/* Feature Pills / Tags */}
-                      <div className="flex flex-wrap gap-1.5 mb-6">
+                      {/* Color-Tinted Feature Badges */}
+                      <div className="flex flex-wrap gap-1.5 mb-6 align-items-center">
                         {offering.features.map((feature, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center text-[11px] font-semibold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200/80"
+                            className={clsx(
+                              "inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md border",
+                              offering.badgeStyle
+                            )}
                           >
-                            <CheckCircle className="w-3 h-3 text-[#10B981] mr-1.5 shrink-0" />
+                            <CheckCircle className="w-3 h-3 mr-1.5 shrink-0" />
                             {feature}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    {/* Card Footer (Right-aligned CTA Button) */}
+                    {/* Bottom PDF Download Action Bar */}
                     <div className="pt-4 border-t border-slate-100 mt-auto flex items-center justify-between">
                       <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Brochure</span>
                       <a
                         href={offering.pdf}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-[#061224] text-[#061224] hover:text-white transition-colors duration-150 shadow-2xs group/btn"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-[#061224] text-[#061224] hover:text-white transition-colors duration-200 shadow-2xs group/btn"
                       >
                         <span>Download Syllabus PDF</span>
                         <Download className="w-3.5 h-3.5 text-[#F2A900] group-hover/btn:scale-110 transition-transform" />
@@ -359,8 +374,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. TESTIMONIALS SECTION (PREMIUM CARDS + QUOTE ICON + GRADIENT AVATARS) */}
+      {/* 3. COMMUNITY VOICES (TESTIMONIALS SECTION WITH FROSTED GLASS & GRADIENT RING AVATARS) */}
       <section className="w-full py-20 md:py-28 bg-[#061224] text-white relative overflow-hidden">
+        
+        {/* Abstract Geometric Texture Overlay */}
+        <div aria-hidden="true" className="absolute inset-0 opacity-10 bg-[radial-gradient(#F2A900_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+
         <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">
           
           <div className="text-center mb-14 max-w-2xl mx-auto">
@@ -375,7 +394,6 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* Testimonial Cards */}
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -388,22 +406,24 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               
               {/* Card 1 */}
-              <div className="flex flex-col justify-between rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-7 sm:p-8 shadow-xl">
+              <div className="group flex flex-col justify-between rounded-2xl bg-white/10 hover:bg-white/[0.12] backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/40 p-7 sm:p-8 transition-all duration-300 hover:border-t-[#F2A900]">
                 <div>
-                  <Quote className="w-10 h-10 text-[#F2A900]/30 mb-4" />
+                  <Quote className="w-10 h-10 text-[#F2A900] mb-4 opacity-80 group-hover:scale-110 transition-transform" />
                   <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
                     {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-[#F2A900] text-[#F2A900]" />
                     ))}
                   </div>
-                  <p className="text-sm sm:text-base text-slate-200 italic leading-relaxed mb-6 font-serif">
+                  <p className="text-sm sm:text-base text-slate-100 italic leading-relaxed mb-6 font-serif">
                     "{testimonials[activeTestimonial].quote}"
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#F2A900] to-amber-600 text-[#061224] font-extrabold text-sm flex items-center justify-center border-2 border-white/20 shadow-sm shrink-0">
-                    {testimonials[activeTestimonial].initials}
+                  <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#F2A900] to-amber-400 shrink-0">
+                    <div className="w-11 h-11 rounded-full bg-[#061224] text-white font-extrabold text-sm flex items-center justify-center">
+                      {testimonials[activeTestimonial].initials}
+                    </div>
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white leading-snug">{testimonials[activeTestimonial].name}</h4>
@@ -413,22 +433,24 @@ export default function HomePage() {
               </div>
 
               {/* Card 2 */}
-              <div className="flex flex-col justify-between rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-7 sm:p-8 shadow-xl">
+              <div className="group flex flex-col justify-between rounded-2xl bg-white/10 hover:bg-white/[0.12] backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/40 p-7 sm:p-8 transition-all duration-300 hover:border-t-[#F2A900]">
                 <div>
-                  <Quote className="w-10 h-10 text-[#F2A900]/30 mb-4" />
+                  <Quote className="w-10 h-10 text-[#F2A900] mb-4 opacity-80 group-hover:scale-110 transition-transform" />
                   <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
                     {Array.from({ length: testimonials[(activeTestimonial + 1) % testimonials.length].rating }).map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-[#F2A900] text-[#F2A900]" />
                     ))}
                   </div>
-                  <p className="text-sm sm:text-base text-slate-200 italic leading-relaxed mb-6 font-serif">
+                  <p className="text-sm sm:text-base text-slate-100 italic leading-relaxed mb-6 font-serif">
                     "{testimonials[(activeTestimonial + 1) % testimonials.length].quote}"
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                  <div className="w-11 h-11 rounded-full bg-gradient-to-br from-[#F2A900] to-amber-600 text-[#061224] font-extrabold text-sm flex items-center justify-center border-2 border-white/20 shadow-sm shrink-0">
-                    {testimonials[(activeTestimonial + 1) % testimonials.length].initials}
+                  <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#F2A900] to-amber-400 shrink-0">
+                    <div className="w-11 h-11 rounded-full bg-[#061224] text-white font-extrabold text-sm flex items-center justify-center">
+                      {testimonials[(activeTestimonial + 1) % testimonials.length].initials}
+                    </div>
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white leading-snug">{testimonials[(activeTestimonial + 1) % testimonials.length].name}</h4>
@@ -443,7 +465,7 @@ export default function HomePage() {
             <div className="flex justify-center items-center mt-8 gap-4">
               <button
                 onClick={() => setActiveTestimonial((prev) => (prev - 2 + testimonials.length) % testimonials.length)}
-                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors duration-150 cursor-pointer"
+                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Previous testimonials"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -465,7 +487,7 @@ export default function HomePage() {
 
               <button
                 onClick={() => setActiveTestimonial((prev) => (prev + 2) % testimonials.length)}
-                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors duration-150 cursor-pointer"
+                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Next testimonials"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -476,7 +498,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. OUR IMPACT STATS (ANIMATED COUNT-UP ON SCROLL) */}
+      {/* 4. "BY THE NUMBERS" (ELEVATED BENTO STAT STRIP WITH GRADIENT NUMERALS) */}
       <section className="py-20 md:py-24 bg-white border-b border-slate-200 relative dot-grid">
         <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10">
           
@@ -489,13 +511,14 @@ export default function HomePage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-200 py-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             
-            <div className="py-8 md:py-0 md:px-8 text-center flex flex-col items-center">
-              <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-4 shadow-xs">
-                <Users className="w-5 h-5 text-[#F2A900]" />
+            {/* Bento Card 1 */}
+            <div className="group rounded-3xl border border-slate-200/90 bg-white shadow-lg p-8 text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#F2A900] flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                <Users className="w-6 h-6 text-[#F2A900]" />
               </div>
-              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#061224] block mb-2 tabular-nums">
+              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#061224] via-indigo-900 to-[#F2A900] block mb-2 tabular-nums">
                 <AnimatedCounter target={5000} suffix="+" />
               </span>
               <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
@@ -503,11 +526,12 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="py-8 md:py-0 md:px-8 text-center flex flex-col items-center">
-              <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-4 shadow-xs">
-                <School className="w-5 h-5 text-[#F2A900]" />
+            {/* Bento Card 2 */}
+            <div className="group rounded-3xl border border-slate-200/90 bg-white shadow-lg p-8 text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#F2A900] flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                <School className="w-6 h-6 text-[#F2A900]" />
               </div>
-              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#061224] block mb-2 tabular-nums">
+              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#061224] via-indigo-900 to-[#F2A900] block mb-2 tabular-nums">
                 <AnimatedCounter target={100} suffix="+" />
               </span>
               <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
@@ -515,11 +539,12 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="py-8 md:py-0 md:px-8 text-center flex flex-col items-center">
-              <div className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] mb-4 shadow-xs">
-                <Award className="w-5 h-5 text-[#F2A900]" />
+            {/* Bento Card 3 */}
+            <div className="group rounded-3xl border border-slate-200/90 bg-white shadow-lg p-8 text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#F2A900] flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
+                <Award className="w-6 h-6 text-[#F2A900]" />
               </div>
-              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight text-[#061224] block mb-2 tabular-nums">
+              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#061224] via-indigo-900 to-[#F2A900] block mb-2 tabular-nums">
                 <AnimatedCounter target={20} suffix="+" />
               </span>
               <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
@@ -532,9 +557,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. VIDEO STORY SECTION (POLISHED FRAME + SCROLL REVEAL) */}
-      <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200">
-        <div className="container mx-auto px-6 md:px-8 max-w-4xl text-center">
+      {/* 5. VIDEO STORY SECTION (CINEMATIC BACKLIGHT BLEED + BEZEL-LESS DARK GLASS FRAME) */}
+      <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200 relative">
+        <div className="container mx-auto px-6 md:px-8 max-w-4xl text-center relative z-10">
           
           <div className="mb-10 max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
@@ -548,24 +573,29 @@ export default function HomePage() {
             </p>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1.0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.35, ease: "easeOut" }}
-            className="rounded-3xl p-3 bg-slate-100 border border-slate-200/90 shadow-xl shadow-slate-900/5 overflow-hidden"
-          >
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube-nocookie.com/embed/rYv-GtnQ4Do?si=ZJ9VLflTLnT6IxjD"
-                title="Watch IINSPARK Transform Learning"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </motion.div>
+          <div className="relative">
+            {/* Cinematic Backlight Bleed Glow */}
+            <div aria-hidden="true" className="absolute -inset-4 blur-3xl opacity-30 bg-gradient-to-r from-blue-600 to-amber-500 rounded-full pointer-events-none" />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              whileInView={{ opacity: 1, scale: 1.0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
+              className="relative rounded-3xl border border-slate-800/80 shadow-2xl bg-slate-950 overflow-hidden"
+            >
+              <div className="relative aspect-video w-full">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube-nocookie.com/embed/rYv-GtnQ4Do?si=ZJ9VLflTLnT6IxjD"
+                  title="Watch IINSPARK Transform Learning"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </motion.div>
+          </div>
 
           <div className="mt-8">
             <Link
@@ -580,7 +610,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. CTA SECTION ("READY TO TRANSFORM LEARNING?") */}
+      {/* 6. CALL TO ACTION (CTA) BANNER SECTION (LAYERED IMAGE + RADIANT GOLD BUTTON) */}
       <section className="py-20 md:py-28 bg-white">
         <div className="container mx-auto px-6 md:px-8 max-w-6xl">
           
@@ -601,7 +631,7 @@ export default function HomePage() {
                 <div className="pt-4">
                   <Link
                     href="/products"
-                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-[#F2A900] hover:bg-amber-400 text-[#061224] font-bold text-sm sm:text-base tracking-wide shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F2A900] to-amber-400 text-[#061224] font-bold text-sm sm:text-base tracking-wide shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
                   >
                     <span>Explore All Programs</span>
                     <ArrowRight className="w-4 h-4 text-[#061224]" />
@@ -609,10 +639,10 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Carousel / Mini Preview Panel */}
+              {/* Layered Image Preview Showcase */}
               <div className="lg:col-span-5 relative w-full">
                 <div
-                  className="relative rounded-2xl overflow-hidden border border-white/20 h-64 sm:h-72 bg-slate-950 shadow-lg"
+                  className="relative rounded-2xl overflow-hidden border border-white/20 h-64 sm:h-72 bg-slate-950 shadow-xl group"
                   onMouseEnter={() => setIsHoveringCarousel(true)}
                   onMouseLeave={() => setIsHoveringCarousel(false)}
                 >
@@ -624,7 +654,7 @@ export default function HomePage() {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.35, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       alt={carouselImages[activeSlide].title}
                       onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                     />
@@ -633,11 +663,11 @@ export default function HomePage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent pointer-events-none" />
 
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
-                    <div>
+                    <div className="bg-slate-950/80 backdrop-blur-md p-2.5 rounded-xl border border-white/10 max-w-[220px]">
                       <span className="text-[10px] font-bold uppercase tracking-wider text-[#F2A900] block mb-0.5">
                         {carouselImages[activeSlide].description}
                       </span>
-                      <h3 className="text-base font-bold text-white">
+                      <h3 className="text-xs font-bold text-white">
                         {carouselImages[activeSlide].title}
                       </h3>
                     </div>
