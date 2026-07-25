@@ -192,15 +192,10 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-slate-50 overflow-hidden text-slate-900">
+    <div className="flex flex-col min-h-screen bg-[#faf9f5] overflow-hidden text-[#1b1c1a]">
       
-      {/* 1. HERO SECTION (AMBIENT GLOWS + FLUID TYPOGRAPHY + 3D GLASS VIDEO FRAME) */}
-      <section className="relative w-full pt-28 pb-20 md:pt-36 md:pb-32 bg-white border-b border-slate-200/80 overflow-hidden dot-grid">
-        
-        {/* Ambient Radial Glowing Blobs */}
-        <div aria-hidden="true" className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-[#061224]/10 blur-3xl pointer-events-none -z-0" />
-        <div aria-hidden="true" className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-[#F2A900]/15 blur-3xl pointer-events-none -z-0" />
-
+      {/* 1. HERO SECTION (WARM CREAM CANVAS + TAILORED SERIF TYPOGRAPHY + 16PX ELEVATED VIDEO CONTAINER) */}
+      <section className="relative w-full pt-28 pb-24 md:pt-36 md:pb-32 bg-[#faf9f5] border-b border-[#0a192f]/10 overflow-hidden">
         <div className="container px-6 md:px-8 mx-auto max-w-7xl relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
@@ -211,28 +206,27 @@ export default function HomePage() {
               animate="visible"
               className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-7"
             >
-              {/* Frosted Glassmorphic Badge with Pulsing Dot */}
+              {/* Architectural Eyebrow Badge */}
               <motion.div variants={heroItemVariants}>
                 <Link
                   href="/summer-camp"
-                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/5 backdrop-blur-md border border-slate-900/10 text-slate-800 text-xs font-semibold hover:border-[#061224]/30 transition-all duration-200 shadow-xs"
+                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-lg bg-white border border-[#0a192f]/10 text-[#0a192f] text-xs font-bold uppercase tracking-[0.1em] hover:border-[#c5a059] transition-all duration-200 shadow-xs"
                 >
                   <span className="relative flex h-2 w-2 shrink-0">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#F2A900] opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#F2A900]"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c5a059]"></span>
                   </span>
                   <span>Summer Camp 2026 &middot; Enrolling Now</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                  <ChevronRight className="w-3.5 h-3.5 text-[#c5a059]" />
                 </Link>
               </motion.div>
 
-              {/* Fluid Responsive Headline */}
+              {/* Majestic Serif Headline */}
               <motion.h1 
                 variants={heroItemVariants}
-                className="font-serif tracking-tight leading-[1.04] text-[#061224] text-[clamp(2.25rem,5vw+1rem,4.5rem)]"
+                className="font-serif tracking-[-0.02em] leading-[1.04] text-[#0a192f] text-[clamp(2.25rem,5vw+1rem,4.5rem)] font-normal"
               >
                 Igniting Young Minds, <br />
-                <span className="italic font-normal bg-gradient-to-r from-[#061224] via-indigo-950 to-[#F2A900] bg-clip-text text-transparent">
+                <span className="italic text-[#0a192f]">
                   Inspiring Leaders
                 </span>
               </motion.h1>
@@ -240,33 +234,33 @@ export default function HomePage() {
               {/* Subtitle */}
               <motion.p
                 variants={heroItemVariants}
-                className="text-base sm:text-lg md:text-xl text-slate-600 font-normal max-w-[640px] leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-[#44474d] font-normal max-w-[640px] leading-relaxed"
               >
-                Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-slate-900">IINSPARK</strong> offers meticulously curated educational experiences designed to nurture confident creators.
+                Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-[#1b1c1a]">IINSPARK</strong> offers meticulously curated educational experiences designed to nurture confident creators.
               </motion.p>
 
-              {/* CTA Button with Shimmer & Scale Hover */}
+              {/* Architectural 8px Primary CTA Button */}
               <motion.div variants={heroItemVariants} className="pt-2">
                 <Link
                   href="/products"
-                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-[#061224] via-[#0b1e3b] to-[#061224] text-white font-semibold text-sm sm:text-base tracking-wide border border-white/20 shadow-xl shadow-slate-900/10 hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer overflow-hidden shimmer-btn"
+                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#0a192f] text-white font-medium text-sm sm:text-base tracking-wide shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-0.5 hover:bg-[#112240] hover:shadow-md transition-all duration-200 cursor-pointer overflow-hidden"
                 >
                   <span className="relative z-10">Explore Programs</span>
-                  <ArrowRight className="w-4 h-4 text-[#F2A900] relative z-10 group-hover:translate-x-1 transition-transform duration-200" />
+                  <ArrowRight className="w-4 h-4 text-[#c5a059] relative z-10 group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
               </motion.div>
             </motion.div>
 
-            {/* Right Video Widget Bezel-Less Glass Panel */}
+            {/* Right Video Container (16px radius, Soft Tonal Elevation) */}
             <div className="lg:col-span-5 relative w-full max-w-lg lg:max-w-none mx-auto">
-              <div className="rounded-3xl p-1.5 bg-slate-900/5 backdrop-blur-xl border border-slate-900/10 shadow-2xl shadow-indigo-500/10 overflow-hidden group">
-                <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
+              <div className="rounded-2xl p-2 bg-white border border-[#0a192f]/10 shadow-[0_4px_20px_rgba(10,25,47,0.04)] overflow-hidden group">
+                <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-xl overflow-hidden bg-[#0a192f] shadow-inner">
                   <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
                     <source src="/hello.mp4" type="video/mp4" />
                   </video>
-                  {/* Floating Glassmorphic Tag */}
-                  <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1.5 rounded-full bg-slate-950/75 backdrop-blur-md text-white text-[11px] font-semibold border border-white/15 shadow-md flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#F2A900] animate-pulse" />
+                  {/* Floating Tag */}
+                  <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1.5 rounded-md bg-[#0a192f]/90 text-white text-[11px] font-semibold border border-[#c5a059]/30 shadow-md flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#c5a059]" />
                     <span>Interactive Experience</span>
                   </div>
                 </div>
@@ -277,91 +271,87 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. CURRICULUM OVERVIEW ("OUR PROGRAMS" SPOTLIGHT BENTO GRID) */}
-      <section className="py-20 md:py-28 bg-slate-50/80 border-b border-slate-200/80">
-        <div className="container mx-auto px-6 md:px-8 max-w-7xl">
+      {/* 2. CURRICULUM OVERVIEW ("OUR PROGRAMS" SPOTLIGHT GRID) */}
+      <section className="py-32 bg-[#faf9f5] border-b border-[#0a192f]/10">
+        <div className="container mx-auto px-8 max-w-[1280px]">
           
           <div className="mb-14 max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
               Curriculum Overview
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif text-[#0a192f] tracking-[-0.02em]">
               Our Programs
             </h2>
-            <p className="text-slate-600 text-base mt-2 leading-relaxed">
+            <p className="text-[#44474d] text-base mt-2 leading-relaxed">
               Meticulously designed educational programs to ignite curiosity, foster creativity, and empower young minds through hands-on learning.
             </p>
           </div>
 
           {/* Spotlight Card Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             
             {offerings.map((offering) => {
               const CategoryIcon = offering.icon;
               return (
                 <div
                   key={offering.title}
-                  className="group flex flex-col justify-between h-full rounded-2xl bg-white border border-slate-200/90 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-300 overflow-hidden"
+                  className="group flex flex-col justify-between h-full rounded-lg bg-white border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(10,25,47,0.08)] transition-all duration-300 overflow-hidden"
                 >
-                  {/* Image Showcase Container */}
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden shrink-0 bg-slate-100">
+                  {/* Flush Image Top */}
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden shrink-0 bg-[#faf9f5]">
                     <img
                       src={offering.image}
                       alt={offering.title}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/40 via-transparent to-transparent pointer-events-none" />
                     
                     {offering.featured ? (
-                      <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[#061224] text-white text-[11px] font-bold uppercase tracking-wider shadow-md border border-white/10">
+                      <span className="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-sm bg-[#0a192f] text-white text-[11px] font-bold uppercase tracking-wider shadow-sm border border-[#c5a059]/40">
                         Featured Program
                       </span>
                     ) : (
-                      <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-xs border border-slate-200 flex items-center justify-center text-[#061224] shadow-xs">
-                        <CategoryIcon className="w-4 h-4" />
+                      <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-sm bg-white/95 border border-[#0a192f]/10 flex items-center justify-center text-[#0a192f] shadow-xs">
+                        <CategoryIcon className="w-4 h-4 text-[#0a192f]" />
                       </div>
                     )}
                   </div>
                   
                   {/* Card Content Block */}
-                  <div className="p-6 flex flex-col justify-between flex-1">
+                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
                     <div>
-                      <h3 className="text-xl font-bold font-heading text-slate-900 mb-1">
+                      <h3 className="text-xl font-serif text-[#0a192f] mb-1">
                         {offering.title}
                       </h3>
-                      <p className="text-xs text-slate-500 font-medium mb-5 line-clamp-2">
+                      <p className="text-xs text-[#44474d] font-normal mb-5 line-clamp-2 leading-relaxed">
                         {offering.description}
                       </p>
 
-                      {/* Color-Tinted Feature Badges */}
+                      {/* 4px Rounded Earthy Feature Badges */}
                       <div className="flex flex-wrap gap-1.5 mb-6 align-items-center">
                         {offering.features.map((feature, i) => (
                           <span
                             key={i}
-                            className={clsx(
-                              "inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-md border",
-                              offering.badgeStyle
-                            )}
+                            className="inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-sm bg-[#e2ece9] text-[#2d5a52] border border-[#2d5a52]/10"
                           >
-                            <CheckCircle className="w-3 h-3 mr-1.5 shrink-0" />
+                            <CheckCircle className="w-3 h-3 mr-1.5 shrink-0 text-[#2d5a52]" />
                             {feature}
                           </span>
                         ))}
                       </div>
                     </div>
 
-                    {/* Bottom PDF Download Action Bar */}
-                    <div className="pt-4 border-t border-slate-100 mt-auto flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Brochure</span>
+                    {/* Bottom PDF Download Bar */}
+                    <div className="pt-4 border-t border-[#0a192f]/5 mt-auto flex items-center justify-between">
+                      <span className="text-[11px] font-bold text-[#44474d] uppercase tracking-wider">Brochure</span>
                       <a
                         href={offering.pdf}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-1.5 rounded-lg bg-slate-100 hover:bg-[#061224] text-[#061224] hover:text-white transition-colors duration-200 shadow-2xs group/btn"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-1.5 rounded-lg bg-[#faf9f5] border border-[#0a192f]/10 hover:bg-[#0a192f] text-[#0a192f] hover:text-white transition-colors duration-200 shadow-2xs group/btn"
                       >
                         <span>Download Syllabus PDF</span>
-                        <Download className="w-3.5 h-3.5 text-[#F2A900] group-hover/btn:scale-110 transition-transform" />
+                        <Download className="w-3.5 h-3.5 text-[#c5a059] group-hover/btn:scale-110 transition-transform" />
                       </a>
                     </div>
                   </div>
@@ -374,22 +364,18 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. COMMUNITY VOICES (TESTIMONIALS SECTION WITH FROSTED GLASS & GRADIENT RING AVATARS) */}
-      <section className="w-full py-20 md:py-28 bg-[#061224] text-white relative overflow-hidden">
-        
-        {/* Abstract Geometric Texture Overlay */}
-        <div aria-hidden="true" className="absolute inset-0 opacity-10 bg-[radial-gradient(#F2A900_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
-
-        <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-7xl">
+      {/* 3. COMMUNITY VOICES (DEEP NAVY STORYTELLING SECTION WITH SERIF QUOTES) */}
+      <section className="w-full py-32 bg-[#0a192f] text-white relative overflow-hidden">
+        <div className="container mx-auto px-8 relative z-10 max-w-[1280px]">
           
           <div className="text-center mb-14 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#F2A900] block mb-2">
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
               Community Voices
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-[-0.02em]">
               Loved by Parents, Trusted by Schools
             </h2>
-            <p className="text-slate-300 text-base mt-2 leading-relaxed">
+            <p className="text-slate-300 text-base mt-2 leading-relaxed font-sans">
               Hear what our community has to say about their transformative learning experiences with IINSPARK.
             </p>
           </div>
@@ -403,27 +389,25 @@ export default function HomePage() {
             onMouseEnter={() => setIsHoveringTestimonials(true)}
             onMouseLeave={() => setIsHoveringTestimonials(false)}
           >
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* Card 1 */}
-              <div className="group flex flex-col justify-between rounded-2xl bg-white/10 hover:bg-white/[0.12] backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/40 p-7 sm:p-8 transition-all duration-300 hover:border-t-[#F2A900]">
+              <div className="group flex flex-col justify-between rounded-lg bg-[#112240] border border-[#c5a059]/20 p-7 sm:p-8 shadow-xl transition-all duration-300">
                 <div>
-                  <Quote className="w-10 h-10 text-[#F2A900] mb-4 opacity-80 group-hover:scale-110 transition-transform" />
-                  <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
+                  <Quote className="w-9 h-9 text-[#c5a059] mb-4 opacity-90" />
+                  <div className="flex items-center gap-1 mb-3 text-[#c5a059]">
                     {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#F2A900] text-[#F2A900]" />
+                      <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
                     ))}
                   </div>
-                  <p className="text-sm sm:text-base text-slate-100 italic leading-relaxed mb-6 font-serif">
+                  <p className="text-[22px] text-slate-100 italic leading-relaxed mb-6 font-serif">
                     "{testimonials[activeTestimonial].quote}"
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                  <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#F2A900] to-amber-400 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-[#061224] text-white font-extrabold text-sm flex items-center justify-center">
-                      {testimonials[activeTestimonial].initials}
-                    </div>
+                  <div className="w-10 h-10 rounded-full bg-[#0a192f] border border-[#c5a059] text-white font-bold text-xs flex items-center justify-center shrink-0">
+                    {testimonials[activeTestimonial].initials}
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white leading-snug">{testimonials[activeTestimonial].name}</h4>
@@ -433,24 +417,22 @@ export default function HomePage() {
               </div>
 
               {/* Card 2 */}
-              <div className="group flex flex-col justify-between rounded-2xl bg-white/10 hover:bg-white/[0.12] backdrop-blur-2xl border border-white/20 shadow-2xl shadow-black/40 p-7 sm:p-8 transition-all duration-300 hover:border-t-[#F2A900]">
+              <div className="group flex flex-col justify-between rounded-lg bg-[#112240] border border-[#c5a059]/20 p-7 sm:p-8 shadow-xl transition-all duration-300">
                 <div>
-                  <Quote className="w-10 h-10 text-[#F2A900] mb-4 opacity-80 group-hover:scale-110 transition-transform" />
-                  <div className="flex items-center gap-1 mb-3 text-[#F2A900]">
+                  <Quote className="w-9 h-9 text-[#c5a059] mb-4 opacity-90" />
+                  <div className="flex items-center gap-1 mb-3 text-[#c5a059]">
                     {Array.from({ length: testimonials[(activeTestimonial + 1) % testimonials.length].rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#F2A900] text-[#F2A900]" />
+                      <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
                     ))}
                   </div>
-                  <p className="text-sm sm:text-base text-slate-100 italic leading-relaxed mb-6 font-serif">
+                  <p className="text-[22px] text-slate-100 italic leading-relaxed mb-6 font-serif">
                     "{testimonials[(activeTestimonial + 1) % testimonials.length].quote}"
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                  <div className="p-[2px] rounded-full bg-gradient-to-tr from-[#F2A900] to-amber-400 shrink-0">
-                    <div className="w-11 h-11 rounded-full bg-[#061224] text-white font-extrabold text-sm flex items-center justify-center">
-                      {testimonials[(activeTestimonial + 1) % testimonials.length].initials}
-                    </div>
+                  <div className="w-10 h-10 rounded-full bg-[#0a192f] border border-[#c5a059] text-white font-bold text-xs flex items-center justify-center shrink-0">
+                    {testimonials[(activeTestimonial + 1) % testimonials.length].initials}
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white leading-snug">{testimonials[(activeTestimonial + 1) % testimonials.length].name}</h4>
@@ -465,7 +447,7 @@ export default function HomePage() {
             <div className="flex justify-center items-center mt-8 gap-4">
               <button
                 onClick={() => setActiveTestimonial((prev) => (prev - 2 + testimonials.length) % testimonials.length)}
-                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-2 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Previous testimonials"
               >
                 <ChevronLeft className="w-4 h-4" />
@@ -477,8 +459,8 @@ export default function HomePage() {
                     key={index}
                     onClick={() => setActiveTestimonial(index * 2)}
                     className={clsx(
-                      "h-1.5 rounded-full transition-all duration-200 cursor-pointer",
-                      Math.floor(activeTestimonial / 2) === index ? "w-6 bg-[#F2A900]" : "w-1.5 bg-white/30"
+                      "h-1.5 rounded-sm transition-all duration-200 cursor-pointer",
+                      Math.floor(activeTestimonial / 2) === index ? "w-6 bg-[#c5a059]" : "w-1.5 bg-white/30"
                     )}
                     aria-label={`Go to slide ${index + 1}`}
                   />
@@ -487,7 +469,7 @@ export default function HomePage() {
 
               <button
                 onClick={() => setActiveTestimonial((prev) => (prev + 2) % testimonials.length)}
-                className="p-2 rounded-full border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
+                className="p-2 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
                 aria-label="Next testimonials"
               >
                 <ChevronRight className="w-4 h-4" />
@@ -498,56 +480,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. "BY THE NUMBERS" (ELEVATED BENTO STAT STRIP WITH GRADIENT NUMERALS) */}
-      <section className="py-20 md:py-24 bg-white border-b border-slate-200 relative dot-grid">
-        <div className="container mx-auto px-6 md:px-8 max-w-6xl relative z-10">
+      {/* 4. "BY THE NUMBERS" (AUTHORITATIVE SERIF DATA PRESENTATION) */}
+      <section className="py-32 bg-[#faf9f5] border-b border-[#0a192f]/10 relative">
+        <div className="container mx-auto px-8 max-w-[1280px] relative z-10">
           
           <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-1">
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-1">
               By The Numbers
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif text-[#0a192f] tracking-[-0.02em]">
               Our Impact Across India
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Bento Card 1 */}
-            <div className="group rounded-3xl border border-slate-200/90 bg-white shadow-lg p-8 text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#F2A900] flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                <Users className="w-6 h-6 text-[#F2A900]" />
+            {/* Card 1 */}
+            <div className="group rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-8 text-center flex flex-col items-center hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] flex items-center justify-center mb-4 shadow-xs">
+                <Users className="w-6 h-6 text-[#c5a059]" />
               </div>
-              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#061224] via-indigo-900 to-[#F2A900] block mb-2 tabular-nums">
+              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-2 tabular-nums">
                 <AnimatedCounter target={5000} suffix="+" />
               </span>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#44474d]">
                 Students Impacted
               </p>
             </div>
 
-            {/* Bento Card 2 */}
-            <div className="group rounded-3xl border border-slate-200/90 bg-white shadow-lg p-8 text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#F2A900] flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                <School className="w-6 h-6 text-[#F2A900]" />
+            {/* Card 2 */}
+            <div className="group rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-8 text-center flex flex-col items-center hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] flex items-center justify-center mb-4 shadow-xs">
+                <School className="w-6 h-6 text-[#c5a059]" />
               </div>
-              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#061224] via-indigo-900 to-[#F2A900] block mb-2 tabular-nums">
+              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-2 tabular-nums">
                 <AnimatedCounter target={100} suffix="+" />
               </span>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#44474d]">
                 Schools Partnered
               </p>
             </div>
 
-            {/* Bento Card 3 */}
-            <div className="group rounded-3xl border border-slate-200/90 bg-white shadow-lg p-8 text-center flex flex-col items-center hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-[#F2A900] flex items-center justify-center mb-4 shadow-xs group-hover:scale-110 transition-transform">
-                <Award className="w-6 h-6 text-[#F2A900]" />
+            {/* Card 3 */}
+            <div className="group rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-8 text-center flex flex-col items-center hover:-translate-y-1 transition-all duration-300">
+              <div className="w-12 h-12 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] flex items-center justify-center mb-4 shadow-xs">
+                <Award className="w-6 h-6 text-[#c5a059]" />
               </div>
-              <span className="text-5xl sm:text-6xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[#061224] via-indigo-900 to-[#F2A900] block mb-2 tabular-nums">
+              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-2 tabular-nums">
                 <AnimatedCounter target={20} suffix="+" />
               </span>
-              <p className="text-xs font-bold uppercase tracking-wider text-slate-600">
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#44474d]">
                 Collaborations
               </p>
             </div>
@@ -557,34 +539,31 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. VIDEO STORY SECTION (CINEMATIC BACKLIGHT BLEED + BEZEL-LESS DARK GLASS FRAME) */}
-      <section className="py-20 md:py-28 bg-slate-50 border-b border-slate-200 relative">
-        <div className="container mx-auto px-6 md:px-8 max-w-4xl text-center relative z-10">
+      {/* 5. VIDEO STORY SECTION */}
+      <section className="py-32 bg-[#faf9f5] border-b border-[#0a192f]/10 relative">
+        <div className="container mx-auto px-8 max-w-4xl text-center relative z-10">
           
           <div className="mb-10 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-2">
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
               Video Story
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-serif text-[#0a192f] tracking-[-0.02em]">
               Watch Us Transform Learning
             </h2>
-            <p className="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+            <p className="text-[#44474d] text-sm sm:text-base mt-2 leading-relaxed">
               See firsthand how IINSPARK is revolutionizing classrooms and empowering students through experiential education.
             </p>
           </div>
 
           <div className="relative">
-            {/* Cinematic Backlight Bleed Glow */}
-            <div aria-hidden="true" className="absolute -inset-4 blur-3xl opacity-30 bg-gradient-to-r from-blue-600 to-amber-500 rounded-full pointer-events-none" />
-
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1.0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative rounded-3xl border border-slate-800/80 shadow-2xl bg-slate-950 overflow-hidden"
+              className="relative rounded-2xl border border-[#0a192f]/10 shadow-[0_4px_20px_rgba(10,25,47,0.04)] bg-white p-2 overflow-hidden"
             >
-              <div className="relative aspect-video w-full">
+              <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-[#0a192f]">
                 <iframe
                   className="w-full h-full"
                   src="https://www.youtube-nocookie.com/embed/rYv-GtnQ4Do?si=ZJ9VLflTLnT6IxjD"
@@ -600,41 +579,41 @@ export default function HomePage() {
           <div className="mt-8">
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
+              className="inline-flex items-center gap-2 text-xs font-bold text-[#0a192f] hover:text-[#c5a059] transition-colors duration-150 uppercase tracking-wider"
             >
               <span>Explore All Programs</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#F2A900]" />
+              <ArrowRight className="w-3.5 h-3.5 text-[#c5a059]" />
             </Link>
           </div>
 
         </div>
       </section>
 
-      {/* 6. CALL TO ACTION (CTA) BANNER SECTION (LAYERED IMAGE + RADIANT GOLD BUTTON) */}
-      <section className="py-20 md:py-28 bg-white">
-        <div className="container mx-auto px-6 md:px-8 max-w-6xl">
+      {/* 6. CALL TO ACTION (CTA) BANNER SECTION */}
+      <section className="py-32 bg-[#faf9f5]">
+        <div className="container mx-auto px-8 max-w-[1280px]">
           
-          <div className="bg-gradient-to-br from-[#061224] via-[#0a1b36] to-[#061224] rounded-3xl p-8 sm:p-12 text-white border border-white/10 shadow-2xl relative overflow-hidden">
+          <div className="bg-[#0a192f] rounded-2xl p-8 sm:p-12 text-white border border-[#c5a059]/20 shadow-[0_8px_30px_rgba(10,25,47,0.08)] relative overflow-hidden">
             
             <div className="grid lg:grid-cols-12 gap-8 items-center relative z-10">
               
               <div className="lg:col-span-7 space-y-4">
-                <span className="text-xs font-bold uppercase tracking-wider text-[#F2A900] block">
+                <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block">
                   Get Started Today
                 </span>
-                <h2 className="text-3xl sm:text-4xl font-bold font-heading text-white tracking-tight leading-tight">
+                <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-[-0.02em] leading-tight">
                   Ready to Transform Learning?
                 </h2>
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl font-sans">
                   Discover our world-class educational kits, state-of-the-art innovation labs, and seasonal bootcamps.
                 </p>
                 <div className="pt-4">
                   <Link
                     href="/products"
-                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#F2A900] to-amber-400 text-[#061224] font-bold text-sm sm:text-base tracking-wide shadow-lg shadow-amber-500/20 hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-white text-[#0a192f] font-medium text-sm sm:text-base tracking-wide shadow-md hover:bg-[#faf9f5] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
                   >
                     <span>Explore All Programs</span>
-                    <ArrowRight className="w-4 h-4 text-[#061224]" />
+                    <ArrowRight className="w-4 h-4 text-[#c5a059]" />
                   </Link>
                 </div>
               </div>
@@ -642,7 +621,7 @@ export default function HomePage() {
               {/* Layered Image Preview Showcase */}
               <div className="lg:col-span-5 relative w-full">
                 <div
-                  className="relative rounded-2xl overflow-hidden border border-white/20 h-64 sm:h-72 bg-slate-950 shadow-xl group"
+                  className="relative rounded-2xl overflow-hidden border border-white/20 h-64 sm:h-72 bg-[#112240] shadow-xl group"
                   onMouseEnter={() => setIsHoveringCarousel(true)}
                   onMouseLeave={() => setIsHoveringCarousel(false)}
                 >
@@ -660,29 +639,29 @@ export default function HomePage() {
                     />
                   </AnimatePresence>
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/90 via-transparent to-transparent pointer-events-none" />
 
                   <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
-                    <div className="bg-slate-950/80 backdrop-blur-md p-2.5 rounded-xl border border-white/10 max-w-[220px]">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#F2A900] block mb-0.5">
+                    <div className="bg-[#0a192f]/90 backdrop-blur-md p-2.5 rounded-lg border border-white/10 max-w-[220px]">
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#c5a059] block mb-0.5">
                         {carouselImages[activeSlide].description}
                       </span>
-                      <h3 className="text-xs font-bold text-white">
+                      <h3 className="text-xs font-serif font-bold text-white">
                         {carouselImages[activeSlide].title}
                       </h3>
                     </div>
 
-                    <div className="flex items-center gap-1.5 bg-slate-950/70 backdrop-blur-sm border border-white/20 rounded-full p-1">
+                    <div className="flex items-center gap-1.5 bg-[#0a192f]/80 backdrop-blur-sm border border-white/20 rounded-lg p-1">
                       <button
                         onClick={() => setActiveSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
-                        className="p-1 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
+                        className="p-1 rounded-sm text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
                         aria-label="Previous slide"
                       >
                         <ChevronLeft className="w-3.5 h-3.5" />
                       </button>
                       <button
                         onClick={() => setActiveSlide((prev) => (prev + 1) % carouselImages.length)}
-                        className="p-1 rounded-full text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
+                        className="p-1 rounded-sm text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
                         aria-label="Next slide"
                       >
                         <ChevronRight className="w-3.5 h-3.5" />

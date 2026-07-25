@@ -93,27 +93,24 @@ export default function SummerCampPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dot-grid overflow-hidden pb-20">
+    <div className="min-h-screen bg-[#faf9f5] overflow-hidden pb-32">
       
       {/* Hero Section */}
-      <section className="relative pt-24 pb-32 flex items-center justify-center bg-gradient-to-br from-brand-navy via-[#0f172a] to-brand-navy">
-        <div className="absolute inset-0 z-0 dot-grid-light opacity-20" />
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/20 rounded-full blur-[100px]" />
-        
-        <div className="container relative z-10 px-4 md:px-6 text-center">
+      <section className="relative pt-24 pb-32 flex items-center justify-center bg-[#0a192f] border-b border-[#c5a059]/20">
+        <div className="container relative z-10 px-8 text-center max-w-[1280px]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto"
           >
-            <div className="inline-flex items-center gap-2 rounded-full glass-panel-dark px-4 py-2 text-sm font-medium text-white mb-8 border border-white/20">
-              <Sun className="h-4 w-4 text-amber-400" />
+            <div className="inline-flex items-center gap-2 rounded-sm bg-[#faf9f5]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] mb-8 border border-[#c5a059]/30">
+              <Sun className="h-4 w-4 text-[#c5a059]" />
               <span>Summer 2026 · Limited Seats</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold font-heading text-white mb-6 leading-[1.05]">
-              Summer <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">Camp</span>
+            <h1 className="text-5xl md:text-7xl font-serif text-white mb-6 leading-[1.05] tracking-[-0.02em]">
+              Summer <span className="text-[#c5a059]">Camp</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-300 font-light max-w-2xl mx-auto mb-10">
@@ -121,11 +118,10 @@ export default function SummerCampPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#register" className="relative overflow-hidden group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-full font-bold transition-all shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2">
-                <span className="relative z-10 flex items-center gap-2">Register Now <ArrowRight className="w-5 h-5" /></span>
-                <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+              <a href="#register" className="w-full sm:w-auto px-8 py-4 bg-[#0a192f] hover:bg-[#112240] text-white border border-[#c5a059]/40 rounded-lg font-medium transition-all shadow-sm flex items-center justify-center gap-2">
+                <span className="flex items-center gap-2">Register Now <ArrowRight className="w-5 h-5 text-[#c5a059]" /></span>
               </a>
-              <a href="#programs" className="w-full sm:w-auto px-8 py-4 glass-panel-dark hover:bg-white/10 text-white rounded-full font-semibold transition-all flex items-center justify-center">
+              <a href="#programs" className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white rounded-lg font-medium transition-all flex items-center justify-center">
                 Explore Programs
               </a>
             </div>
@@ -134,11 +130,12 @@ export default function SummerCampPage() {
       </section>
 
       {/* Programs Section */}
-      <section id="programs" className="py-24 bg-white relative">
-        <div className="container px-4 md:px-6 mx-auto">
+      <section id="programs" className="py-32 bg-[#faf9f5] relative">
+        <div className="container px-8 mx-auto max-w-[1280px]">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-4">Three Camps. One Mission.</h2>
-            <p className="text-lg text-slate-600">Choose the perfect program for your child.</p>
+            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">Our Offerings</span>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#0a192f] mb-4">Three Camps. One Mission.</h2>
+            <p className="text-lg text-[#44474d]">Choose the perfect program for your child.</p>
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -149,21 +146,20 @@ export default function SummerCampPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className={clsx("rounded-2xl border border-slate-100 p-8 shadow-lg hover:shadow-[0_8px_40px_rgba(242,169,0,0.18)] hover:border-brand-blue/30 transition-all duration-300 relative overflow-hidden", camp.bgLight)}
+                className="rounded-lg bg-white border border-[#0a192f]/5 p-8 shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(10,25,47,0.08)] transition-all duration-300 relative flex flex-col h-full"
               >
-                <div className={clsx("absolute top-0 left-0 w-full h-2 bg-gradient-to-r", camp.color)} />
-                <div className={clsx("w-14 h-14 rounded-2xl flex items-center justify-center text-white mb-6 shadow-md bg-gradient-to-br", camp.color)}>
-                  <camp.icon className="w-7 h-7" />
+                <div className="w-14 h-14 rounded-lg flex items-center justify-center text-[#0a192f] mb-6 bg-[#f7f3e8] border border-[#c5a059]/30">
+                  <camp.icon className="w-7 h-7 text-[#c5a059]" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-2 font-heading">{camp.name}</h3>
-                <p className="text-sm font-bold uppercase tracking-wider text-slate-500 mb-4">{camp.tagline}</p>
-                <div className="inline-block px-3 py-1 bg-white rounded-full text-xs font-bold text-slate-700 shadow-sm mb-4">
+                <h3 className="text-2xl font-serif text-[#0a192f] mb-2">{camp.name}</h3>
+                <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] mb-4">{camp.tagline}</p>
+                <div className="inline-block px-3 py-1 bg-[#faf9f5] rounded-sm text-xs font-bold text-[#0a192f] border border-[#0a192f]/10 mb-4 self-start">
                   {camp.grades}
                 </div>
-                <p className="text-slate-600 mb-8">{camp.description}</p>
+                <p className="text-[#44474d] text-sm mb-8 leading-relaxed">{camp.description}</p>
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {camp.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-white/60 border border-white rounded-full text-xs font-semibold text-slate-700">
+                    <span key={tag} className="px-2.5 py-1 bg-[#e2ece9] rounded-sm text-xs font-semibold text-[#2d5a52]">
                       {tag}
                     </span>
                   ))}
@@ -175,17 +171,18 @@ export default function SummerCampPage() {
       </section>
 
       {/* Why Us */}
-      <section className="py-20 bg-slate-50 dot-grid">
-        <div className="container mx-auto px-4 md:px-6 text-center max-w-5xl">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading text-slate-900 mb-12">Why Choose IINSPARK?</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+      <section className="py-32 bg-white border-y border-[#0a192f]/10">
+        <div className="container mx-auto px-8 text-center max-w-[1280px]">
+          <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">Excellence in Education</span>
+          <h2 className="text-3xl md:text-4xl font-serif text-[#0a192f] mb-12">Why Choose IINSPARK?</h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {whyUs.map((item, idx) => (
-              <div key={idx} className="bg-gradient-to-b from-slate-50 to-white border-none p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 rounded-xl bg-brand-blue/10 flex items-center justify-center mx-auto mb-4 text-brand-blue">
-                  <item.icon className="w-6 h-6" />
+              <div key={idx} className="bg-[#faf9f5] border border-[#0a192f]/5 p-6 rounded-lg shadow-sm text-center">
+                <div className="w-12 h-12 rounded-lg bg-white border border-[#c5a059]/30 flex items-center justify-center mx-auto mb-4 text-[#c5a059]">
+                  <item.icon className="w-6 h-6 text-[#c5a059]" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-sm text-slate-600">{item.desc}</p>
+                <h3 className="font-serif font-bold text-[#0a192f] mb-2">{item.title}</h3>
+                <p className="text-xs text-[#44474d] leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -193,8 +190,8 @@ export default function SummerCampPage() {
       </section>
 
       {/* Registration Form */}
-      <section id="register" className="py-24">
-        <div className="container mx-auto px-4 md:px-6">
+      <section id="register" className="py-32">
+        <div className="container mx-auto px-8 max-w-[1280px]">
           <div className="max-w-4xl mx-auto">
             <AnimatePresence mode="wait">
               {isSuccess ? (
@@ -202,18 +199,18 @@ export default function SummerCampPage() {
                   key="success"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="bg-gradient-to-b from-slate-50 to-white border-none rounded-2xl p-12 text-center shadow-xl"
+                  className="bg-white border border-[#0a192f]/5 rounded-lg p-12 text-center shadow-[0_4px_20px_rgba(10,25,47,0.04)]"
                 >
-                  <div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <CheckCircle2 className="w-12 h-12 text-emerald-600" />
+                  <div className="w-24 h-24 bg-[#e2ece9] rounded-full flex items-center justify-center mx-auto mb-6">
+                    <CheckCircle2 className="w-12 h-12 text-[#2d5a52]" />
                   </div>
-                  <h2 className="text-3xl font-bold font-heading text-slate-900 mb-4">You're All Set!</h2>
-                  <p className="text-lg text-slate-600 mb-8 max-w-lg mx-auto">
+                  <h2 className="text-3xl font-serif text-[#0a192f] mb-4">You're All Set!</h2>
+                  <p className="text-base text-[#44474d] mb-8 max-w-lg mx-auto">
                     Registration successful! We have received your details and will contact you shortly with confirmation and schedule details.
                   </p>
                   <button 
                     onClick={() => setIsSuccess(false)}
-                    className="px-8 py-3 bg-brand-navy text-white rounded-full font-semibold hover:bg-brand-blue transition-colors"
+                    className="px-8 py-3 bg-[#0a192f] text-white rounded-lg font-medium hover:bg-[#112240] transition-colors shadow-sm"
                   >
                     Register Another Child
                   </button>
@@ -223,13 +220,12 @@ export default function SummerCampPage() {
                   key="form"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="bg-gradient-to-b from-slate-50 to-white border-none rounded-2xl shadow-xl overflow-hidden"
+                  className="bg-white border border-[#0a192f]/5 rounded-lg shadow-[0_4px_20px_rgba(10,25,47,0.04)] overflow-hidden"
                 >
-                  <div className="bg-gradient-to-r from-brand-navy to-brand-blue p-8 md:p-12 text-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('/images/placeholder.svg')] opacity-10 bg-cover bg-center" />
+                  <div className="bg-[#0a192f] p-8 md:p-12 text-center relative overflow-hidden border-b border-[#c5a059]/20">
                     <div className="relative z-10">
-                      <h2 className="text-3xl md:text-4xl font-bold font-heading text-white mb-2">Registration Form</h2>
-                      <p className="text-brand-light font-medium">Secure your child's spot today.</p>
+                      <h2 className="text-3xl md:text-4xl font-serif text-white mb-2">Registration Form</h2>
+                      <p className="text-[#c5a059] font-medium text-sm">Secure your child's spot today.</p>
                     </div>
                   </div>
 
@@ -237,33 +233,33 @@ export default function SummerCampPage() {
                     
                     {/* Parent Details */}
                     <div className="space-y-6">
-                      <h3 className="text-sm font-bold text-brand-blue uppercase tracking-wider border-b border-slate-100 pb-2">Parent / Guardian</h3>
+                      <h3 className="text-xs font-bold text-[#c5a059] uppercase tracking-[0.1em] border-b border-[#0a192f]/5 pb-2">Parent / Guardian</h3>
                       <div className="grid md:grid-cols-2 gap-6">
                         <div>
-                          <label className="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
-                          <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all" placeholder="e.g. Priya Sharma" />
+                          <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2">Full Name *</label>
+                          <input required type="text" className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#0a192f] transition-all" placeholder="e.g. Priya Sharma" />
                         </div>
                         <div>
-                          <label className="block text-sm font-semibold text-slate-700 mb-2">Location *</label>
-                          <input required type="text" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all" placeholder="e.g. Pune" />
+                          <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2">Location *</label>
+                          <input required type="text" className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#0a192f] transition-all" placeholder="e.g. Pune" />
                         </div>
                         <div>
-                          <label className="block text-sm font-semibold text-slate-700 mb-2">Email *</label>
-                          <input required type="email" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all" placeholder="you@example.com" />
+                          <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2">Email *</label>
+                          <input required type="email" className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#0a192f] transition-all" placeholder="you@example.com" />
                         </div>
                         <div>
-                          <label className="block text-sm font-semibold text-slate-700 mb-2">Phone *</label>
-                          <input required type="tel" className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all" placeholder="+91 98765 43210" />
+                          <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2">Phone *</label>
+                          <input required type="tel" className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#0a192f] transition-all" placeholder="+91 98765 43210" />
                         </div>
                       </div>
                     </div>
 
                     {/* Centre Selection */}
                     <div className="space-y-6">
-                      <h3 className="text-sm font-bold text-brand-blue uppercase tracking-wider border-b border-slate-100 pb-2">Preferred Centre</h3>
+                      <h3 className="text-xs font-bold text-[#c5a059] uppercase tracking-[0.1em] border-b border-[#0a192f]/5 pb-2">Preferred Centre</h3>
                       <div>
-                        <label className="block text-sm font-semibold text-slate-700 mb-2">Camp Centre *</label>
-                        <select required value={selectedCentre} onChange={(e) => { setSelectedCentre(e.target.value); setSelectedBatch(""); }} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all cursor-pointer">
+                        <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2">Camp Centre *</label>
+                        <select required value={selectedCentre} onChange={(e) => { setSelectedCentre(e.target.value); setSelectedBatch(""); }} className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#0a192f] transition-all cursor-pointer">
                           <option value="">Select a centre...</option>
                           {campCentres.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                         </select>
@@ -273,14 +269,14 @@ export default function SummerCampPage() {
                         {activeCentre && (
                           <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="space-y-4">
                             <div>
-                              <label className="block text-sm font-semibold text-slate-700 mb-2">Preferred Batch *</label>
-                              <select required value={selectedBatch} onChange={(e) => setSelectedBatch(e.target.value)} className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all cursor-pointer">
+                              <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2">Preferred Batch *</label>
+                              <select required value={selectedBatch} onChange={(e) => setSelectedBatch(e.target.value)} className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-3 text-sm focus:outline-none focus:border-[#0a192f] transition-all cursor-pointer">
                                 <option value="">Select dates...</option>
                                 {activeCentre.batches.map(b => <option key={b} value={b}>{b}</option>)}
                               </select>
                             </div>
-                            <div className="p-4 bg-brand-blue/5 border border-brand-blue/20 rounded-xl flex items-start gap-3 text-brand-navy">
-                              <Info className="w-5 h-5 shrink-0 mt-0.5" />
+                            <div className="p-4 bg-[#faf9f5] border border-[#0a192f]/10 rounded-lg flex items-start gap-3 text-[#0a192f]">
+                              <Info className="w-5 h-5 shrink-0 mt-0.5 text-[#c5a059]" />
                               <span className="text-sm"><span className="font-bold">Available grades:</span> {activeCentre.grades}</span>
                             </div>
                           </motion.div>
@@ -290,11 +286,11 @@ export default function SummerCampPage() {
 
                     {/* Children Details */}
                     <div className="space-y-6">
-                      <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                        <h3 className="text-sm font-bold text-brand-blue uppercase tracking-wider">Children</h3>
+                      <div className="flex items-center justify-between border-b border-[#0a192f]/5 pb-2">
+                        <h3 className="text-xs font-bold text-[#c5a059] uppercase tracking-[0.1em]">Children</h3>
                         <div className="flex items-center gap-2">
-                          <label className="text-sm font-semibold text-slate-700">Count:</label>
-                          <select value={numChildren} onChange={handleNumChildrenChange} className="bg-slate-50 border border-slate-200 rounded-lg px-2 py-1 focus:outline-none text-sm font-bold cursor-pointer">
+                          <label className="text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a]">Count:</label>
+                          <select value={numChildren} onChange={handleNumChildrenChange} className="bg-white border border-[#0a192f]/10 rounded-sm px-2 py-1 focus:outline-none text-sm font-bold cursor-pointer">
                             {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
                           </select>
                         </div>
@@ -302,13 +298,13 @@ export default function SummerCampPage() {
 
                       <div className="space-y-4">
                         {childrenDetails.map((child, idx) => (
-                          <div key={idx} className="flex gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl items-center">
-                            <div className="w-8 h-8 rounded-full bg-brand-navy text-white font-bold flex items-center justify-center shrink-0">{idx + 1}</div>
+                          <div key={idx} className="flex gap-4 p-4 bg-[#faf9f5] border border-[#0a192f]/5 rounded-lg items-center">
+                            <div className="w-8 h-8 rounded-lg bg-[#0a192f] text-white font-bold flex items-center justify-center shrink-0">{idx + 1}</div>
                             <div className="flex-1">
-                              <input required type="text" placeholder="Child's name" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-blue text-sm" value={child.name} onChange={(e) => { const d = [...childrenDetails]; d[idx].name = e.target.value; setChildrenDetails(d); }} />
+                              <input required type="text" placeholder="Child's name" className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-3 py-2 focus:outline-none focus:border-[#0a192f] text-sm" value={child.name} onChange={(e) => { const d = [...childrenDetails]; d[idx].name = e.target.value; setChildrenDetails(d); }} />
                             </div>
                             <div className="w-24 shrink-0">
-                              <input required type="number" min="3" max="18" placeholder="Age" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2 focus:outline-none focus:border-brand-blue text-sm" value={child.age} onChange={(e) => { const d = [...childrenDetails]; d[idx].age = e.target.value; setChildrenDetails(d); }} />
+                              <input required type="number" min="3" max="18" placeholder="Age" className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-3 py-2 focus:outline-none focus:border-[#0a192f] text-sm" value={child.age} onChange={(e) => { const d = [...childrenDetails]; d[idx].age = e.target.value; setChildrenDetails(d); }} />
                             </div>
                           </div>
                         ))}
@@ -316,12 +312,11 @@ export default function SummerCampPage() {
                     </div>
 
                     {/* Submit */}
-                    <div className="pt-6 border-t border-slate-100">
-                      <button type="submit" disabled={isPending} className="relative overflow-hidden group w-full md:w-auto px-8 py-4 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-500 hover:to-orange-600 text-white rounded-full font-bold transition-all shadow-lg hover:shadow-orange-500/25 flex items-center justify-center gap-2 mx-auto disabled:opacity-70 disabled:cursor-not-allowed">
-                        <span className="relative z-10 flex items-center justify-center gap-2">
-                          {isPending ? <><Loader2 className="w-5 h-5 animate-spin" /> Processing...</> : <><Send className="w-5 h-5" /> Complete Registration</>}
+                    <div className="pt-6 border-t border-[#0a192f]/5">
+                      <button type="submit" disabled={isPending} className="w-full md:w-auto px-8 py-4 bg-[#0a192f] hover:bg-[#112240] text-white rounded-lg font-medium transition-all shadow-sm flex items-center justify-center gap-2 mx-auto disabled:opacity-70 disabled:cursor-not-allowed">
+                        <span className="flex items-center justify-center gap-2">
+                          {isPending ? <><Loader2 className="w-5 h-5 animate-spin text-[#c5a059]" /> Processing...</> : <><Send className="w-5 h-5 text-[#c5a059]" /> Complete Registration</>}
                         </span>
-                        <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
                       </button>
                     </div>
 

@@ -134,35 +134,35 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 pb-24">
+    <div className="min-h-screen bg-[#faf9f5] text-[#1b1c1a] pb-32">
       
       {/* Hero Section */}
-      <section className="pt-16 pb-16 md:pt-20 md:pb-20 bg-slate-50 border-b border-slate-200 text-center px-6">
+      <section className="pt-24 pb-20 md:pt-32 md:pb-24 bg-[#faf9f5] border-b border-[#0a192f]/10 text-center px-8">
         <div className="max-w-4xl mx-auto">
-          <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block mb-3">
+          <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-3">
             We're Here to Help
           </span>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold font-heading text-[#061224] mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif text-[#0a192f] mb-6 tracking-[-0.02em]">
             Get in Touch
           </h1>
           
-          <p className="text-base sm:text-lg text-slate-600 font-normal max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#44474d] font-normal max-w-3xl mx-auto leading-relaxed">
             Ready to transform your child's learning journey? We're here to answer questions, discuss options, and help you get started.
           </p>
         </div>
       </section>
 
       {/* Main Form & Cards Grid */}
-      <section className="container mx-auto px-6 md:px-8 mt-12 md:mt-16">
+      <section className="container mx-auto px-8 mt-32 max-w-[1280px]">
         <div className="grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto items-start">
           
           {/* Contact Form */}
-          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 md:p-10 border border-slate-200">
+          <div className="lg:col-span-7 bg-white rounded-lg p-6 sm:p-8 md:p-10 border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)]">
             
             <div className="mb-8">
-              <h2 className="text-2xl sm:text-3xl font-bold font-heading text-[#061224] mb-2">Let's Start a Conversation</h2>
-              <p className="text-slate-500 text-sm">Fill out the form below and our team will get back to you within 24 hours.</p>
+              <h2 className="text-2xl sm:text-3xl font-serif text-[#0a192f] mb-2">Let's Start a Conversation</h2>
+              <p className="text-[#44474d] text-sm">Fill out the form below and our team will get back to you within 24 hours.</p>
             </div>
 
             {/* Success Alert */}
@@ -172,12 +172,12 @@ export default function ContactPage() {
                   initial={{ opacity: 0, height: 0, marginBottom: 0 }}
                   animate={{ opacity: 1, height: "auto", marginBottom: 24 }}
                   exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                  className="bg-emerald-50 text-emerald-800 p-4 rounded-xl border border-emerald-200 flex gap-3 items-start overflow-hidden text-xs sm:text-sm font-medium"
+                  className="bg-[#e2ece9] text-[#2d5a52] p-4 rounded-lg border border-[#2d5a52]/20 flex gap-3 items-start overflow-hidden text-xs sm:text-sm font-medium"
                 >
-                  <CheckCircle2 className="w-5 h-5 text-[#10B981] shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-5 h-5 text-[#2d5a52] shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold">Thank you for reaching out!</p>
-                    <p className="text-emerald-700">We have received your message and will get back to you shortly.</p>
+                    <p className="text-[#2d5a52]/90">We have received your message and will get back to you shortly.</p>
                   </div>
                 </motion.div>
               )}
@@ -190,9 +190,9 @@ export default function ContactPage() {
                   initial={{ opacity: 0, height: 0, marginBottom: 0 }}
                   animate={{ opacity: 1, height: "auto", marginBottom: 24 }}
                   exit={{ opacity: 0, height: 0, marginBottom: 0 }}
-                  className="bg-rose-50 text-rose-800 p-4 rounded-xl border border-rose-200 flex gap-3 items-start overflow-hidden text-xs sm:text-sm font-medium"
+                  className="bg-[#f5e9e2] text-[#8c4a32] p-4 rounded-lg border border-[#8c4a32]/20 flex gap-3 items-start overflow-hidden text-xs sm:text-sm font-medium"
                 >
-                  <AlertCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+                  <AlertCircle className="w-5 h-5 text-[#8c4a32] shrink-0 mt-0.5" />
                   <p>{submitError}</p>
                 </motion.div>
               )}
@@ -203,25 +203,25 @@ export default function ContactPage() {
                 
                 {/* First Name */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
-                    <User className="w-3.5 h-3.5 text-slate-500" />
-                    First Name <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2 flex items-center gap-1.5">
+                    <User className="w-3.5 h-3.5 text-[#c5a059]" />
+                    First Name <span className="text-[#8c4a32]">*</span>
                   </label>
                   <input 
                     {...register("firstName")}
                     type="text" 
                     placeholder="John" 
                     className={clsx(
-                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none",
+                      "w-full bg-white border rounded-lg px-4 py-2.5 text-[#1b1c1a] text-sm transition-colors duration-150 ease-out focus:outline-none",
                       errors.firstName
-                        ? "border-rose-400 focus:border-rose-500"
+                        ? "border-[#8c4a32] focus:border-[#8c4a32]"
                         : isSubmitted && !errors.firstName && getValues("firstName")
-                        ? "border-emerald-400 focus:border-emerald-500"
-                        : "border-slate-200 focus:border-[#061224]"
+                        ? "border-[#2d5a52] focus:border-[#2d5a52]"
+                        : "border-[#0a192f]/10 focus:border-[#0a192f]"
                     )}
                   />
                   {errors.firstName && (
-                    <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-[#8c4a32] mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" /> {errors.firstName.message}
                     </p>
                   )}
@@ -229,25 +229,25 @@ export default function ContactPage() {
 
                 {/* Last Name */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
-                    <User className="w-3.5 h-3.5 text-slate-500" />
-                    Last Name <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2 flex items-center gap-1.5">
+                    <User className="w-3.5 h-3.5 text-[#c5a059]" />
+                    Last Name <span className="text-[#8c4a32]">*</span>
                   </label>
                   <input 
                     {...register("lastName")}
                     type="text" 
                     placeholder="Doe" 
                     className={clsx(
-                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none",
+                      "w-full bg-white border rounded-lg px-4 py-2.5 text-[#1b1c1a] text-sm transition-colors duration-150 ease-out focus:outline-none",
                       errors.lastName
-                        ? "border-rose-400 focus:border-rose-500"
+                        ? "border-[#8c4a32] focus:border-[#8c4a32]"
                         : isSubmitted && !errors.lastName && getValues("lastName")
-                        ? "border-emerald-400 focus:border-emerald-500"
-                        : "border-slate-200 focus:border-[#061224]"
+                        ? "border-[#2d5a52] focus:border-[#2d5a52]"
+                        : "border-[#0a192f]/10 focus:border-[#0a192f]"
                     )}
                   />
                   {errors.lastName && (
-                    <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-[#8c4a32] mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" /> {errors.lastName.message}
                     </p>
                   )}
@@ -255,25 +255,25 @@ export default function ContactPage() {
 
                 {/* Email Address */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
-                    <Mail className="w-3.5 h-3.5 text-slate-500" />
-                    Email Address <span className="text-rose-500">*</span>
+                  <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2 flex items-center gap-1.5">
+                    <Mail className="w-3.5 h-3.5 text-[#c5a059]" />
+                    Email Address <span className="text-[#8c4a32]">*</span>
                   </label>
                   <input 
                     {...register("email")}
                     type="email" 
                     placeholder="john@example.com" 
                     className={clsx(
-                      "w-full bg-white border rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none",
+                      "w-full bg-white border rounded-lg px-4 py-2.5 text-[#1b1c1a] text-sm transition-colors duration-150 ease-out focus:outline-none",
                       errors.email
-                        ? "border-rose-400 focus:border-rose-500"
+                        ? "border-[#8c4a32] focus:border-[#8c4a32]"
                         : isSubmitted && !errors.email && getValues("email")
-                        ? "border-emerald-400 focus:border-emerald-500"
-                        : "border-slate-200 focus:border-[#061224]"
+                        ? "border-[#2d5a52] focus:border-[#2d5a52]"
+                        : "border-[#0a192f]/10 focus:border-[#0a192f]"
                     )}
                   />
                   {errors.email && (
-                    <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
+                    <p className="text-xs text-[#8c4a32] mt-1 flex items-center gap-1">
                       <AlertCircle className="w-3 h-3" /> {errors.email.message}
                     </p>
                   )}
@@ -281,35 +281,35 @@ export default function ContactPage() {
 
                 {/* Phone Number */}
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
-                    <Phone className="w-3.5 h-3.5 text-slate-500" />
+                  <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2 flex items-center gap-1.5">
+                    <Phone className="w-3.5 h-3.5 text-[#c5a059]" />
                     Phone Number
                   </label>
                   <input 
                     {...register("phone")}
                     type="tel" 
                     placeholder="+91 98765 43210" 
-                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none focus:border-[#061224]"
+                    className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-2.5 text-[#1b1c1a] text-sm transition-colors duration-150 ease-out focus:outline-none focus:border-[#0a192f]"
                   />
                 </div>
               </div>
 
               {/* User Type */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
-                  <UserCheck className="w-3.5 h-3.5 text-slate-500" />
-                  I am a <span className="text-rose-500">*</span>
+                <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2 flex items-center gap-1.5">
+                  <UserCheck className="w-3.5 h-3.5 text-[#c5a059]" />
+                  I am a <span className="text-[#8c4a32]">*</span>
                 </label>
                 <div className="relative">
                   <select 
                     {...register("userType")}
                     className={clsx(
-                      "w-full bg-white border rounded-lg pl-4 pr-10 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none appearance-none cursor-pointer",
+                      "w-full bg-white border rounded-lg pl-4 pr-10 py-2.5 text-[#1b1c1a] text-sm transition-colors duration-150 ease-out focus:outline-none appearance-none cursor-pointer",
                       errors.userType
-                        ? "border-rose-400 focus:border-rose-500"
+                        ? "border-[#8c4a32] focus:border-[#8c4a32]"
                         : isSubmitted && !errors.userType && getValues("userType")
-                        ? "border-emerald-400 focus:border-emerald-500"
-                        : "border-slate-200 focus:border-[#061224]"
+                        ? "border-[#2d5a52] focus:border-[#2d5a52]"
+                        : "border-[#0a192f]/10 focus:border-[#0a192f]"
                     )}
                   >
                     <option value="">Select user category</option>
@@ -319,10 +319,10 @@ export default function ContactPage() {
                     <option value="school">School Representative</option>
                     <option value="other">Other</option>
                   </select>
-                  <ChevronDown className="w-4 h-4 text-slate-400 pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
+                  <ChevronDown className="w-4 h-4 text-[#44474d] pointer-events-none absolute right-3.5 top-1/2 -translate-y-1/2" />
                 </div>
                 {errors.userType && (
-                  <p className="text-xs text-rose-500 mt-1 flex items-center gap-1">
+                  <p className="text-xs text-[#8c4a32] mt-1 flex items-center gap-1">
                     <AlertCircle className="w-3 h-3" /> {errors.userType.message}
                   </p>
                 )}
@@ -330,8 +330,8 @@ export default function ContactPage() {
 
               {/* Message */}
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-2 flex items-center gap-1.5">
-                  <MessageSquare className="w-3.5 h-3.5 text-slate-500" />
+                <label className="block text-xs font-bold uppercase tracking-[0.1em] text-[#1b1c1a] mb-2 flex items-center gap-1.5">
+                  <MessageSquare className="w-3.5 h-3.5 text-[#c5a059]" />
                   Message
                 </label>
                 <div>
@@ -340,9 +340,9 @@ export default function ContactPage() {
                     rows={4} 
                     maxLength={500}
                     placeholder="Tell us how we can help you..." 
-                    className="w-full bg-white border border-slate-200 rounded-lg px-4 py-2.5 text-slate-900 text-sm transition-colors duration-150 ease-out focus:outline-none focus:border-[#061224] resize-none"
+                    className="w-full bg-white border border-[#0a192f]/10 rounded-lg px-4 py-2.5 text-[#1b1c1a] text-sm transition-colors duration-150 ease-out focus:outline-none focus:border-[#0a192f] resize-none"
                   />
-                  <div className="flex justify-between items-center mt-1 text-[11px] text-slate-400 px-1">
+                  <div className="flex justify-between items-center mt-1 text-[11px] text-[#44474d] px-1">
                     <span>Max 500 characters</span>
                     <span>{messageLength} / 500</span>
                   </div>
@@ -354,26 +354,26 @@ export default function ContactPage() {
                 <input
                   type="checkbox"
                   {...register("newsletter")}
-                  className="w-4 h-4 rounded border-slate-300 text-[#061224] focus:ring-[#061224]"
+                  className="w-4 h-4 rounded-sm border-[#0a192f]/20 text-[#0a192f] focus:ring-[#0a192f]"
                 />
-                <span className="text-xs text-slate-600">
+                <span className="text-xs text-[#44474d]">
                   Subscribe to our newsletter for program updates and educational resources
                 </span>
               </label>
 
-              {/* Submit Button (1.02x scale on hover) */}
+              {/* Architectural 8px Primary Submit Button */}
               <button 
                 type="submit" 
                 disabled={isSubmitting} 
-                className="w-full px-7 py-3.5 bg-[#061224] hover:bg-slate-900 text-white rounded-full font-semibold text-sm transition-transform duration-200 ease-out hover:scale-[1.02] active:scale-[0.98] shadow-sm flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
+                className="w-full px-7 py-3.5 bg-[#0a192f] hover:bg-[#112240] text-white rounded-lg font-medium text-sm transition-all duration-200 ease-out hover:-translate-y-0.5 shadow-sm flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
               >
                 {isSubmitting ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" /> Sending...
+                    <Loader2 className="w-4 h-4 animate-spin text-[#c5a059]" /> Sending...
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4 text-[#F2A900]" /> Send Message
+                    <Send className="w-4 h-4 text-[#c5a059]" /> Send Message
                   </>
                 )}
               </button>
@@ -390,22 +390,22 @@ export default function ContactPage() {
                   href={card.href} 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="block bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-400 transition-colors duration-200"
+                  className="block bg-white rounded-lg p-6 border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:border-[#c5a059]/40 transition-all duration-200"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-[#061224] shrink-0">
-                      <card.icon className="w-5 h-5" />
+                    <div className="w-10 h-10 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 flex items-center justify-center text-[#0a192f] shrink-0">
+                      <card.icon className="w-5 h-5 text-[#c5a059]" />
                     </div>
                     <div>
-                      <h3 className="text-lg font-bold font-heading text-[#061224] mb-0.5">
+                      <h3 className="text-lg font-serif text-[#0a192f] mb-0.5">
                         {card.title}
                       </h3>
-                      <p className="text-xs text-slate-500 mb-1">{card.subtitle}</p>
-                      <p className="text-slate-800 font-semibold text-sm mb-2">{card.content}</p>
+                      <p className="text-xs text-[#44474d] mb-1">{card.subtitle}</p>
+                      <p className="text-[#1b1c1a] font-semibold text-sm mb-2">{card.content}</p>
                       
-                      <span className="inline-flex items-center gap-1 text-[#061224] text-xs font-bold hover:text-[#F2A900] transition-colors duration-150">
+                      <span className="inline-flex items-center gap-1 text-[#0a192f] text-xs font-bold hover:text-[#c5a059] transition-colors duration-150">
                         <span>{card.action}</span>
-                        <ArrowRight className="w-3.5 h-3.5 text-[#F2A900]" />
+                        <ArrowRight className="w-3.5 h-3.5 text-[#c5a059]" />
                       </span>
                     </div>
                   </div>
@@ -414,10 +414,10 @@ export default function ContactPage() {
             </div>
 
             {/* Connect Card */}
-            <div className="bg-[#061224] rounded-2xl p-6 text-white">
+            <div className="bg-[#0a192f] rounded-lg p-6 text-white border border-[#c5a059]/20 shadow-[0_4px_20px_rgba(10,25,47,0.04)]">
               <div className="flex items-center gap-2.5 mb-3">
-                <Heart className="w-5 h-5 text-[#F2A900]" />
-                <h3 className="text-xl font-bold font-heading text-white">Connect With Us</h3>
+                <Heart className="w-5 h-5 text-[#c5a059]" />
+                <h3 className="text-xl font-serif text-white">Connect With Us</h3>
               </div>
               
               <p className="text-slate-300 text-xs mb-6 leading-relaxed">
@@ -429,7 +429,7 @@ export default function ContactPage() {
                   href="https://www.instagram.com/iin_spark" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
+                  className="w-9 h-9 rounded-lg border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#c5a059] hover:border-[#c5a059] hover:text-[#0a192f]"
                   aria-label="Instagram"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -440,7 +440,7 @@ export default function ContactPage() {
                   href="https://www.facebook.com/share/18YLRmC2Gp/" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
+                  className="w-9 h-9 rounded-lg border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#c5a059] hover:border-[#c5a059] hover:text-[#0a192f]"
                   aria-label="Facebook"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -451,7 +451,7 @@ export default function ContactPage() {
                   href="https://in.linkedin.com/company/teamiinspark" 
                   target="_blank" 
                   rel="noreferrer" 
-                  className="w-9 h-9 rounded-full border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#F2A900] hover:border-[#F2A900] hover:text-[#061224]"
+                  className="w-9 h-9 rounded-lg border border-white/20 text-slate-300 flex items-center justify-center transition-colors duration-150 hover:bg-[#c5a059] hover:border-[#c5a059] hover:text-[#0a192f]"
                   aria-label="LinkedIn"
                 >
                   <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -465,23 +465,23 @@ export default function ContactPage() {
         </div>
 
         {/* Map & FAQs Section */}
-        <div className="mt-16 md:mt-20 grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
+        <div className="mt-32 grid lg:grid-cols-12 gap-12 max-w-7xl mx-auto">
           
           {/* Map Section */}
           <div className="lg:col-span-6 space-y-4">
             <div className="flex items-center justify-between">
-              <h2 className="text-2xl font-bold font-heading text-[#061224] flex items-center gap-2">
-                <MapPin className="w-5 h-5 text-slate-700" /> Find Us on the Map
+              <h2 className="text-2xl font-serif text-[#0a192f] flex items-center gap-2">
+                <MapPin className="w-5 h-5 text-[#c5a059]" /> Find Us on the Map
               </h2>
-              <span className="text-xs text-slate-500 font-medium flex items-center gap-1">
-                <Clock className="w-3.5 h-3.5" /> Mon - Sat: 9 AM - 6 PM
+              <span className="text-xs text-[#44474d] font-medium flex items-center gap-1">
+                <Clock className="w-3.5 h-3.5 text-[#c5a059]" /> Mon - Sat: 9 AM - 6 PM
               </span>
             </div>
 
-            <div className="rounded-2xl overflow-hidden border border-slate-200 bg-white p-2">
-              <div className="rounded-xl overflow-hidden h-[380px] relative bg-slate-100">
+            <div className="rounded-lg overflow-hidden border border-[#0a192f]/5 bg-white p-2 shadow-[0_4px_20px_rgba(10,25,47,0.04)]">
+              <div className="rounded-md overflow-hidden h-[380px] relative bg-[#faf9f5]">
                 <iframe
-                  className="w-full h-full border-0 rounded-xl"
+                  className="w-full h-full border-0 rounded-md"
                   src="https://www.google.com/maps/d/u/1/embed?mid=1yu3YCM_7EQ9evdM0ffMsN3rDUf05sWA&ehbc=2E312F&noprof=1"
                   loading="lazy"
                   allowFullScreen
@@ -489,28 +489,28 @@ export default function ContactPage() {
                   title="Google Maps Location"
                 ></iframe>
 
-                <div className="absolute bottom-3 left-3 bg-white p-3.5 rounded-xl border border-slate-200 text-slate-900 space-y-2 max-w-xs shadow-xs">
+                <div className="absolute bottom-3 left-3 bg-white p-3.5 rounded-lg border border-[#0a192f]/10 text-[#1b1c1a] space-y-2 max-w-xs shadow-md">
                   <div>
-                    <h4 className="font-bold text-xs">IINSPARK Education</h4>
-                    <p className="text-[11px] text-slate-600">Vishrantwadi, Pune, Maharashtra 411015, India</p>
+                    <h4 className="font-serif font-bold text-xs text-[#0a192f]">IINSPARK Education</h4>
+                    <p className="text-[11px] text-[#44474d]">Vishrantwadi, Pune, Maharashtra 411015, India</p>
                   </div>
                   <a
                     href="https://www.google.com/maps?q=Vishrantwadi,+Pune,+Maharashtra,+India"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#061224] hover:text-[#F2A900] transition-colors duration-150"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a192f] hover:text-[#c5a059] transition-colors duration-150"
                   >
-                    <ExternalLink className="w-3 h-3 text-[#F2A900]" /> Get Directions
+                    <ExternalLink className="w-3 h-3 text-[#c5a059]" /> Get Directions
                   </a>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* FAQs Accordion (Smooth 250ms height + opacity, rotating chevron 180°) */}
+          {/* FAQs Accordion */}
           <div className="lg:col-span-6 space-y-4">
-            <h2 className="text-2xl font-bold font-heading text-[#061224] flex items-center gap-2">
-              <MessageSquare className="w-5 h-5 text-slate-700" /> Frequently Asked Questions
+            <h2 className="text-2xl font-serif text-[#0a192f] flex items-center gap-2">
+              <MessageSquare className="w-5 h-5 text-[#c5a059]" /> Frequently Asked Questions
             </h2>
 
             <div className="space-y-3">
@@ -519,17 +519,17 @@ export default function ContactPage() {
                 return (
                   <div 
                     key={idx} 
-                    className="bg-white rounded-xl border border-slate-200 overflow-hidden"
+                    className="bg-white rounded-lg border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)] overflow-hidden"
                   >
                     <button 
                       type="button"
                       onClick={() => setOpenFaq(isOpen ? null : idx)} 
-                      className="w-full px-5 py-4 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer hover:bg-slate-50 transition-colors duration-150"
+                      className="w-full px-5 py-4 text-left flex justify-between items-center gap-4 focus:outline-none cursor-pointer hover:bg-[#faf9f5] transition-colors duration-150"
                     >
-                      <span className="font-bold text-[#061224] text-sm sm:text-base">
+                      <span className="font-serif font-bold text-[#0a192f] text-sm sm:text-base">
                         {faq.q}
                       </span>
-                      <ChevronDown className={clsx("w-4 h-4 text-slate-400 transition-transform duration-200 shrink-0", isOpen && "rotate-180")} />
+                      <ChevronDown className={clsx("w-4 h-4 text-[#c5a059] transition-transform duration-200 shrink-0", isOpen && "rotate-180")} />
                     </button>
                     
                     <AnimatePresence initial={false}>
@@ -541,7 +541,7 @@ export default function ContactPage() {
                           transition={{ duration: 0.25, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 pb-4 pt-1 text-slate-600 text-sm leading-relaxed border-t border-slate-100">
+                          <div className="px-5 pb-4 pt-1 text-[#44474d] text-sm leading-relaxed border-t border-[#0a192f]/5">
                             {faq.a}
                           </div>
                         </motion.div>

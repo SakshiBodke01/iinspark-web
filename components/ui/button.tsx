@@ -5,34 +5,34 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden group",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium ring-offset-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0a192f] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 relative overflow-hidden group cursor-pointer",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-[#002776] via-[#4169e1] to-[#5a7ce0] text-white shadow-lg hover:shadow-xl hover:scale-[1.02] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:skew-x-12",
+          "bg-[#0a192f] text-white hover:bg-[#112240] shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-0.5 hover:shadow-md transition-all duration-200",
         destructive:
-          "bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:skew-x-12",
+          "bg-[#8c4a32] text-white hover:bg-[#703b28] shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-0.5 transition-all duration-200",
         outline:
-          "border-2 border-[#002776] bg-white text-[#002776] shadow-md hover:bg-gradient-to-r hover:from-[#002776] hover:to-[#4169e1] hover:text-white hover:border-transparent hover:shadow-lg hover:scale-[1.02] before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#002776]/10 before:to-[#4169e1]/10 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
+          "border border-[#0a192f] bg-transparent text-[#0a192f] hover:bg-[#0a192f]/5 transition-colors duration-200",
         secondary:
-          "bg-gradient-to-r from-slate-100 to-slate-200 text-slate-700 shadow-md hover:shadow-lg hover:scale-[1.02] hover:from-slate-200 hover:to-slate-300 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/30 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:skew-x-12",
+          "bg-[#e2ece9] text-[#2d5a52] hover:bg-[#d0e0db] transition-colors duration-200",
         ghost:
-          "text-[#002776] hover:bg-gradient-to-r hover:from-[#002776]/10 hover:to-[#4169e1]/10 hover:text-[#002776] hover:scale-[1.02] before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#002776]/5 before:to-[#4169e1]/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-300",
-        link: "text-[#002776] underline-offset-4 hover:underline hover:text-[#4169e1] transition-colors duration-300",
+          "text-[#0a192f] hover:bg-[#0a192f]/5 hover:text-[#0a192f] transition-colors duration-200",
+        link: "text-[#0a192f] underline-offset-4 hover:underline hover:text-[#c5a059] transition-colors duration-200",
         premium:
-          "bg-gradient-to-r from-[#002776] via-[#4169e1] to-[#002776] text-white shadow-2xl hover:shadow-[0_20px_40px_rgba(0,39,118,0.4)] hover:scale-105 border border-white/20 backdrop-blur-sm before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/25 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-800 before:skew-x-12 after:absolute after:inset-0 after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.1),transparent_70%)] after:opacity-0 hover:after:opacity-100 after:transition-opacity after:duration-500",
+          "bg-[#0a192f] text-white border border-[#c5a059]/40 shadow-md hover:-translate-y-0.5 hover:shadow-lg transition-all duration-200",
         elegant:
-          "bg-white border-2 border-[#002776]/20 text-[#002776] shadow-lg hover:shadow-xl hover:scale-[1.02] hover:border-[#002776]/40 before:absolute before:inset-0 before:bg-gradient-to-r before:from-[#002776]/5 before:via-[#4169e1]/5 before:to-[#002776]/5 before:opacity-0 hover:before:opacity-100 before:transition-opacity before:duration-500 after:absolute after:inset-0 after:bg-[linear-gradient(45deg,transparent_30%,rgba(255,255,255,0.8)_50%,transparent_70%)] after:translate-x-[-100%] hover:after:translate-x-[100%] after:transition-transform after:duration-600",
+          "bg-white border border-[#0a192f]/20 text-[#0a192f] hover:border-[#0a192f]/40 hover:bg-[#faf9f5] transition-all duration-200",
         professional:
-          "bg-gradient-to-r from-slate-800 to-slate-900 text-white shadow-lg hover:shadow-xl hover:scale-[1.02] hover:from-slate-700 hover:to-slate-800 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/15 before:to-transparent before:translate-x-[-100%] hover:before:translate-x-[100%] before:transition-transform before:duration-700 before:skew-x-12",
+          "bg-[#112240] text-white hover:bg-[#0a192f] transition-all duration-200",
       },
       size: {
-        default: "h-12 px-6 py-3",
-        sm: "h-10 rounded-lg px-4 text-xs",
-        lg: "h-14 rounded-2xl px-8 text-base",
-        xl: "h-16 rounded-2xl px-12 text-lg",
-        icon: "h-12 w-12",
+        default: "h-11 px-6 py-2.5 rounded-lg",
+        sm: "h-9 rounded-lg px-4 text-xs",
+        lg: "h-12 rounded-lg px-7 text-base",
+        xl: "h-14 rounded-lg px-10 text-lg",
+        icon: "h-10 w-10 rounded-lg",
       },
     },
     defaultVariants: {
@@ -57,3 +57,4 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
+
