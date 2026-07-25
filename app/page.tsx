@@ -189,14 +189,12 @@ export default function HomePage() {
       y: 0,
       transition: { duration: 0.5, ease: "easeOut" as const },
     },
-  };
-
-  return (
+  };  return (
     <div className="flex flex-col min-h-screen bg-[#faf9f5] overflow-hidden text-[#1b1c1a]">
       
-      {/* 1. HERO SECTION (WARM CREAM CANVAS + TAILORED SERIF TYPOGRAPHY + 16PX ELEVATED VIDEO CONTAINER) */}
+      {/* 1. HERO SECTION */}
       <section className="relative w-full pt-28 pb-24 md:pt-36 md:pb-32 bg-[#faf9f5] border-b border-[#0a192f]/10 overflow-hidden">
-        <div className="container px-6 md:px-8 mx-auto max-w-7xl relative z-10">
+        <div className="container px-6 md:px-8 mx-auto max-w-[1280px] relative z-10">
           <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             
             {/* Left Content */}
@@ -206,11 +204,11 @@ export default function HomePage() {
               animate="visible"
               className="lg:col-span-7 flex flex-col items-start space-y-6 sm:space-y-7"
             >
-              {/* Architectural Eyebrow Badge */}
+              {/* Eyebrow Chip */}
               <motion.div variants={heroItemVariants}>
                 <Link
                   href="/summer-camp"
-                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-lg bg-white border border-[#0a192f]/10 text-[#0a192f] text-xs font-bold uppercase tracking-[0.1em] hover:border-[#c5a059] transition-all duration-200 shadow-xs"
+                  className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-md bg-[#faf9f5] border border-[#0a192f]/10 text-[#44474d] text-xs font-bold uppercase tracking-[0.1em] hover:border-[#c5a059] transition-all duration-200 shadow-xs"
                 >
                   <span className="relative flex h-2 w-2 shrink-0">
                     <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c5a059]"></span>
@@ -220,13 +218,14 @@ export default function HomePage() {
                 </Link>
               </motion.div>
 
-              {/* Majestic Serif Headline */}
+              {/* Headline with Gold Italic "Inspiring Leaders" */}
               <motion.h1 
                 variants={heroItemVariants}
-                className="font-serif tracking-[-0.02em] leading-[1.04] text-[#0a192f] text-[clamp(2.25rem,5vw+1rem,4.5rem)] font-normal"
+                className="font-serif tracking-[-0.02em] leading-[1.04] text-[#0a192f] text-[clamp(2.5rem,5vw+1rem,4.5rem)] font-bold"
               >
-                Igniting Young Minds, <br />
-                <span className="italic text-[#0a192f]">
+                Igniting Young <br />
+                Minds, <br />
+                <span className="italic text-[#c5a059] font-serif font-normal">
                   Inspiring Leaders
                 </span>
               </motion.h1>
@@ -234,34 +233,39 @@ export default function HomePage() {
               {/* Subtitle */}
               <motion.p
                 variants={heroItemVariants}
-                className="text-base sm:text-lg md:text-xl text-[#44474d] font-normal max-w-[640px] leading-relaxed"
+                className="text-base sm:text-lg text-[#44474d] font-normal max-w-[600px] leading-relaxed"
               >
-                Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-[#1b1c1a]">IINSPARK</strong> offers meticulously curated educational experiences designed to nurture confident creators.
+                Experience transformative learning through science, art, technology, and creativity. <strong className="font-semibold text-[#1b1c1a]">IINSPARK</strong> offers meticulously crafted educational experiences designed to nurture confident creators.
               </motion.p>
 
-              {/* Architectural 8px Primary CTA Button */}
+              {/* Primary CTA Button */}
               <motion.div variants={heroItemVariants} className="pt-2">
                 <Link
                   href="/products"
-                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#0a192f] text-white font-medium text-sm sm:text-base tracking-wide shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-0.5 hover:bg-[#112240] hover:shadow-md transition-all duration-200 cursor-pointer overflow-hidden"
+                  className="group inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-lg bg-[#0a192f] text-white font-medium text-sm sm:text-base tracking-wide shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-0.5 hover:bg-[#112240] hover:shadow-md transition-all duration-200 cursor-pointer"
                 >
-                  <span className="relative z-10">Explore Programs</span>
-                  <ArrowRight className="w-4 h-4 text-[#c5a059] relative z-10 group-hover:translate-x-1 transition-transform duration-200" />
+                  <span>Explore Programs</span>
+                  <ArrowRight className="w-4 h-4 text-[#c5a059] group-hover:translate-x-1 transition-transform duration-200" />
                 </Link>
               </motion.div>
             </motion.div>
 
-            {/* Right Video Container (16px radius, Soft Tonal Elevation) */}
+            {/* Right Hero Image Container with Floating Badge */}
             <div className="lg:col-span-5 relative w-full max-w-lg lg:max-w-none mx-auto">
-              <div className="rounded-2xl p-2 bg-white border border-[#0a192f]/10 shadow-[0_4px_20px_rgba(10,25,47,0.04)] overflow-hidden group">
-                <div className="relative w-full aspect-video sm:aspect-[4/3] rounded-xl overflow-hidden bg-[#0a192f] shadow-inner">
-                  <video className="w-full h-full object-cover" autoPlay muted loop playsInline>
-                    <source src="/hello.mp4" type="video/mp4" />
-                  </video>
-                  {/* Floating Tag */}
-                  <div className="absolute bottom-3.5 left-3.5 px-3.5 py-1.5 rounded-md bg-[#0a192f]/90 text-white text-[11px] font-semibold border border-[#c5a059]/30 shadow-md flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[#c5a059]" />
-                    <span>Interactive Experience</span>
+              <div className="rounded-2xl p-2 bg-white border border-[#0a192f]/10 shadow-[0_4px_20px_rgba(10,25,47,0.04)] overflow-hidden relative group">
+                <div className="relative w-full aspect-[4/5] sm:aspect-[4/4] rounded-xl overflow-hidden bg-[#0a192f]">
+                  <img
+                    src="/images/nation-building-v2.png"
+                    alt="Hands-on Experience"
+                    className="w-full h-full object-cover"
+                    onError={(e) => { e.currentTarget.src = "/images/SparkLab.png"; }}
+                  />
+                  
+                  {/* Floating Badge (Bottom-Left) */}
+                  <div className="absolute bottom-5 left-5 px-5 py-3 rounded-lg bg-white/95 backdrop-blur-md text-[#0a192f] border border-[#0a192f]/10 shadow-md flex flex-col">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#c5a059]">INTERACTIVE</span>
+                    <span className="text-sm font-bold font-serif text-[#0a192f] leading-tight mt-0.5">Hands-on</span>
+                    <span className="text-xs text-[#44474d] font-normal">Experience</span>
                   </div>
                 </div>
               </div>
@@ -271,113 +275,138 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. CURRICULUM OVERVIEW ("OUR PROGRAMS" SPOTLIGHT GRID) */}
+      {/* 2. CURRICULUM OVERVIEW ("OUR PROGRAMS") */}
       <section className="py-32 bg-[#faf9f5] border-b border-[#0a192f]/10">
-        <div className="container mx-auto px-8 max-w-[1280px]">
+        <div className="container mx-auto px-6 md:px-8 max-w-[1280px]">
           
-          <div className="mb-14 max-w-2xl">
-            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
-              Curriculum Overview
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-[#0a192f] tracking-[-0.02em]">
-              Our Programs
-            </h2>
-            <p className="text-[#44474d] text-base mt-2 leading-relaxed">
+          {/* Header Row: Title on Left, Description on Right */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 border-b border-[#0a192f]/5 pb-8">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
+                Curriculum Overview
+              </span>
+              <h2 className="text-4xl sm:text-5xl font-serif text-[#0a192f] tracking-[-0.02em]">
+                Our Programs
+              </h2>
+            </div>
+            <p className="text-[#44474d] text-sm sm:text-base max-w-lg leading-relaxed">
               Meticulously designed educational programs to ignite curiosity, foster creativity, and empower young minds through hands-on learning.
             </p>
           </div>
 
-          {/* Spotlight Card Grid */}
+          {/* Grid Layout: Featured Program (Double-Width) + Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
             
-            {offerings.map((offering) => {
-              const CategoryIcon = offering.icon;
-              return (
-                <div
-                  key={offering.title}
-                  className="group flex flex-col justify-between h-full rounded-lg bg-white border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(10,25,47,0.08)] transition-all duration-300 overflow-hidden"
-                >
-                  {/* Flush Image Top */}
-                  <div className="relative h-48 sm:h-52 w-full overflow-hidden shrink-0 bg-[#faf9f5]">
-                    <img
-                      src={offering.image}
-                      alt={offering.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
-                    />
-                    
-                    {offering.featured ? (
-                      <span className="absolute top-3.5 left-3.5 px-2.5 py-1 rounded-sm bg-[#0a192f] text-white text-[11px] font-bold uppercase tracking-wider shadow-sm border border-[#c5a059]/40">
-                        Featured Program
-                      </span>
-                    ) : (
-                      <div className="absolute top-3.5 right-3.5 w-9 h-9 rounded-sm bg-white/95 border border-[#0a192f]/10 flex items-center justify-center text-[#0a192f] shadow-xs">
-                        <CategoryIcon className="w-4 h-4 text-[#0a192f]" />
-                      </div>
-                    )}
-                  </div>
+            {/* Featured Card (Lab of Curiosity) - Spans 2 Columns on Desktop */}
+            <div className="lg:col-span-2 group flex flex-col md:flex-row rounded-lg bg-white border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(10,25,47,0.08)] transition-all duration-300 overflow-hidden min-h-[360px]">
+              {/* Left Image */}
+              <div className="md:w-1/2 relative min-h-[220px] md:min-h-full bg-[#faf9f5] overflow-hidden">
+                <img
+                  src="/images/TuitionPlus.png"
+                  alt="Lab of Curiosity"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
+                />
+              </div>
+
+              {/* Right Content */}
+              <div className="md:w-1/2 p-7 sm:p-8 flex flex-col justify-between">
+                <div>
+                  <span className="inline-block px-2.5 py-1 rounded-sm bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] text-[10px] font-bold uppercase tracking-wider mb-4">
+                    Featured Program
+                  </span>
+
+                  <h3 className="text-2xl font-serif text-[#0a192f] mb-2">
+                    Lab of Curiosity
+                  </h3>
                   
-                  {/* Card Content Block */}
-                  <div className="p-6 sm:p-8 flex flex-col justify-between flex-1">
-                    <div>
-                      <h3 className="text-xl font-serif text-[#0a192f] mb-1">
-                        {offering.title}
-                      </h3>
-                      <p className="text-xs text-[#44474d] font-normal mb-5 line-clamp-2 leading-relaxed">
-                        {offering.description}
-                      </p>
+                  <p className="text-xs text-[#44474d] leading-relaxed mb-6">
+                    Inquiry-based tutoring sessions designed to foster deep understanding through exploration.
+                  </p>
 
-                      {/* 4px Rounded Earthy Feature Badges */}
-                      <div className="flex flex-wrap gap-1.5 mb-6 align-items-center">
-                        {offering.features.map((feature, i) => (
-                          <span
-                            key={i}
-                            className="inline-flex items-center text-[11px] font-semibold px-2.5 py-1 rounded-sm bg-[#e2ece9] text-[#2d5a52] border border-[#2d5a52]/10"
-                          >
-                            <CheckCircle className="w-3 h-3 mr-1.5 shrink-0 text-[#2d5a52]" />
-                            {feature}
-                          </span>
-                        ))}
+                  <div className="space-y-2 mb-6">
+                    {["Personalized Learning", "Expert Mentors", "Curiosity Driven"].map((feature, i) => (
+                      <div key={i} className="flex items-center text-xs text-[#44474d]">
+                        <CheckCircle className="w-4 h-4 mr-2 text-[#2d5a52] shrink-0" />
+                        <span className="font-medium">{feature}</span>
                       </div>
-                    </div>
-
-                    {/* Bottom PDF Download Bar */}
-                    <div className="pt-4 border-t border-[#0a192f]/5 mt-auto flex items-center justify-between">
-                      <span className="text-[11px] font-bold text-[#44474d] uppercase tracking-wider">Brochure</span>
-                      <a
-                        href={offering.pdf}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-medium px-3.5 py-1.5 rounded-lg bg-[#faf9f5] border border-[#0a192f]/10 hover:bg-[#0a192f] text-[#0a192f] hover:text-white transition-colors duration-200 shadow-2xs group/btn"
-                      >
-                        <span>Download Syllabus PDF</span>
-                        <Download className="w-3.5 h-3.5 text-[#c5a059] group-hover/btn:scale-110 transition-transform" />
-                      </a>
-                    </div>
+                    ))}
                   </div>
                 </div>
-              );
-            })}
+
+                <div className="pt-4 border-t border-[#0a192f]/5 mt-auto">
+                  <a
+                    href="/pdf/LabofCuriosity.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a192f] hover:text-[#c5a059] transition-colors duration-200"
+                  >
+                    <span>Download Syllabus PDF</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#c5a059]" />
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Other Program Cards */}
+            {offerings.filter(o => !o.featured).slice(0, 5).map((offering) => (
+              <div
+                key={offering.title}
+                className="group flex flex-col justify-between rounded-lg bg-white border border-[#0a192f]/5 shadow-[0_4px_20px_rgba(10,25,47,0.04)] hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(10,25,47,0.08)] transition-all duration-300 overflow-hidden"
+              >
+                {/* Image Top */}
+                <div className="relative h-48 w-full overflow-hidden shrink-0 bg-[#faf9f5]">
+                  <img
+                    src={offering.image}
+                    alt={offering.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
+                  />
+                </div>
+                
+                {/* Content */}
+                <div className="p-6 flex flex-col justify-between flex-1">
+                  <div>
+                    <h3 className="text-xl font-serif text-[#0a192f] mb-1.5">
+                      {offering.title}
+                    </h3>
+                    <p className="text-xs text-[#44474d] font-normal mb-5 line-clamp-2 leading-relaxed">
+                      {offering.description}
+                    </p>
+                  </div>
+
+                  {/* Bottom Download Link */}
+                  <div className="pt-4 border-t border-[#0a192f]/5 mt-auto">
+                    <a
+                      href={offering.pdf}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0a192f] hover:text-[#c5a059] transition-colors duration-200"
+                    >
+                      <span>Download Syllabus PDF</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-[#c5a059]" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
 
           </div>
 
         </div>
       </section>
 
-      {/* 3. COMMUNITY VOICES (DEEP NAVY STORYTELLING SECTION WITH SERIF QUOTES) */}
+      {/* 3. COMMUNITY VOICES */}
       <section className="w-full py-32 bg-[#0a192f] text-white relative overflow-hidden">
-        <div className="container mx-auto px-8 relative z-10 max-w-[1280px]">
+        <div className="container mx-auto px-6 md:px-8 relative z-10 max-w-[1280px]">
           
           <div className="text-center mb-14 max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
               Community Voices
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-[-0.02em]">
+            <h2 className="text-4xl sm:text-5xl font-serif text-white tracking-[-0.02em]">
               Loved by Parents, Trusted by Schools
             </h2>
-            <p className="text-slate-300 text-base mt-2 leading-relaxed font-sans">
-              Hear what our community has to say about their transformative learning experiences with IINSPARK.
-            </p>
           </div>
 
           <motion.div
@@ -392,115 +421,100 @@ export default function HomePage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               
               {/* Card 1 */}
-              <div className="group flex flex-col justify-between rounded-lg bg-[#112240] border border-[#c5a059]/20 p-7 sm:p-8 shadow-xl transition-all duration-300">
+              <div className="group flex flex-col justify-between rounded-lg bg-[#112240] border border-[#c5a059]/20 p-8 shadow-xl transition-all duration-300">
                 <div>
-                  <Quote className="w-9 h-9 text-[#c5a059] mb-4 opacity-90" />
-                  <div className="flex items-center gap-1 mb-3 text-[#c5a059]">
-                    {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
-                    ))}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-1 text-[#c5a059]">
+                      {Array.from({ length: testimonials[activeTestimonial].rating }).map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
+                      ))}
+                    </div>
+                    <span className="font-serif text-4xl text-[#c5a059] leading-none">”</span>
                   </div>
-                  <p className="text-[22px] text-slate-100 italic leading-relaxed mb-6 font-serif">
+
+                  <p className="text-[20px] sm:text-[22px] text-slate-100 italic leading-relaxed mb-8 font-serif">
                     "{testimonials[activeTestimonial].quote}"
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-[#0a192f] border border-[#c5a059] text-white font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#0a192f] border border-[#c5a059] text-[#c5a059] font-serif font-bold text-xs flex items-center justify-center shrink-0">
                     {testimonials[activeTestimonial].initials}
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white leading-snug">{testimonials[activeTestimonial].name}</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">{testimonials[activeTestimonial].role} &middot; {testimonials[activeTestimonial].location}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{testimonials[activeTestimonial].role}</p>
                   </div>
                 </div>
               </div>
 
               {/* Card 2 */}
-              <div className="group flex flex-col justify-between rounded-lg bg-[#112240] border border-[#c5a059]/20 p-7 sm:p-8 shadow-xl transition-all duration-300">
+              <div className="group flex flex-col justify-between rounded-lg bg-[#112240] border border-[#c5a059]/20 p-8 shadow-xl transition-all duration-300">
                 <div>
-                  <Quote className="w-9 h-9 text-[#c5a059] mb-4 opacity-90" />
-                  <div className="flex items-center gap-1 mb-3 text-[#c5a059]">
-                    {Array.from({ length: testimonials[(activeTestimonial + 1) % testimonials.length].rating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
-                    ))}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-1 text-[#c5a059]">
+                      {Array.from({ length: testimonials[(activeTestimonial + 1) % testimonials.length].rating }).map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#c5a059] text-[#c5a059]" />
+                      ))}
+                    </div>
+                    <span className="font-serif text-4xl text-[#c5a059] leading-none">”</span>
                   </div>
-                  <p className="text-[22px] text-slate-100 italic leading-relaxed mb-6 font-serif">
+
+                  <p className="text-[20px] sm:text-[22px] text-slate-100 italic leading-relaxed mb-8 font-serif">
                     "{testimonials[(activeTestimonial + 1) % testimonials.length].quote}"
                   </p>
                 </div>
 
                 <div className="flex items-center gap-3.5 pt-5 border-t border-white/10">
-                  <div className="w-10 h-10 rounded-full bg-[#0a192f] border border-[#c5a059] text-white font-bold text-xs flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[#0a192f] border border-[#c5a059] text-[#c5a059] font-serif font-bold text-xs flex items-center justify-center shrink-0">
                     {testimonials[(activeTestimonial + 1) % testimonials.length].initials}
                   </div>
                   <div>
                     <h4 className="text-sm font-bold text-white leading-snug">{testimonials[(activeTestimonial + 1) % testimonials.length].name}</h4>
-                    <p className="text-xs text-slate-400 mt-0.5">{testimonials[(activeTestimonial + 1) % testimonials.length].role} &middot; {testimonials[(activeTestimonial + 1) % testimonials.length].location}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{testimonials[(activeTestimonial + 1) % testimonials.length].role}</p>
                   </div>
                 </div>
               </div>
 
             </div>
 
-            {/* Controls */}
-            <div className="flex justify-center items-center mt-8 gap-4">
-              <button
-                onClick={() => setActiveTestimonial((prev) => (prev - 2 + testimonials.length) % testimonials.length)}
-                className="p-2 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
-                aria-label="Previous testimonials"
-              >
-                <ChevronLeft className="w-4 h-4" />
-              </button>
-
-              <div className="flex gap-1.5">
-                {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setActiveTestimonial(index * 2)}
-                    className={clsx(
-                      "h-1.5 rounded-sm transition-all duration-200 cursor-pointer",
-                      Math.floor(activeTestimonial / 2) === index ? "w-6 bg-[#c5a059]" : "w-1.5 bg-white/30"
-                    )}
-                    aria-label={`Go to slide ${index + 1}`}
-                  />
-                ))}
-              </div>
-
-              <button
-                onClick={() => setActiveTestimonial((prev) => (prev + 2) % testimonials.length)}
-                className="p-2 rounded-lg border border-white/20 text-white hover:bg-white/10 transition-colors cursor-pointer"
-                aria-label="Next testimonials"
-              >
-                <ChevronRight className="w-4 h-4" />
-              </button>
+            {/* Navigation Dots */}
+            <div className="flex justify-center items-center mt-10 gap-3">
+              {Array.from({ length: Math.ceil(testimonials.length / 2) }).map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveTestimonial(index * 2)}
+                  className={clsx(
+                    "h-2 rounded-full transition-all duration-200 cursor-pointer",
+                    Math.floor(activeTestimonial / 2) === index ? "w-8 bg-[#c5a059]" : "w-2 bg-white/30"
+                  )}
+                  aria-label={`Go to slide ${index + 1}`}
+                />
+              ))}
             </div>
 
           </motion.div>
         </div>
       </section>
 
-      {/* 4. "BY THE NUMBERS" (AUTHORITATIVE SERIF DATA PRESENTATION) */}
+      {/* 4. BY THE NUMBERS */}
       <section className="py-32 bg-[#faf9f5] border-b border-[#0a192f]/10 relative">
-        <div className="container mx-auto px-8 max-w-[1280px] relative z-10">
+        <div className="container mx-auto px-6 md:px-8 max-w-[1280px] relative z-10">
           
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-1">
               By The Numbers
             </span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-[#0a192f] tracking-[-0.02em]">
+            <h2 className="text-4xl sm:text-5xl font-serif text-[#0a192f] tracking-[-0.02em]">
               Our Impact Across India
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            {/* Card 1 */}
-            <div className="group rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-8 text-center flex flex-col items-center hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] flex items-center justify-center mb-4 shadow-xs">
-                <Users className="w-6 h-6 text-[#c5a059]" />
-              </div>
-              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-2 tabular-nums">
+            {/* Stat 1 */}
+            <div className="rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-10 text-center flex flex-col items-center justify-center">
+              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-3 tabular-nums">
                 <AnimatedCounter target={5000} suffix="+" />
               </span>
               <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#44474d]">
@@ -508,12 +522,9 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Card 2 */}
-            <div className="group rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-8 text-center flex flex-col items-center hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] flex items-center justify-center mb-4 shadow-xs">
-                <School className="w-6 h-6 text-[#c5a059]" />
-              </div>
-              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-2 tabular-nums">
+            {/* Stat 2 */}
+            <div className="rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-10 text-center flex flex-col items-center justify-center">
+              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-3 tabular-nums">
                 <AnimatedCounter target={100} suffix="+" />
               </span>
               <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#44474d]">
@@ -521,12 +532,9 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Card 3 */}
-            <div className="group rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-8 text-center flex flex-col items-center hover:-translate-y-1 transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-[#f7f3e8] border border-[#c5a059]/30 text-[#c5a059] flex items-center justify-center mb-4 shadow-xs">
-                <Award className="w-6 h-6 text-[#c5a059]" />
-              </div>
-              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-2 tabular-nums">
+            {/* Stat 3 */}
+            <div className="rounded-lg border border-[#0a192f]/5 bg-white shadow-[0_4px_20px_rgba(10,25,47,0.04)] p-10 text-center flex flex-col items-center justify-center">
+              <span className="text-5xl sm:text-6xl font-serif font-bold tracking-tight text-[#0a192f] block mb-3 tabular-nums">
                 <AnimatedCounter target={20} suffix="+" />
               </span>
               <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#44474d]">
@@ -539,136 +547,32 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 5. VIDEO STORY SECTION */}
-      <section className="py-32 bg-[#faf9f5] border-b border-[#0a192f]/10 relative">
-        <div className="container mx-auto px-8 max-w-4xl text-center relative z-10">
-          
-          <div className="mb-10 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block mb-2">
-              Video Story
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-serif text-[#0a192f] tracking-[-0.02em]">
-              Watch Us Transform Learning
-            </h2>
-            <p className="text-[#44474d] text-sm sm:text-base mt-2 leading-relaxed">
-              See firsthand how IINSPARK is revolutionizing classrooms and empowering students through experiential education.
-            </p>
-          </div>
-
-          <div className="relative">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
-              whileInView={{ opacity: 1, scale: 1.0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="relative rounded-2xl border border-[#0a192f]/10 shadow-[0_4px_20px_rgba(10,25,47,0.04)] bg-white p-2 overflow-hidden"
-            >
-              <div className="relative aspect-video w-full rounded-xl overflow-hidden bg-[#0a192f]">
-                <iframe
-                  className="w-full h-full"
-                  src="https://www.youtube-nocookie.com/embed/rYv-GtnQ4Do?si=ZJ9VLflTLnT6IxjD"
-                  title="Watch IINSPARK Transform Learning"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                ></iframe>
-              </div>
-            </motion.div>
-          </div>
-
-          <div className="mt-8">
-            <Link
-              href="/products"
-              className="inline-flex items-center gap-2 text-xs font-bold text-[#0a192f] hover:text-[#c5a059] transition-colors duration-150 uppercase tracking-wider"
-            >
-              <span>Explore All Programs</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#c5a059]" />
-            </Link>
-          </div>
-
-        </div>
-      </section>
-
-      {/* 6. CALL TO ACTION (CTA) BANNER SECTION */}
+      {/* 5. CALL TO ACTION (CTA) BANNER */}
       <section className="py-32 bg-[#faf9f5]">
-        <div className="container mx-auto px-8 max-w-[1280px]">
+        <div className="container mx-auto px-6 md:px-8 max-w-[1280px]">
           
-          <div className="bg-[#0a192f] rounded-2xl p-8 sm:p-12 text-white border border-[#c5a059]/20 shadow-[0_8px_30px_rgba(10,25,47,0.08)] relative overflow-hidden">
+          <div className="bg-[#0a192f] rounded-2xl p-10 sm:p-14 text-white border border-[#c5a059]/20 shadow-xl relative overflow-hidden">
             
-            <div className="grid lg:grid-cols-12 gap-8 items-center relative z-10">
+            <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 relative z-10">
               
-              <div className="lg:col-span-7 space-y-4">
-                <span className="text-xs font-bold uppercase tracking-[0.1em] text-[#c5a059] block">
-                  Get Started Today
-                </span>
-                <h2 className="text-3xl sm:text-4xl font-serif text-white tracking-[-0.02em] leading-tight">
-                  Ready to Transform Learning?
+              <div className="space-y-4 max-w-2xl">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white tracking-[-0.02em] leading-tight">
+                  Ready <span className="italic font-normal text-[#c5a059]">to</span> Transform Learning?
                 </h2>
-                <p className="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl font-sans">
-                  Discover our world-class educational kits, state-of-the-art innovation labs, and seasonal bootcamps.
+                <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+                  Discover our world-class educational kits, state-of-the-art innovation labs, and seasonal bootcamps designed for the curious leaders of tomorrow.
                 </p>
-                <div className="pt-4">
-                  <Link
-                    href="/products"
-                    className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-lg bg-white text-[#0a192f] font-medium text-sm sm:text-base tracking-wide shadow-md hover:bg-[#faf9f5] hover:-translate-y-0.5 transition-all duration-200 cursor-pointer"
-                  >
-                    <span>Explore All Programs</span>
-                    <ArrowRight className="w-4 h-4 text-[#c5a059]" />
-                  </Link>
-                </div>
               </div>
 
-              {/* Layered Image Preview Showcase */}
-              <div className="lg:col-span-5 relative w-full">
-                <div
-                  className="relative rounded-2xl overflow-hidden border border-white/20 h-64 sm:h-72 bg-[#112240] shadow-xl group"
-                  onMouseEnter={() => setIsHoveringCarousel(true)}
-                  onMouseLeave={() => setIsHoveringCarousel(false)}
+              {/* Gold Button on Right */}
+              <div className="shrink-0">
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-[#c5a059] hover:bg-[#d4b982] text-[#0a192f] font-bold text-sm sm:text-base tracking-wide shadow-md transition-all duration-200 cursor-pointer"
                 >
-                  <AnimatePresence mode="wait">
-                    <motion.img
-                      key={activeSlide}
-                      src={carouselImages[activeSlide].src}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.35, ease: "easeInOut" }}
-                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      alt={carouselImages[activeSlide].title}
-                      onError={(e) => { e.currentTarget.src = "/images/default_product.png"; }}
-                    />
-                  </AnimatePresence>
-
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0a192f]/90 via-transparent to-transparent pointer-events-none" />
-
-                  <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between z-10">
-                    <div className="bg-[#0a192f]/90 backdrop-blur-md p-2.5 rounded-lg border border-white/10 max-w-[220px]">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#c5a059] block mb-0.5">
-                        {carouselImages[activeSlide].description}
-                      </span>
-                      <h3 className="text-xs font-serif font-bold text-white">
-                        {carouselImages[activeSlide].title}
-                      </h3>
-                    </div>
-
-                    <div className="flex items-center gap-1.5 bg-[#0a192f]/80 backdrop-blur-sm border border-white/20 rounded-lg p-1">
-                      <button
-                        onClick={() => setActiveSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length)}
-                        className="p-1 rounded-sm text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
-                        aria-label="Previous slide"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5" />
-                      </button>
-                      <button
-                        onClick={() => setActiveSlide((prev) => (prev + 1) % carouselImages.length)}
-                        className="p-1 rounded-sm text-white hover:bg-white/20 transition-colors duration-150 cursor-pointer"
-                        aria-label="Next slide"
-                      >
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                  <span>Enquire Now</span>
+                  <ArrowRight className="w-4 h-4 text-[#0a192f] -rotate-45" />
+                </Link>
               </div>
 
             </div>
