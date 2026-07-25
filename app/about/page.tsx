@@ -1,5 +1,6 @@
 "use client";
 
+// Reset About page to original design
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Users, Globe, BookOpen, School, ArrowRight, Rocket, Brain, Sparkles, Target, Heart, Compass, CheckCircle, Quote, GraduationCap, Building2, Eye } from "lucide-react";
